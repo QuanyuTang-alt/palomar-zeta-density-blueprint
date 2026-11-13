@@ -11,6 +11,10 @@ An English mathematical reconstruction of Palomar entry **PALOMAR-2026-10-09-000
 - **`source-reference-audit.json`** and **`source-import-inventory.json`** — machine-readable navigation and integrity records.
 - **`verify-archive.py`** — reproducible source integrity and text/reference checks. This is an auxiliary audit utility, not part of the mathematical proof.
 
+## Paper-style study version
+
+The independent `paper-version/` folder contains the revised English learning note, compiled PDF, revision notes, proposition-by-proposition review, bibliography verification and reproducible editorial checks. The original blueprint and pinned source remain unchanged. This is a study of others' results, not a new research submission.
+
 ## Immutable mathematical source
 
 Registry permalink:
@@ -44,4 +48,4 @@ The original Lean project is under the extracted snapshot's `lean/` directory an
 
 Mathematical development is attributed to **Mark Lewko** and the contributors credited upstream. This reconstruction is AI-assisted exposition, not a claim of a new proof or independent human peer review. Original upstream contributions retain **AGPL-3.0-only**; third-party material retains its MIT, MIT-0, Apache-2.0 and other notices. The upstream `LICENSE`, `NOTICE`, `CREDITS.md`, `PROVENANCE.md`, `LICENSE_STATUS.md` and all `third_party/` notices are preserved in the source snapshot. The blueprint and archive-specific explanatory material are provided under AGPL-3.0-only; this does not relicense any third-party material.
 
-The GitHub repository is intended as a **private archive**, not an upstream modification or a public publication.
+The GitHub repository was initially created as a private archive and subsequently made **public at the user's explicit request**. The original private-upload receipt records that earlier state; it is not a claim about current visibility. This repository is an explanatory archive, not an upstream modification or a claim of original research.

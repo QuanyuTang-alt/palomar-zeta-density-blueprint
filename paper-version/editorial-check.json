@@ -1,0 +1,559 @@
+{
+  "scope": "Deterministic editorial, artifact and navigation checks only. Not a mathematical, literature-support or Lean-kernel certificate.",
+  "editorial_status": "PASS",
+  "failures": [],
+  "file_sha256": {
+    "zeta-density-study.tex": "36b7fb97608878826275153e0098abbad8461fefba8c8e14dd792c3a6b0f725a",
+    "zeta-density-study.pdf": "2830a3289867d3acb1bb9a81db7968076d9978fc2fd00bd0596e86208330a66b",
+    "zeta-density-blueprint.tex": "c24fcaffecda5d00e5dcbab00e2d211cdfb95e2cad4223e9aeb9a84734c25ced"
+  },
+  "checks": {
+    "original_blueprint_unchanged": true,
+    "snapshot_regular_files": 560,
+    "snapshot_mismatches": [],
+    "preserved_source_groups": 81,
+    "missing_source_groups": [],
+    "extra_source_groups": [],
+    "unresolved_source_map": [],
+    "environment_counts": {
+      "theorem": 3,
+      "lemma": 17,
+      "proposition": 5,
+      "definition": 3,
+      "conjecture": 1,
+      "proof": 24
+    },
+    "environment_balance_errors": [],
+    "optional_statement_or_proof_titles": [],
+    "undefined_labels": [],
+    "duplicate_labels": [],
+    "numbered_displays": [
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:reflection"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:parameters"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:exponentidentities"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "align",
+        "labels": [
+          "eq:detectoridentity"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:blockdetect"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:powerlength"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:poweredheight"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:weightedextract"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:shortcount"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:partition"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:longmean"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:sampling"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:longraw"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:longcount"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:fourthkernel"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:frozenerror"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:Gaussianbound"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:compacttest"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:physicalsource"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:localsource"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "align",
+        "labels": [
+          "eq:voronoi"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "align",
+        "labels": [
+          "eq:Ytwo"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:stationarysum"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:stationarylocal"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:signedstationary"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:prefixsource"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:Gram"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:dyadicGram"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "align",
+        "labels": [
+          "eq:nearfar"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:localsum"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:excesscount"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:widthcount"
+        ],
+        "all_labels_referenced": true
+      },
+      {
+        "environment": "equation",
+        "labels": [
+          "eq:sourcepeakcount"
+        ],
+        "all_labels_referenced": true
+      }
+    ],
+    "unreferenced_numbered_labels": [],
+    "bibliography_entries": 16,
+    "bibliography_key_order": [
+      "atkinson",
+      "bourgain",
+      "gm",
+      "hb78",
+      "hb79",
+      "ingham28",
+      "ingham",
+      "ivic",
+      "ik",
+      "kerr",
+      "source",
+      "mathlib",
+      "montgomery",
+      "registry",
+      "tty",
+      "titchmarsh"
+    ],
+    "expected_author_alphabetical_order": true,
+    "uncited_bibliography_entries": [],
+    "undefined_citation_keys": [],
+    "non_ascii_tex_characters": [],
+    "unexpected_controls": [],
+    "abstract_msc_keywords_present": false,
+    "tex_log_issues": [],
+    "underfull_box_warnings": [],
+    "pdf_pages": 44,
+    "pdf_page_checks": [
+      {
+        "page": 1,
+        "text_characters": 2590,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 2,
+        "text_characters": 3127,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 3,
+        "text_characters": 3933,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 4,
+        "text_characters": 1898,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 5,
+        "text_characters": 3161,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 6,
+        "text_characters": 2445,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 7,
+        "text_characters": 2891,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 8,
+        "text_characters": 2934,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 9,
+        "text_characters": 3305,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 10,
+        "text_characters": 3056,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 11,
+        "text_characters": 2883,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 12,
+        "text_characters": 3170,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 13,
+        "text_characters": 2657,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 14,
+        "text_characters": 3142,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 15,
+        "text_characters": 3168,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 16,
+        "text_characters": 3383,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 17,
+        "text_characters": 3115,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 18,
+        "text_characters": 2851,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 19,
+        "text_characters": 3003,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 20,
+        "text_characters": 3076,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 21,
+        "text_characters": 2720,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 22,
+        "text_characters": 2992,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 23,
+        "text_characters": 3061,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 24,
+        "text_characters": 3319,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 25,
+        "text_characters": 3043,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 26,
+        "text_characters": 3196,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 27,
+        "text_characters": 3428,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 28,
+        "text_characters": 3109,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 29,
+        "text_characters": 3305,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 30,
+        "text_characters": 2903,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 31,
+        "text_characters": 3147,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 32,
+        "text_characters": 3188,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 33,
+        "text_characters": 3075,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 34,
+        "text_characters": 2866,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 35,
+        "text_characters": 2982,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 36,
+        "text_characters": 2697,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 37,
+        "text_characters": 3169,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 38,
+        "text_characters": 2911,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 39,
+        "text_characters": 2956,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 40,
+        "text_characters": 3002,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 41,
+        "text_characters": 3501,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 42,
+        "text_characters": 3744,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 43,
+        "text_characters": 2739,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      },
+      {
+        "page": 44,
+        "text_characters": 772,
+        "out_of_page_text": [],
+        "out_of_page_links": []
+      }
+    ]
+  }
+}

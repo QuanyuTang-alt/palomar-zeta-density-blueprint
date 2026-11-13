@@ -4,3 +4,8 @@
 *.xdv
 .DS_Store
 __pycache__/
+
+# Local study-version drafting workspace; final artifacts are tracked explicitly.
+paper-version/.workflow/
+paper-version/build-study.py
+paper-version/diagram-brief.md

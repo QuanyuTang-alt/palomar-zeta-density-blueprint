@@ -1,0 +1,3121 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{xurl,microtype,enumitem}
+\usepackage[margin=28mm]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage[unicode,colorlinks=true,linkcolor=blue!40!black,citecolor=blue!40!black,urlcolor=blue!40!black]{hyperref}
+\usepackage{bookmark}
+\allowdisplaybreaks
+\setlength{\emergencystretch}{3em}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\e}{\mathrm e}
+\newcommand{\Rea}{\operatorname{Re}}
+\newcommand{\Ima}{\operatorname{Im}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\card}{\operatorname{card}}
+\newcommand{\arsinh}{\operatorname{arsinh}}
+\newcommand{\Mell}{\mathcal M}
+\newcommand{\FT}{\mathcal F}
+\newcommand{\zabs}{Z}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\lean}[1]{\ifmmode\text{\ttfamily\detokenize{#1}}\else\expandafter\nolinkurl\expandafter{\detokenize{#1}}\fi}
+\title{Large values and a zero-density estimate for the Riemann zeta function\\[4pt]
+\large A detailed study of a registered proof}
+\author{An exposition of the development of Mark Lewko\\
+\small with the analytic contributions credited in the original development}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Introduction}\label{sec:contract}
+The Riemann zeta function enters prime-number theory through its zeros.
+A zero-density theorem does not locate each zero individually. Instead, it
+bounds how many zeros can lie to the right of a given vertical line. This is
+one reason such theorems remain useful without the Riemann hypothesis:
+they permit a small exceptional set of zeros while still giving substantial
+information about the distribution of primes. Standard accounts of this
+connection and of zero-detecting Dirichlet polynomials are given by
+Montgomery~\cite{montgomery}, Ivi\'c~\cite{ivic}, and
+Iwaniec--Kowalski~\cite{ik}.
+
+For $1/2<\sigma<1$ and $T\ge2$, write
+\[
+ N(\sigma,T)=\sum_{\substack{\zeta(\rho)=0\\
+                \Rea\rho\ge\sigma,\ |\Ima\rho|\le T}}m(\rho),
+\]
+where $m(\rho)$ is the order of vanishing of $\zeta$ at $\rho$.
+The finiteness of this sum and the conventions concerning its boundaries
+are established in Section~\ref{sec:zeros}. Throughout, zeros are counted
+with multiplicity and both signs of the ordinate are included.
+For $1/2<\sigma<1$, define the comparison exponent by
+\[
+ A(\sigma)=\inf\{a\ge0:\ N(\sigma,T)\ll_{\sigma,\varepsilon}
+          T^{a(1-\sigma)+\varepsilon}\text{ for every }\varepsilon>0\}.
+\]
+We use it only to compare leading powers; our theorem retains explicit
+quantifiers and a positive power loss.
+
+A central benchmark is the density hypothesis; see
+Montgomery~\cite{montgomery}, Titchmarsh~\cite{titchmarsh}, and the discussion
+in Tao--Trudgian--Yang~\cite{tty}. We state it as background, not as a claim
+proved in this note.
+\begin{conjecture}\label{conj:density}
+For every $1/2<\sigma<1$ and $\varepsilon>0$,
+\[
+ N(\sigma,T)\ll_{\sigma,\varepsilon}T^{2(1-\sigma)+\varepsilon}
+ \qquad(T\ge2).
+\]
+\end{conjecture}
+The Riemann hypothesis would imply that the sum is empty for every
+$\sigma>1/2$. Theorem~\ref{thm:main} concerns only $\sigma>3/4$ and does
+not establish either the Riemann hypothesis or the full
+Conjecture~\ref{conj:density}.
+
+Historically, progress on zero density has been closely tied to progress on
+large values of Dirichlet polynomials. Ingham's estimate
+$A(\sigma)\le3/(2-\sigma)$~\cite{ingham} is a classical landmark.
+The later theory combines mean-value inequalities, subdivision of the
+ordinate interval, estimates for correlations, and power-raising of
+Dirichlet polynomials; see~\cite{ivic,ik,montgomery}.
+Heath-Brown's twelfth-moment theorem~\cite{hb78} provides another important
+route: a zero detector that gives a large value of a weighted critical-line
+mean can be controlled by a high moment. More recently,
+Guth--Maynard~\cite{gm} obtained new large-values estimates near the
+three-quarter-power threshold, and Tao--Trudgian--Yang~\cite{tty}
+organized many of the resulting exponent relations systematically.
+
+The result studied here is the following theorem of the registered
+Lean development of Lewko and its credited contributors~\cite{source,registry}.
+It is stated first in the familiar mathematical form; Section~\ref{sec:zeros}
+relates this statement to the exact zero sets and vanishing orders.
+\begin{theorem}\label{thm:main}
+For every real $\sigma>3/4$ and every $\varepsilon>0$, there exists
+$C_{\sigma,\varepsilon}>0$ such that
+\[
+ N(\sigma,T)\le C_{\sigma,\varepsilon}
+          T^{3(1-\sigma)/(2\sigma)+\varepsilon}
+ \qquad(T\ge2).
+\]
+\end{theorem}
+% Source correspondence: Solution.lean}{DensityStronger.density_bound; exact_membership; exact_multiplicity}
+The case $\sigma\ge1$ has zero count. The strict inequality
+$\sigma>3/4$ is essential to this proof: the large-values argument needs a
+positive margin above the three-quarter-power threshold. No uniformity is
+claimed as $\sigma\downarrow3/4$ or $\varepsilon\downarrow0$.
+
+It is important to distinguish this theorem's range from its exponent.
+The exponent $3/(2\sigma)$ is not new throughout the entire interval:
+Bourgain~\cite{bourgain} obtained it for
+$\sigma\ge3734/4694$, and Kerr~\cite[Theorem 6]{kerr} extended that range to
+$\sigma\ge23/29$. Relative to the bounds tabulated in
+Tao--Trudgian--Yang~\cite[Table 2]{tty}, together with Kerr's preprint, the
+registered estimate is strictly smaller in leading exponent for
+$3/4<\sigma<23/29$, agrees with the best exponent located in those sources
+for $23/29\le\sigma\le7/8$, and is weaker than established estimates for
+$7/8<\sigma<1$. The last assertion already follows from the
+Heath-Brown bound
+\[
+ A(\sigma)\le\max\left\{\frac3{10\sigma-7},\frac4{4\sigma-1}\right\},
+\]
+recorded in~\cite{hb79,tty}. For $\sigma>7/8$, both expressions are
+strictly smaller than $3/(2\sigma)$. These are comparisons with identified
+sources, not an exhaustive priority claim about all unpublished work.
+The present note makes no claim of a new result or of authorship of the
+underlying proof.
+
+\subsection{The two inputs and the proof strategy}
+The first input is the following large-values estimate, proved in
+Section~\ref{sec:typeI}. For a polynomial of length $N$, it bounds a
+one-separated set of ordinates at which the polynomial is large by
+\[
+ T^\varepsilon\left(N^2/V^2+N^3T^{1/2}/V^4\right),
+ \qquad T^{1/3}\le N\le T,\quad V\ge N^{3/4+\kappa}.
+\]
+The proof compares a complete pair sum with a smooth Poisson error.
+Poisson summation reflects each shell of ordinate differences to shorter
+frequency blocks. Mellin inversion separates the smooth weight from the
+oscillation without discarding any Mellin frequencies. A normalized
+supremum over all subsets and admissible scales then satisfies an inequality
+with a small coefficient times itself. This is the point at which
+$\kappa>0$ is used; it makes that coefficient tend to zero uniformly.
+
+The second input is the classical twelfth moment of
+Heath-Brown~\cite[Theorem 1]{hb78}. The formulation needed here is
+\begin{theorem}\label{thm:moment}
+For every $\varepsilon>0$, there are $K_\varepsilon>0$ and $T_0$ such that
+\[
+ \int_0^{3T}|\zeta(1/2+\ii t)|^{12}\dd t
+     \le K_\varepsilon T^{2+\varepsilon}\qquad(T\ge T_0).
+\]
+\end{theorem}
+% Source correspondence: Solution.lean}{DensityStronger.twelfth_moment; actual_moment_integrable}
+Indeed, the classical estimate is
+$\int_0^U|\zeta(1/2+\ii t)|^{12}\dd t\ll U^2(\log U)^{17}$;
+put $U=3T$ and absorb the logarithm into $T^\varepsilon$.
+For a first reading, this citation is a substantial and legitimate
+simplification. Appendix~\ref{sec:fourth} and the subsequent appendices give
+the more detailed reconstruction used in the formal development: a fourth
+moment, pointwise control by a local mean, a signed stationary expansion,
+maximal-prefix estimates, and a high/low decomposition. That reconstruction
+is included for studying the methods, not to claim that the classical moment
+is an additional new theorem. Its relation to the classical work is discussed
+at the start of each appendix.
+
+To connect these inputs to zeros, choose
+\[
+ a=\frac1{2\sigma},\qquad c=\frac3{4\sigma},\qquad
+ p=\frac{3(1-\sigma)}{2\sigma}.
+\]
+A short M\"obius mollifier and an exponentially smoothed zero detector
+produce a large smooth dyadic block at every zero in $[T,2T]$.
+If its length is at most $T^{c/2}$, expand the real-part-dependent weight in
+a binomial series. The coefficients of the resulting polynomial family
+are independent of the zero. Raising a selected member to a bounded
+integer power moves its length into $[T^a,2^KT^c]$.
+The signs of the two length exponents in the large-values estimate then
+select opposite endpoints of this interval, and the identities
+\[
+ 2(1-\sigma)c=\tfrac12+(3-4\sigma)a=p
+\]
+make both terms have the desired exponent.
+
+The other zeros have a longer smooth block. Mellin inversion transfers it
+to a polynomially weighted critical-line mean. Weighted H\"older and a
+separated sampling estimate reduce its count to Theorem~\ref{thm:moment}.
+The resulting exponent has a fixed saving because $c<1$.
+Jensen's formula restores the multiplicities lost when choosing
+one-separated ordinates. Finally, dyadic summation and conjugation give
+Theorem~\ref{thm:main}, including the bounded-height part.
+Figure~\ref{fig:dependencies} displays these dependencies. Each arrow means
+that the estimate at its tail is used in the estimate at its head; it is not
+a graph of code imports.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=Latex,
+ every node/.style={align=center,font=\small},
+ box/.style={draw,rounded corners=1pt,text width=42mm,minimum height=11mm}]
+\node[box] (det) at (0,0) {Smooth zero detector\\Section~\ref{sec:detector}};
+\node[box] (short) at (-2.5,-1.8) {Fixed polynomial family\\Section~\ref{sec:short}};
+\node[box] (long) at (2.5,-1.8) {Weighted critical mean\\Section~\ref{sec:long}};
+\node[box] (lv) at (-2.5,-3.6) {Large-values estimate\\Theorem~\ref{thm:LV}};
+\node[box] (mom) at (2.5,-3.6) {Twelfth moment\\Theorem~\ref{thm:moment}};
+\node[box] (sc) at (-2.5,-5.4) {Short-zero count};
+\node[box] (lc) at (2.5,-5.4) {Long-zero count};
+\node[box] (jen) at (0,-7.2) {Local multiplicity\\Lemma~\ref{lem:localzeros}};
+\node[box] (end) at (0,-9.0) {Dyadic summation\\Theorem~\ref{thm:main}};
+\draw[->] (det)--(short); \draw[->] (det)--(long);
+\draw[->] (short.west)--++(-0.5,0)|-(sc.west);
+\draw[->] (lv)--(sc);
+\draw[->] (long.east)--++(0.5,0)|-(lc.east);
+\draw[->] (mom)--(lc);
+\draw[->] (jen)--(sc); \draw[->] (jen)--(lc);
+\draw[->] (sc.south west)--++(0,-3.6)--(end.west);
+\draw[->] (lc.south east)--++(0,-3.6)--(end.east);
+\end{tikzpicture}
+\caption{The two counting arguments and the common multiplicity step.}
+\label{fig:dependencies}
+\end{figure}
+
+\subsection{Organization and conventions}
+Section~\ref{sec:zeros} establishes the counting conventions.
+Section~\ref{sec:foundations} recalls the analytic facts used in the main
+argument, and Section~\ref{sec:typeI} proves the large-values estimate.
+Sections~\ref{sec:detector}--\ref{sec:long} construct the detector and prove
+the density theorem. The appendices provide a second, slower route through
+the moment argument and the analytic identities behind it.
+
+All constants implicit in $\ll$ depend only on the fixed parameters
+explicitly indicated or fixed at the start of the relevant argument.
+An assertion holding for sufficiently large $T$, uniformly in a polynomial,
+a finite set or a zero, means that its threshold is chosen before those
+objects vary. Positive real powers are $x^u=\exp(u\log x)$; complex powers
+of positive real bases use the same real logarithm. Other branch-sensitive
+powers are principal powers. We use $s(t)=1/2+\ii t$ and
+$Z(t)=|\zeta(s(t))|$; this $Z$ is a nonnegative modulus, not Hardy's signed
+$Z$-function. The divisor function is
+$d(n)=\#\{r\in\N:r\ge1,\ r\mid n\}$ for $n\ge1$, with $d(0)=0$
+when a zero-indexed sum is used. We write
+$\gamma_E=\lim_{m\to\infty}(\sum_{j=1}^m j^{-1}-\log m)$
+for Euler's constant, reserving $\gamma$ for zero ordinates. All integrals over bounded intervals
+are Lebesgue integrals; oriented integrals retain their orientation.
+We use $\int_{(c)}$ for an upward vertical contour on $\Rea s=c$.
+
+This exposition is based on the immutable revision recorded
+in~\cite{source,registry}, not on a moving default branch.
+The original mathematical and formal contributions, including the
+McColm and Grogan components credited upstream, remain attributed to
+their authors. This is an explanatory study, not a new formal certificate
+or an independently peer-reviewed proof. The original development uses
+mathlib~\cite{mathlib}; the companion archive retains the argument pointers
+and licensing notices.
+
+\section{Actual zeros and their analytic multiplicities}
+\label{sec:zeros}
+\begin{definition}
+A nontrivial zero is a complex number $\rho$ satisfying
+\[
+ \zeta(\rho)=0,\qquad 0<\Rea\rho<1.
+\]
+Define $m(\rho)$ by the local order of vanishing: it is $k$ when
+$\zeta(z)=(z-\rho)^k g(z)$ near $\rho$ with $g(\rho)\ne0$; it is zero
+at a nonzero analytic value. An identically zero germ has infinite extended
+order. The next lemma excludes that case for $\rho\ne1$, so $m(\rho)$
+is a natural number at every zero used here. Write
+\begin{align*}
+ \mathcal Z(\sigma;a,b)&=\{\rho:\rho\text{ is a nontrivial zero},\
+  \sigma\le\Rea\rho,\ a\le\Ima\rho\le b\},\\
+ N_{\rm slab}(\sigma;a,b)&=\sum_{\rho\in\mathcal Z(\sigma;a,b)}m(\rho),\\
+ N(\sigma,T)&=N_{\rm slab}(\sigma;-T,T).
+\end{align*}
+\end{definition}
+% Source correspondence: ZetaCounting.lean}{IsNontrivialZetaZero; zetaMultiplicity; zetaZeroRegion; zetaZeroFinset; zetaSlabCount; zetaDensityCount}
+
+\par\medskip\noindent Finiteness and local factorization.
+\begin{lemma}\label{lem:zeroorder}
+The set $\mathcal Z(\sigma;a,b)$ is finite for arbitrary real $\sigma,a,b$.
+At every nontrivial zero, $0<m(\rho)<\infty$, and there is a function $g$
+analytic at $\rho$, with $g(\rho)\ne0$, for which
+\[
+ \zeta(z)=(z-\rho)^{m(\rho)}g(z)
+\]
+in a neighborhood of $\rho$.
+\end{lemma}
+\begin{proof}
+The zeta function is meromorphic with its only pole at $1$, and
+$F(z)=(z-1)\zeta(z)$ extends holomorphically across $1$, with $F(1)=1$.
+Thus $F$ is entire and not identically zero. Its zeros in any compact set
+are finite: otherwise a convergent subsequence would have an accumulation
+point, contradicting the identity theorem. Every zeta zero in the region
+below is also a zero of $F$. This justifies using a closed ball even if
+it contains the pole of $\zeta$. Every zero in the displayed region has
+\[
+ |\rho|\le|\Rea\rho|+|\Ima\rho|\le1+|a|+|b|.
+\]
+Thus the region is a subset of the zeros in a compact closed ball, and is finite.
+
+If the analytic order at some $\rho\ne1$ were infinite, the analytic germ would
+vanish identically near $\rho$. The identity principle on the connected punctured
+plane would then make $\zeta$ identically zero on $\C\setminus\{1\}$, contradicting
+$\zeta(2)\ne0$. Hence its extended order is finite. Analyticity and
+$\zeta(\rho)=0$ give a nonzero order; the ordinary order of vanishing is therefore a positive integer.
+The local factorization theorem then gives $g$ and the displayed local
+identity. A nontrivial zero is not $1$, since its real part is strictly less than
+$1$, so all these facts apply.
+\end{proof}
+% Source correspondence: ZetaCounting.lean}{zetaZeroRegion_finite; zeta_analyticOrder_ne_top; zetaMultiplicity_pos; zetaMultiplicity_cast; zetaMultiplicity_local_factorization}
+
+\par\medskip\noindent Exact membership at the endpoint.
+\begin{lemma}
+If $\sigma>3/4$, then
+\[
+ \rho\in\mathcal Z(\sigma;-T,T)
+ \iff\zeta(\rho)=0\ \text{and}\ \sigma\le\Rea\rho\ \text{and}\ |\Ima\rho|\le T.
+\]
+If $\sigma\ge1$, the set is empty for every $T$.
+\end{lemma}
+\begin{proof}
+One implication simply forgets the strip conditions. Conversely, a zero with
+$\Rea\rho\ge\sigma>3/4$ has positive real part. Mathlib's nonvanishing theorem
+for $\Rea s\ge1$ forces $\Rea\rho<1$. Thus it is a nontrivial zero, and
+$-T\le\Ima\rho\le T$ is precisely $|\Ima\rho|\le T$.
+If $\sigma\ge1$, membership would give both $\sigma\le\Rea\rho$ and
+$\Rea\rho<1$, an impossibility.
+\end{proof}
+% Source correspondence: Solution.lean; DensityConclusion.lean}{exact_membership; zetaDensityCount_eq_zero_of_one_le}
+
+\paragraph{Monotonicity and conjugation.}
+The slab count increases when either the region is enlarged by lowering the
+real-part cutoff, or its lower height is lowered, or its upper height is raised.
+This follows by inclusion of the finite zero sets and nonnegativity of
+multiplicities. Complex conjugation preserves zeros, real part and analytic
+order, and reverses ordinate. Consequently
+\[
+ N(\sigma,T)\le2N_{\rm slab}(\sigma;0,T).
+\]
+The inequality, rather than an equality, permits zeros on the real axis and
+closed shared boundaries. Similarly
+\[
+ N_{\rm slab}(\sigma;a,c)\le
+ N_{\rm slab}(\sigma;a,b)+N_{\rm slab}(\sigma;b,c)
+ \qquad(a\le b\le c).
+\]
+These finite-set statements are what the final dyadic argument uses.
+% Source correspondence: ZetaCounting.lean; ZetaConjugation.lean}{zetaSlabCount_mono; zetaDensityCount_mono; zetaDensityCount_le_twice_positive; zetaSlabCount_split_le}
+
+
+\section{Analytic preliminaries}\label{sec:foundations}
+We use the functional equation and conjugation of the Riemann zeta function,
+its nonvanishing on $\Rea s\ge1$, Mellin inversion of the exponential,
+Poisson summation for smooth compactly supported functions, Jensen's
+formula, and the elementary estimate $d(n)\ll_\theta n^\theta$
+for every $\theta>0$. These facts are used in their usual domains of
+convergence; infinite interchanges below are justified by absolute
+summability or an integrable majorant. For reference, see~\cite{ivic,ik,titchmarsh}.
+The Fourier and Mellin conventions are
+\[
+ \widehat f(\xi)=\int_\R f(x)e^{-2\pi\ii x\xi}\dd x,
+ \qquad \Mell f(s)=\int_0^\infty f(x)x^{s-1}\dd x.
+\]
+With $\Gamma_\R(s)=\pi^{-s/2}\Gamma(s/2)$, the completed zeta is
+$\Lambda(s)=\Gamma_\R(s)\zeta(s)$ away from its poles and satisfies
+$\Lambda(s)=\Lambda(1-s)$. Since $s(t)$ never meets the pole,
+$Z$ is continuous and every natural power $Z^n$ is integrable on each
+bounded interval. No global moment estimate follows merely from this
+local integrability.
+
+The pointwise estimate needed by the zero detector is the classical
+Weyl bound, in the following power-loss formulation~\cite{ivic,titchmarsh}.
+\begin{proposition}\label{prop:weyl}
+For each $\theta>0$, there is $C_\theta>0$ such that
+\[
+ Z(t)\le C_\theta(1+|t|)^{1/6+\theta}\qquad(t\in\R).
+\]
+\end{proposition}
+The finite-sum proof and the sharp approximate functional equation used in
+% Source correspondence: WeylPort/Block.lean; WeylPort/ShortSum.lean; WeylPort/ActualZeta.lean; WeylInput.lean}{norm_criticalLine_cpow_block_le; norm_critical_sum_le_log; eventually_norm_riemannZeta_critical_lt_rpow; exists_riemannZeta_critical_dyadic_weyl; actual_zeta_weyl_input}
+the registered development are reconstructed in Appendix~\ref{app:adapters}.
+Applying the bound with loss $\theta/2$ and absorbing a fixed factor of
+$2^{1/6+\theta/2}$ gives, uniformly on $[H,2H]$,
+$Z(t)<H^{1/6+\theta}$ for sufficiently large $H$.
+We also use the coarser bound $Z(t)\le4(1+|t|)$ obtained by Abel
+continuation in the development. Polynomial weights with sufficiently
+large decay and exponential weights consequently give genuine convergent
+integrals. In particular $Z(t)^{12}\le H^3$ on $[H,2H]$ for sufficiently
+large $H$; this is only an upper truncation, not a moment theorem.
+% Source correspondence: Stronger/MomentGrowth.lean; Stronger/PointMean/Native.lean}{zetaMomentCriticalNorm_le_linear; zetaMomentCriticalNorm_twelfth_eventually_le_cube; exists_zetaMomentCriticalNorm_sq_le_quadratic}
+
+\section{A large-values estimate for Dirichlet polynomials}
+\label{sec:typeI}
+\par\medskip\noindent Large-value data.
+\begin{definition}
+For positive integer $N$, coefficients $a_n\in\C$, and real $t$, put
+\[
+ D_{N,a}(t)=\sum_{N<n\le2N}a_n e^{\ii t\log(n/N)}.
+\]
+A finite real set $W$ is one-separated if $|t-u|\ge1$ whenever $t,u\in W$
+and $t\ne u$. For fixed $\kappa>0$, admissible data are
+$T,V,N,a,W,t_0$ with
+\begin{gather*}
+ T\ge2,\quad N\ge1,\quad V>0,\quad T^{1/3}\le N\le T,\quad
+ N^{3/4+\kappa}\le V,\\
+ |a_n|\le1\ (N<n\le2N),\quad W\subset[t_0,t_0+T],\quad
+ W\text{ one-separated},\quad |D_{N,a}(t)|\ge V\ (t\in W).
+\end{gather*}
+
+For a finite nonempty $U$ set $d_U=1+\max U-\min U$, and put $d_\varnothing=1$.
+Finally define
+\[
+ \Delta(T)=\max_{1\le m\le\lceil32(T+1)\rceil}d(m),\qquad
+ b=\frac{N\Delta(T)}{V^2}.
+\]
+\end{definition}
+% Source correspondence: LargeValueDefinitions.lean}{detectingPolynomial; oneSeparated; localDiameter; divisorMaximum; bootstrapScalar; LargeValueData}
+
+\par\medskip\noindent A large-values estimate.
+\begin{theorem}\label{thm:LV}
+For every $\kappa,\varepsilon>0$ there is $C>0$, chosen before every admissible
+data set, such that
+\[
+ |W|\le C T^\varepsilon\left(\frac{N^2}{V^2}
+              +\frac{N^3\sqrt T}{V^4}\right).
+\]
+The starting point $t_0$ is arbitrary.
+\end{theorem}
+% Source correspondence: LargeValues.lean}{large_values_data; large_values}
+
+\subsection{Complete pair sums and a smooth comparison}
+Choose once and for all a nonnegative $C^\infty$ cutoff $w$ equal to $1$ on
+$[1,4]$ and supported in $[1/2,5]$. We construct it as a smooth bump
+centered at $5/2$, inner radius $3/2$, outer radius $2$; its actual outer
+support $[1/2,9/2]$ is contained in the stated larger interval.
+Smoothness and support are used for reflection; nonnegativity and the plateau
+are used for comparison.
+Define
+\begin{align*}
+ I_w(v)&=\int_0^\infty w(x)x^{\ii v}\dd x,\\
+ h_w(L,v)&=\sum_{n\ge0}w(n/L)(n/L)^{\ii v}-LI_w(v),\\
+ P_M(v)&=\sum_{M\le q<2M}(q/M)^{\ii v},\\
+ E_M(U)&=\sum_{t,u\in U}|P_M(t-u)|^2,\\
+ Q_L(U)&=\sum_{t,u\in U}|h_w(L,t-u)|^2.
+\end{align*}
+The apparently infinite discrete sum defining $h_w$ has finite support, and its
+$n=0$ term is zero. Notice the distinct half-open conventions: the auxiliary
+polynomial uses $[M,2M)$; the detecting polynomial uses $(N,2N]$.
+% Source correspondence: ReflectionDefinitions.lean; ComparisonCutoff.lean}{ReflectionCutoff; ComparisonCutoff; comparisonCutoff; cutoffIntegral; hKernel; dyadicPolynomial; completePairEnergy; kernelEnergy}
+
+\par\medskip\noindent Comparison with the kernel energy.
+\begin{lemma}\label{lem:comparison}
+There is $C_w\ge0$ such that for all admissible data, every one-separated
+subset $U\subset W$, and every positive integer $M$ with $NM\le8(T+1)$,
+\[
+ E_M(U)\le C_w bNM^2|U|+b^2Q_{NM}(U).
+\]
+Also $E_M(U)\ge M|U|^2$.
+\end{lemma}
+\begin{proof}
+Expanding the complete pair energy in the $q,r$ variables gives its Gram form
+\[
+ E_M(U)=\sum_{M\le q,r<2M}
+ \left|\sum_{t\in U}(q/r)^{\ii t}\right|^2.
+\]
+The diagonal $q=r$ contains exactly $M$ copies of $|U|^2$, proving the lower
+bound. For the upper bound, insert
+$D_{N,a}(t)/D_{N,a}(t)$ inside each $t$ sum. These denominators are nonzero by
+$|D_{N,a}(t)|\ge V>0$. Finite Cauchy--Schwarz and $|a_n|\le1$ give the
+factor $N$ and sums over products $m=nq$. A fixed product has at most $d(m)$
+representations, bounded by $\Delta(T)$ because the scale restriction places it
+within the defining maximum. The cutoff equals one on the original normalized
+product support, and is nonnegative, so extending to all cutoff-supported
+integers does not decrease the sum.
+
+The resulting extension, when its squares are expanded in $t,u$, contains
+\[
+ NM I_w(t-u)+h_w(NM,t-u)
+\]
+multiplied by $\overline{P_M(t-u)}$ and divided by
+$D_{N,a}(t)\overline{D_{N,a}(u)}$. More explicitly, with $D(t)=D_{N,a}(t)$, the product grouping gives
+\[
+ E_M(U)\le N\Delta(T)
+ \sum_{M\le r<2M}\sum_{m\ge0} w(m/(NM))
+ \left|\sum_{t\in U}
+ \frac{(m/(NM))^{\ii t}(r/M)^{-\ii t}}{D(t)}\right|^2.
+\]
+The zero-indexed term is zero because the cutoff vanishes near zero.
+On the original product range $m=nq$, $w(m/(NM))=1$.
+After expansion of the square and summation over $r$, the preceding
+inequality contains exactly the continuous and error terms displayed above.
+Taking their absolute values and using $|D(t)D(u)|\ge V^2$ gives the
+scalar $b=N\Delta(T)/V^2$. The continuous piece has
+$|I_w(v)|\le C(1+|v|)^{-2}$: set $x=e^{-y}$ and apply Fourier decay to the
+compact smooth logarithmic lift. One-separatedness gives a uniform row sum
+\[
+ \sum_{u\in U}(1+|t-u|)^{-2}\le S
+\]
+for a fixed absolute constant $S$. One may obtain such a constant by dividing
+each side of $t$ into half-open unit intervals. Each contains at most one
+point, and the resulting row sum is bounded by twice a convergent sum of
+$(1+j)^{-2}$. Thus the continuous
+piece is at most a fixed multiple of $bNM^2|U|$.
+For the remaining piece use, pair by pair,
+\[
+ b|h_w(NM,t-u)|\,|P_M(t-u)|
+ \le\tfrac12b^2|h_w(NM,t-u)|^2+\tfrac12|P_M(t-u)|^2.
+\]
+After summing, the last term is $E_M(U)/2$ and is moved to the left. This
+produces the displayed comparison, with its constant chosen from $w$ alone.
+\end{proof}
+% Source correspondence: CompletePairs.lean; Comparison.lean}{completePairEnergy_gram; completePairEnergy_diagonal_lower; comparison_extension_bound; comparison_continuous_bound; comparison_remainder_bound; uniform_comparison}
+
+\subsection{Poisson summation and Mellin separation}
+For $H,L>0$ the retained integer band is exactly
+\[
+ \mathcal B(L,H)=\left\{m\in\Z:m>0,\quad
+ \frac{H}{20\pi L}\le m\le\frac{4H}{\pi L}\right\}.
+\]
+The mode integral is
+\[
+ J_w(v,k)=\int_0^\infty w(x)e^{\ii(v\log x-2\pi kx)}\dd x.
+\]
+Poisson summation gives the absolutely convergent identity
+\[
+ h_w(L,v)=L\sum_{m\ne0}J_w(v,mL).
+\]
+For $H\le v\le2H$, the off-band sum has norm at most $C_A L^{1-A}$,
+for every integer $A>1$. The same estimate holds for $h_w(L,0)$.
+To prove it, integrate repeatedly by parts with quotient
+$x/(v-2\pi kx)$; off-band the denominator has the explicit lower bound
+$(H+|k|)/300$ on $[1/3,6]$. Rescaling puts parameters in a compact set,
+so all iterated amplitudes have uniform bounds. Summing
+$|m|^{-A}$ justifies the discarded-mode estimate. Endpoint amplitudes vanish
+because the support lies strictly within this interval.
+% Source correspondence: UniformIBP.lean; CutoffTransforms.lean; FixedBandError.lean}{ibpIntegral_recurrence; uniform_offBand_decay; hKernel_poisson; uniform_fixedBand_and_diagonal_error}
+
+\par\medskip\noindent All-frequency oscillatory estimate.
+\begin{lemma}\label{lem:allfreq}
+For every real $\tau$ and $0<a\le b$,
+\[
+ \left|\int_a^b z^{-1}e^{\ii(\tau\log z-2\pi z)}\dd z\right|
+ \le\frac6{\sqrt{2\pi a}}.
+\]
+\end{lemma}
+\begin{proof}
+Put $s=\sqrt{2\pi a}$ and
+$L_0=(\tau-s)/(2\pi)$, $R_0=(\tau+s)/(2\pi)$.
+Away from the stationary point, write the integrand as
+\[
+ \frac1{\ii(\tau-2\pi z)}
+ \frac{\mathrm d}{\mathrm dz}e^{\ii(\tau\log z-2\pi z)}.
+\]
+Integration by parts bounds an interval to the left of $L_0$ or to the right
+of $R_0$ by $2/s$, since the reciprocal denominator is monotone there and
+has modulus at most $1/s$ at the closest endpoint.
+If the original interval lies wholly on one side, this already suffices.
+Otherwise split it at $u=\max(a,L_0)$ and $v=\min(b,R_0)$. Each outside part
+is bounded by $2/s$, with zero-length parts contributing zero. On $[u,v]$,
+absolute integration gives
+\[
+ \frac{v-u}{a}\le\frac{R_0-L_0}{a}=\frac2s,
+\]
+using $s^2=2\pi a$. The three estimates sum to $6/s$.
+This argument makes no assumption on the sign of $\tau$.
+\end{proof}
+% Source correspondence: Oscillatory.lean; AllFrequency.lean}{norm_gmReflectionIntegral_le_left; norm_gmReflectionIntegral_le_right; norm_gmReflectionIntegral_le_six_div_sqrt}
+
+For $m\in\mathcal B(L,H)$, change variables $z=mLx$ in $J_w(v,mL)$ and
+apply Mellin inversion on the line $\Rea s=1$. All retained modes use the same
+interval $[H/(40\pi),20H/\pi]$. Thus
+\[
+ J_w(v,mL)=\frac1{2\pi}\int_{\R}\Mell w(1+\ii r)
+ (mL)^{\ii(r-v)}K(H,v,r)\dd r,
+\]
+where
+\[
+ K(H,v,r)=\int_{H/(40\pi)}^{20H/\pi}
+ z^{-1}e^{\ii((v-r)\log z-2\pi z)}\dd z.
+\]
+Lemma~\ref{lem:allfreq} gives $|K(H,v,r)|^2\le2000/H$ for \emph{every}
+$r$. Weighted Cauchy--Schwarz, with weight $|\Mell w(1+\ii r)|$, then
+bounds the retained band by a squared short phase sum. Its Mellin mass is
+finite by the compact-smooth Fourier decay. There is no discarded large-$r$
+region and no hidden restriction $|r|\ll H$.
+
+For a shell $H\le|t-u|<2H$, both signs are handled by conjugation of the real
+cutoff. The retained integer band is partitioned into at most ten dyadic blocks.
+The phase coefficients on each block have modulus one, and the complete-pair
+Gram expansion dominates coefficients of modulus at most one by the
+unweighted complete-pair energy. Localize $U$ to
+\[
+ U_{H,j}=U\cap[jH,(j+3)H),\qquad j\in\Z.
+\]
+Each point belongs to exactly three such sets; their diameters are at most
+$3H$, hence their local diameters at most $4H$ when $H\ge1$.
+Write $\mathscr R(L,H;U)$ for the exact finite energy
+\[
+ \mathscr R(L,H;U)=\sum_{M\in\mathcal B_{\rm dyad}(L,H)}
+                     \sum_{j\in\mathcal J(U,H)}E_M(U_{H,j}),
+\]
+where $\mathcal B_{\rm dyad}(L,H)=\{2^{\lfloor\log_2m\rfloor}:m\in\mathcal B(L,H)\}$
+and $\mathcal J(U,H)=\bigcup_{t\in U}\{\lfloor t/H\rfloor-2,\ldots,\lfloor t/H\rfloor\}$.
+The latter is exactly the finite set of nonempty local-window indices.
+The band block lengths range from $H/(40\pi L)$ to $4H/(\pi L)$;
+the ratio is at most $160$, which places all their exponents in an interval
+of at most ten integers. This proves the stated finite block bound.
+The exact reflection estimate is
+\begin{equation}\label{eq:reflection}
+ \sum_{t,u\in U\atop H\le|t-u|<2H}|h_w(L,t-u)|^2
+ \le\frac{20000}{\pi^2}\left(\int_{\R}|\Mell w(1+\ii r)|\dd r\right)^2
+ \frac{L^2}{H}\mathscr R(L,H;U)
+ +4C_A^2|U|^2L^{2-2A}.
+\end{equation}
+The diagonal has the separate bound $C_A^2|U|L^{2-2A}$.
+% Source correspondence: MellinKernel.lean; BandEnergy.lean; LocalCover.lean; Reflection.lean}{band_modeIntegral_mellin; norm_reflectionKernel_sq_le; norm_bandContribution_sq_le; sum_card_localSet; uniform_reflection}
+
+\subsection{A normalized supremum and uniform absorption}
+For fixed nonempty admissible data define the finite-valued supremum
+\begin{equation*}
+ B=\sup_{\varnothing\ne U\subset W\atop N\le L\le8(T+1)}
+ \frac{Q_L(U)}{b|U|(L^2+Nd_U)}.
+\end{equation*}
+This is not an assumed kernel bound. The family is nonempty. Since $V\le N$
+for nonempty $W$, $\Delta(T)\ge1$ and $L\ge N$, the denominator is at least
+$1$. A crude finite-support bound on $h_w(L,v)$, uniform for
+$0<L\le8(T+1)$, bounds each numerator by a fixed multiple of $|W|^2$.
+Therefore the supremum is finite and nonnegative, and every descendant kernel
+is bounded by its defining normalization times $B$.
+% Source correspondence: BootstrapDomain.lean; BootstrapSupremum.lean}{bootstrapFamily; crude_kernel_bound; bootstrapValues_bddAbove; bootstrapBound; kernelEnergy_le_bootstrapBound}
+
+\par\medskip\noindent Bootstrap inequality.
+\begin{lemma}\label{lem:boot}
+There are constants $C_0,C_1\ge0$ depending only on $w$ such that
+\[
+ B\le C_0+C_1Nb^2\log(2T)B.
+\]
+\end{lemma}
+\begin{proof}
+Apply the comparison lemma to every reflected dyadic block and every local set
+in \eqref{eq:reflection}. For a reflected positive integer dyadic length $M'$, the band gives
+$M'\le4H/(\pi L)$. Since $L\ge N$ and $H\le T$, we have
+$NM'\le4NH/(\pi L)\le4T/\pi\le8(T+1)$, while $NM'\ge N$
+because $M'\ge1$. Thus the comparison kernels remain within the
+supremum's scale range.
+For a reflected dyadic length $M$, the band geometry gives
+$(L^2/H)M^2\le16H$. The total local-cardinality sum is $3|U|$ and there are
+at most ten reflected blocks. Consequently each shell is bounded by
+\[
+ CbNH|U|+CBb^3|U|(N^2H+NL^2)+E T^{-100}.
+\]
+We obtain the error by taking a sufficiently high integration-by-parts
+order and using $L\ge N\ge T^{1/3}$, $|U|\le T+1$.
+Explicitly the off-band recursion uses $R_0=H+|k|$ and normalized
+$p=(v/R_0,2\pi k/R_0)$ in the compact set
+\[
+ |p_1|\le2,\quad |p_2|\le2\pi,\quad
+ |p_1-p_2x|\ge1/300\quad(1/3\le x\le6).
+\]
+Define $a_0=w$ and
+$a_{j+1}(x)=\mathrm d[ a_j(x)x/(p_1-p_2x)]/\mathrm dx$.
+All supports remain in $[1/2,5]$. Joint smoothness on this compact parameter
+set bounds $a_j$ uniformly. If $I_j$ is its integral against
+$e^{\ii R_0(p_1\log x-p_2x)}$, integration by parts gives
+$R_0\ii I_j=-I_{j+1}$, with zero boundary terms.
+Thus $|I_0|\le6C_j/R_0^j$. Summing its integer-mode majorants and choosing
+$j$ large enough yields the stated shell error before any supremum absorption.
+The one-separated pairs have no nonzero gap below $1$ and no gap exceeding
+$\diam U$. Summing dyadic gap shells gives
+$\sum H\le2d_U$ and at most $\log(2T)/\log2$ shells. With the diagonal added,
+\[
+ Q_L(U)\le2CbNd_U|U|
+ +CBb^3|U|\left(2N^2d_U+NL^2\frac{\log(2T)}{\log2}\right)
+ +E'T^{-90}.
+\]
+Divide by $b|U|(L^2+Nd_U)$, whose lower bound also absorbs the last error,
+and take the supremum. The first normalized term is bounded by a constant;
+the recursive term is at most a constant times $Nb^2\log(2T)B$.
+This proves the first assertion without any circular assumption.
+
+To extract its uniform consequence, use the height condition:
+\[
+ Nb^2=\frac{N^3\Delta(T)^2}{V^4}
+ \le\Delta(T)^2N^{-4\kappa}.
+\]
+Use $\Delta(T)\le D_\kappa T^{\kappa/6}$ and $N\ge T^{1/3}$ to obtain
+$Nb^2\le D_\kappa^2T^{-\kappa}$. Both this expression and its product
+with $\log(2T)$ tend to zero. A single threshold depending on $\kappa,w$
+therefore makes $Nb^2\le1$ and $C_1Nb^2\log(2T)\le1/2$ for every
+admissible configuration. Since $B\ge0$, the inequality implies
+$B\le C_0+B/2$, hence $B\le2C_0$.
+\end{proof}
+% Source correspondence: BootstrapShell.lean; BootstrapAbsorption.lean; UniformThreshold.lean}{bootstrap_one_shell; bootstrap_preabsorption; bootstrap_absorption_inequality; uniform_scalar_decay; uniform_absorbed_kernel}
+
+\par\noindent We now prove Theorem~\ref{thm:LV}.
+\begin{proof}
+The absorbed kernel satisfies
+$Q_L(W)\le Kb|W|(L^2+Nd_W)$ uniformly for $N\le L\le8(T+1)$.
+Combine this at $L=NM$ with Lemma~\ref{lem:comparison} and
+$E_M(W)\ge M|W|^2$. Divide by $M|W|$ for nonempty $W$ and use $Nb^2\le1$:
+\[
+ |W|\le(C_w+K)bNM+Kb^3\frac{Nd_W}{M}.
+\]
+Choose the positive integer $M=\lceil b\sqrt T\rceil$. Its rounding bounds
+$b\sqrt T\le M\le b\sqrt T+1$ and $N\le T$ show that
+$N\le NM\le8(T+1)$. The argument explicitly derives
+$Nb\sqrt T\le T$ from $Nb^2\le1$ and $N\le T$. Furthermore,
+\[
+ bNM\le Nb+Nb^2\sqrt T,
+ \qquad b^3\frac{Nd_W}{M}\le2Nb^2\sqrt T,
+\]
+since $d_W\le T+1\le2T$. This gives, above the uniform threshold,
+\[
+ |W|\le A\left(\Delta(T)\frac{N^2}{V^2}
+                   +\Delta(T)^2\frac{N^3\sqrt T}{V^4}\right).
+\]
+The divisor maximum estimate with loss $\varepsilon/2$ bounds both
+$\Delta(T)$ and $\Delta(T)^2$ by $D^2T^\varepsilon$, with $D\ge1$.
+For heights below the threshold, one-separatedness gives $|W|\le T+1$.
+If $W\ne\varnothing$, $V\le N$, so the bracket
+$N^2/V^2+N^3\sqrt T/V^4$ is at least one, and $T^\varepsilon\ge1$.
+Adding the bounded-height threshold and $1$ to the large-height constant
+therefore handles every $T\ge2$. The empty set has zero cardinality and
+satisfies the same inequality immediately.
+\end{proof}
+% Source correspondence: LargeValuesOptimization.lean; LargeValues.lean}{cardinality_at_length; optimal_integer_scale; large_values_with_divisors; large_values_data}
+
+
+\section{A smooth zero detector}
+\label{sec:detector}
+We now reconstruct the zero-density application, using the analytic estimates
+already proved. Fix $3/4<\sigma<1$, and write
+\begin{equation}\label{eq:parameters}
+ a=\frac1{2\sigma},\qquad c=\frac3{4\sigma}=\frac32a,\qquad
+ p=\frac{3(1-\sigma)}{2\sigma},\qquad X=T^\delta,\quad Y=T^c.
+\end{equation}
+Then $1/2<a<2/3$, $0<c<1$, $p>0$. Choose
+$0<\delta\le1/8$ with $\delta<(1-c)/12$ before $T$ and any zero.
+One may take, for example,
+$\delta=\min(1/16,(1-c)/24)$.
+The exact identities used later are
+\begin{equation}\label{eq:exponentidentities}
+ 2(1-\sigma)c=p,\qquad\tfrac12+(3-4\sigma)a=p,\qquad
+ 2+(3-6\sigma)c=p-(1-c).
+\end{equation}
+They follow by substituting \eqref{eq:parameters} and clearing the positive
+$\sigma$ denominator. They are balances of the two short terms and the long
+saving, not asymptotic approximations.
+% Source correspondence: Stronger/Parameters.lean}{lowerExponent; smoothingExponent; densityExponent; exists_detector_exponent; short_exponent_identities; long_exponent_identity}
+
+\par\medskip\noindent M\"obius mollifier and detector coefficients.
+\begin{definition}
+Let $\mu$ denote the M\"obius function: $\mu(1)=1$, $\mu(n)=0$ if $n$
+is divisible by a prime square, and $\mu(n)=(-1)^r$ if $n$ is a product
+of $r$ distinct primes. For a real $X$, define
+\[
+ M_X(s)=\sum_{1\le d\le\lfloor X\rfloor_+}\mu(d)d^{-s},\qquad
+ b_X(n)=\sum_{d\mid n\atop d\le\lfloor X\rfloor_+}\mu(d),\qquad b_X(0)=0.
+\]
+Here $\lfloor X\rfloor_+$ is the natural floor used by Lean; for $X\ge0$
+it is the ordinary natural floor. Put
+\[
+ \mathcal D(\rho;X,Y)=\sum_{n\ge1}b_X(n)n^{-\rho}e^{-n/Y},\qquad
+ \mathcal T(\rho;X,Y)=\sum_{n\ge2}b_X(n)n^{-\rho}e^{-n/Y}.
+\]
+\end{definition}
+If $X\ge1$, then $b_X(1)=1$, $b_X(n)=0$ for $2\le n\le X$,
+and $|b_X(n)|\le d(n)$. These follow from the exact M\"obius divisor
+cancellation and $|\mu(d)|\le1$. Also
+$|M_X(1/2+\ii t)|\le2\sqrt X$ for $X\ge0$, by the finite
+$n^{-1/2}$ sum comparison.
+% Source correspondence: MollifierCoefficients.lean; MollifierBound.lean; Stronger/InitialDetector.lean}{zetaMollifier; mollifierCoefficient_vanishes; mollifierCoefficient_norm_le; norm_zetaMollifier_le_two_sqrt; detectorTail}
+
+\par\medskip\noindent Exact exponentially smoothed contour identity.
+\begin{lemma}\label{lem:detectoridentity}
+Let $\rho=\beta+\ii\gamma$ be a zero with $3/4\le\beta<1$, and $Y\ge1$.
+The detector series is absolutely convergent and
+\begin{align}\label{eq:detectoridentity}
+ \mathcal D(\rho;X,Y)
+ &=M_X(1)Y^{1-\rho}\Gamma(1-\rho)\\
+ &\quad+\frac1{2\pi}\int_{\R}\Gamma(1/2-\beta+\ii u)
+ \zeta(1/2+\ii(\gamma+u))M_X(1/2+\ii(\gamma+u))
+ Y^{1/2-\beta+\ii u}\dd u.\nonumber
+\end{align}
+\end{lemma}
+\begin{proof}
+Mellin inversion of $e^{-n/Y}$ on the initial right line
+$\Rea w=1/2$ gives the integral of
+$\Gamma(w)\zeta(\rho+w)M_X(\rho+w)Y^w$.
+This line has $\Rea(\rho+w)>1$, where the Dirichlet product equals the
+series with coefficients $b_X(n)$. Absolute convergence and Gamma decay
+justify exchanging the series and integral. Shift to
+$\Rea w=1/2-\beta$. The apparent Gamma pole at zero is canceled by
+$\zeta(\rho)=0$; its cleared product is analytic there. The remaining pole
+is $w=1-\rho$, from zeta, with residue
+$M_X(1)Y^{1-\rho}\Gamma(1-\rho)$. No other Gamma pole lies between these
+lines. The finite rectangle identities prove this residue statement and the
+integrability of both lines and vanishing of the horizontal edges. Taking the
+limit gives \eqref{eq:detectoridentity}, since
+$\rho+1/2-\beta+\ii u=1/2+\ii(\gamma+u)$.
+Finiteness follows from the exponential factor: for fixed real $X$ and $Y>0$, the
+summands are dominated by $d(n)n^{-\beta}e^{-n/Y}$, whose sum is finite.
+The right-contour Dirichlet series is separately absolutely convergent
+because $\Rea(\rho+w)>1$.
+\end{proof}
+% Source correspondence: DetectorMellin.lean; DetectorContour.lean; DetectorEstimates.lean; DetectorIdentity.lean}{smoothedDetector_eq_rightContour; detector_finite_rectangle_kernel; summable_zeta_detector_series; zeta_detector_identity}
+
+\par\medskip\noindent Uniform large tail.
+\begin{lemma}\label{lem:largetail}
+For the choices \eqref{eq:parameters}, $0\le\delta\le1/8$, eventually in
+$T$, simultaneously at every zero with
+$\sigma\le\beta<1$ and $T\le|\gamma|\le2T$,
+\[
+ |\mathcal T(\rho;X,Y)|\ge1/2.
+\]
+\end{lemma}
+\begin{proof}
+Use Proposition~\ref{prop:weyl} with any fixed $0<\theta<1/48$ in the
+integral term of \eqref{eq:detectoridentity}. The mollifier bound is
+$2\sqrt X$. The shifted-height power is bounded by
+$3T^{1/6+\theta}(1+|u|)$, and the Gamma strip has a uniform integrable
+$(1+|u|)|\Gamma(1/2-\beta+\ii u)|$ majorant. Hence the integral term is
+at most a fixed multiple of
+\[
+ \sqrt X\,Y^{1/2-\beta}T^{1/6+\theta}
+       =T^{\delta/2+c(1/2-\beta)+1/6+\theta}
+       \le T^{-1/48+\theta}.
+\]
+For the last inequality, $c(\beta-1/2)\ge1/4$ follows from
+$\beta\ge\sigma>3/4$, while $\delta/2\le1/16$.
+The residue term is bounded by $72T^3e^{-T}$ using $X,Y\le T$ and Gamma
+exponential decay at $1-\rho$. Thus $\mathcal D\to0$ uniformly over these
+zeros. Since $\mathcal D=e^{-1/Y}+\mathcal T$ and $Y\to\infty$,
+choose the height threshold so that $e^{-1/Y}\ge3/4$ and
+$|\mathcal D|\le1/4$. The reverse triangle inequality gives
+$|\mathcal T|\ge1/2$.
+\end{proof}
+% Source correspondence: Stronger/InitialDetector.lean; Parameters.lean}{detector_eventually_small; detector_error_scale; detectorTail_decomposition; detectorTail_eventually_large}
+
+\subsection{Smooth dyadic decomposition}
+Let $S_0$ be a fixed smooth nondecreasing transition function: it is zero
+on $(-\infty,0]$, one on $[1,\infty)$, and takes values in $[0,1]$.
+Define
+\[
+ h(x)=1-S_0(4x-5),\qquad\psi(x)=h(x)-h(2x).
+\]
+The function $h$ is antitone, equal to one for $x\le5/4$ and zero for
+$x\ge3/2$. Thus $0\le\psi\le1$, $\psi$ is smooth, and its support lies
+in $[5/8,3/2]\subset(1/2,2)$. For $x>0$,
+\[
+ \sum_{j\in\Z}\psi(x/2^j)=1.
+\]
+This is the telescoping sum of $h(x/2^j)-h(x/2^{j-1})$; the two limit
+values are one and zero. For a fixed $x$, only finitely many terms are nonzero.
+Set
+\[
+ B_j(\rho)=\sum_{n\ge2}b_X(n)n^{-\rho}e^{-n/Y}\psi(n/2^j).
+\]
+Absolute summability of the double array follows from nonnegativity of $\psi$
+and its partition identity; therefore
+$\sum_jB_j(\rho)=\mathcal T(\rho;X,Y)$ and $\sum_j|B_j(\rho)|<\infty$.
+Small blocks vanish for $2^j\le X/2$ by M\"obius cancellation and support;
+blocks with $j\le0$ also vanish because the $n=1$ term was removed.
+% Source correspondence: Stronger/SmoothPartition.lean; SmoothExpansion.lean; SmoothDetector.lean}{dyadicStep; smoothDyadicWeight; tsum_smoothDyadicWeight; tsum_smoothDyadicBlock; smoothDetectorBlock_zero_of_small}
+
+Let $R=Y(\log T)^2$ and
+\[
+ \mathcal J_R=\{j\in\Z:0\le j\le\lceil\log R/\log2\rceil,\ 2^j\le R\}.
+\]
+For $T$ sufficiently large, $\#\mathcal J_R\le6\log T$.
+The discarded block norms, not merely the norm of their sum, satisfy
+\[
+ \sum_{2^j>R}|B_j(\rho)|\le2T^{-2}.
+\]
+We derive this from the tail beginning at
+$K=\lfloor R/2\rfloor_+$:
+\[
+ \sum_{n\ge K}|b_X(n)n^{-\rho}e^{-n/Y}|
+ \le\lfloor X\rfloor_+e^{-K/Y}(1-e^{-1/Y})^{-1}.
+\]
+Here $|b_X(n)|\le\lfloor X\rfloor_+$ is used, $K\ge R/4$ for $R\ge4$,
+$e^{-K/Y}\le T^{-4}$ once $\log T\ge16$, and
+$(1-e^{-1/Y})^{-1}\le2Y\le2T$. These give $2T^{-2}$.
+Since $|\mathcal T|\ge1/2$, at least $1/4$ of the norm sum remains in
+$\mathcal J_R$; a finite pigeonhole argument gives a $j\in \mathcal J_R$ with
+\begin{equation}\label{eq:blockdetect}
+ X/2<2^j\le Y(\log T)^2,\qquad |B_j(\rho)|\ge1/(24\log T).
+\end{equation}
+Both the list and its cardinality are fixed before the zero varies.
+% Source correspondence: Stronger/SmoothDetector.lean}{tsum_norm_detector_tail_le; smoothDetectorBlock_scale_tail_le_two_rpow; smoothScaleIndices; exists_smoothDetectorBlock; smoothDetector_eventually_large}
+
+
+\section{The short-block count}
+\label{sec:short}
+\subsection{Removing the real-part dependence}
+For a detected scale $2^j$, put
+\[
+ a_n^{(j)}=b_X(n)e^{-n/Y}\psi(n/2^j),\qquad
+ M_{j,e}=2^{\max(\max(j,0)-1,0)+e}\quad(e=0,1),
+\]
+where the exponent uses natural truncated subtraction as in Lean. A nonzero
+block necessarily has $j>0$, in which case $M_{j,0}=2^{j-1}$ and
+$M_{j,1}=2^j$.
+The smooth block splits exactly into the two natural supports
+$(M_{j,0},2M_{j,0}]$ and $(M_{j,1},2M_{j,1}]$.
+Both halves retain the \emph{original} smooth scale $2^j$ in $a_n^{(j)}$.
+At least one half has norm at least half of $|B_j|$.
+% Source correspondence: Stronger/SmoothShortBlock.lean; ShortFixedFamily.lean}{smoothShortCoefficient; smoothHalfScale; smoothDetectorBlock_eq_halves; exists_smoothShort_half}
+
+For a general positive natural scale $M$ and coefficients $a_n$ with
+$|a_n|\le d(n)$ on $(M,2M]$, define
+\[
+ P_r(t)=\sum_{M<n\le2M}a_n(2n/M-3)^r e^{-\ii t\log(n/M)},\qquad
+ q_r(\beta)=\left(\prod_{l=0}^{r-1}\frac{\beta+l}{1+l}\right)(-1/3)^r.
+\]
+When $0\le\beta\le1$,
+$|q_r(\beta)|\le3^{-r}$ and $\sum_r|q_r(\beta)|\le3/2$.
+The generalized binomial series gives the exact identity
+\begin{equation*}
+ \sum_{r\ge0}q_r(\beta)P_r(t)
+ = (3/2)^\beta\sum_{M<n\le2M}a_n(n/M)^{-\beta}
+                                      e^{-\ii t\log(n/M)}.
+\end{equation*}
+Indeed with $z=2n/M-3\in[-1,1]$, $(2n/(3M))^{-\beta}$ has the displayed
+binomial expansion in $z/3$. The finite $n$ sum and absolutely convergent
+$r$ sum may be interchanged. Rescaling $n^{-\rho}=M^{-\rho}(n/M)^{-\rho}$
+shows that the norm of the right-hand normalized block is
+$(3/2)^\beta M^\beta|\sum a_nn^{-\rho}|$.
+The coefficients of $P_r$ depend on $a,M,r$, not on $\rho$.
+% Source correspondence: DetectorTaylorFamily.lean; DetectorBinomial.lean; Stronger/GenericTaylorFamily.lean}{detectorTaylorRatio; detectorTaylorWeight; hasSum_detector_binomial; hasSum_genericTaylorPolynomial; genericBlock_eq_normalized}
+
+The triangle bound $|P_r(t)|\le2M^2$ and the geometric weights imply
+\[
+ \left|\sum_{r\ge J}q_r(\beta)P_r(t)\right|\le3M^2 3^{-J}.
+\]
+Take $J_T=\lceil10\log T\rceil$. If $M\le T^2$, the tail beginning at $J_T+1$
+is at most $3T^{-1}$ because $3^{-J_T}\le T^{-5}$.
+For a half-block of norm at least $1/(48\log T)$, this tail is eventually
+small enough that a finite Taylor component has norm at least
+\begin{equation*}
+ |P_r(\gamma)|\ge\frac{M^\beta}{192\log T}
+          \ge\frac{M^\sigma}{192\log T},\qquad0\le r\le J_T.
+\end{equation*}
+The finite extraction does \emph{not} cost $J_T$: the sum of absolute scalar
+weights is at most $3/2$, so some component has at least half the norm of the
+finite weighted sum. The scale/half/Taylor index set has cardinality at most
+$144(\log T)^2$.
+% Source correspondence: DetectorFamilyScales.lean; Stronger/GenericTaylorFamily.lean; ShortTaylorCover.lean}{detectorTaylorCutoff; norm_fixedGenericTaylor_tail_le; exists_genericTaylor_component; smoothTaylorIndices_card_le_log; smooth_short_Taylor_cover}
+
+\subsection{Power-raising and convolution supports}
+If \eqref{eq:blockdetect} has $2^j>Y^{1/2}$, it is assigned to the long
+alternative. Otherwise the selected half-scale satisfies
+\[
+ T^\delta/4\le M\le T^{c/2}=T^{3a/4}.
+\]
+For all sufficiently large $T$, there is an integer
+$1\le k\le K=\lceil2a/\delta\rceil$ with
+\begin{equation}\label{eq:powerlength}
+ T^a\le M^k\le T^{3a/2}=T^c.
+\end{equation}
+To prove this, absorb the factor $1/4$ into $T^{\delta/2}$, set
+$x=\log M/\log T$ and choose $k=\lceil a/x\rceil$.
+If $x\le a/2$, then $kx<a+x\le3a/2$.
+If $a/2<x\le3a/4$, then $k\le2$ and $kx\le3a/2$.
+The lower bound $kx\ge a$ and the bound
+$k\le\lceil2a/\delta\rceil$ follow from the ceiling inequalities.
+Thus the power bound is fixed before every short scale and every zero.
+% Source correspondence: Stronger/PowerScales.lean}{bounded_power_exponent; bounded_power_scale; short_scale_bounded_power; smoothPowerBound}
+
+For arithmetic functions supported on positive integers, Dirichlet
+convolution is
+\[
+ (A*B)(n)=\sum_{de=n}A(d)B(e).
+\]
+Write $A^{*k}$ for its $k$-fold iteration. Restrict the Taylor coefficients to
+$(M,2M]$ by setting
+$A_{j,e,r}(n)=a_n^{(j)}(2n/M_{j,e}-3)^r$
+on this interval and zero elsewhere. Take the Dirichlet convolution power
+$A_{j,e,r}^{*k}$, not a pointwise power of coefficients.
+The product Dirichlet series is the $k$th power of the finite block series,
+with support in $(M^k,(2M)^k]$. We prove this finite convolution
+identity and its support before using it. Divide that support into the
+$k$ dyadic intervals $(2^lM^k,2^{l+1}M^k]$, $0\le l<k$.
+At least one piece has norm at least $|P_r(\gamma)|^k/k$.
+Use the coefficientwise complex conjugate of the convolution power to change
+the negative phase convention to the positive detecting polynomial while
+preserving its norm at the \emph{same} ordinate $\gamma$.
+Define
+\[
+ L_{j,e,r,k,l}=2^lM_{j,e}^k,\qquad
+ a_{j,e,r,k,l}(n)=T^{-\eta}\overline{A_{j,e,r}^{*k}(n)}.
+\]
+The bounded-convolution divisor estimate makes these coefficients
+uniformly at most one whenever their entire support is below $T^2$, for fixed
+$K$ and arbitrary positive $\eta$. Equations \eqref{eq:powerlength} and
+$c<1$ ensure that support condition eventually, since
+$(2M)^k\le2^KT^c\le T$.
+They preserve the natural half-open coefficient supports. For an arithmetic
+function with $|A(n)|\le d(n)$, we first prove
+$|A^{*k}(n)|\le d(n)^{2k}$. Use the divisor subpower estimate with loss
+$\eta/(2(K+1))$ and $k\le K$ to obtain
+$|A^{*k}(n)|\le C^{2(K+1)}n^\eta$. To normalize on $n\le T^2$, use that
+estimate with loss $\eta/4$ and then absorb its fixed constant into
+$T^{\eta/2}$; the resulting bound is $T^\eta$ before any family member
+is selected.
+The height loss is at most
+$C_K(\log T)^K$, with
+$C_K=2^K(K+1)192^K$; it is eventually at most $T^\eta$.
+After normalization the selected piece therefore satisfies
+\begin{equation}\label{eq:poweredheight}
+ |D_{L_q,a_q}(\gamma)|\ge L_q^\sigma T^{-2\eta},\qquad
+ T^a\le L_q\le2^KT^c.
+\end{equation}
+% Source correspondence: Stronger/FiniteConvolution.lean; ShortFixedFamily.lean; ShortPoweredHeight.lean}{exists_finiteBlock_powered_piece; smoothPoweredCoefficient; normalizedSmoothPoweredCoefficient_eventually; exists_normalizedSmoothPowered_height}
+
+The \emph{fixed family} consists of all tuples
+$q=(j,e,r,k,l)$ with $j\in\mathcal J_{Y(\log T)^2}$, $e=0,1$, $0\le r\le J_T$,
+$1\le k\le K$, $0\le l<k$, and the two conditions in
+\eqref{eq:powerlength} for that half-scale. These restrictions depend on
+$\sigma,\delta,T$, not on any zero. Its cardinality is at most
+$144K^2(\log T)^2$.
+Only the chosen index depends on the zero; the family coefficients never do.
+Every slab zero has either the long block or a member of this family satisfying
+\eqref{eq:poweredheight} at its original ordinate.
+% Source correspondence: Stronger/ShortPoweredFamily.lean}{smoothPoweredIndices; smoothPoweredFamilyCoefficient; smoothPoweredIndices_card_eventually; smooth_long_or_short_powered_cover}
+
+\subsection{Local multiplicities and short zeros}
+\par\medskip\noindent Uniform local multiplicity.
+\begin{lemma}\label{lem:localzeros}
+There is $C_b>0$ such that for every $\sigma\ge3/4$, $T\ge2$ and integer $k$,
+\[
+ \sum_{\rho\in\mathcal Z(\sigma;T,2T)\atop k\le\Ima\rho<k+1}m(\rho)
+                  \le C_b\log(2T).
+\]
+\end{lemma}
+\begin{proof}
+For $T\ge8$ and a nonempty bin, its center is
+$z_k=2+\ii(k+1/2)$; the bin location implies $T-1\le k\le2T$.
+Each relevant zero has $\Rea\rho\ge7/10$ and lies inside radius $3/2$ about
+$z_k$, because its horizontal difference is at most $13/10$ and its vertical
+difference at most $1/2$.
+The disk of radius $7/4$ avoids $1$. The Abel zeta growth estimate on its
+sphere gives $|\zeta(s)|\le100T^3$.
+On the center line $\Rea s=2$, the absolutely convergent M\"obius inverse
+series has norm less than $5/3$, since $\zeta(2)=\pi^2/6<5/3$.
+Its product with zeta is one, so $|\zeta(z_k)|\ge3/5=0.6$.
+Jensen's formula for radii $3/2,7/4$, and the finite-sum analytic-order
+to-divisor bridge, give
+\[
+ \sum_{\text{bin}}m(\rho)
+ \le\frac{\log(100T^3/0.6)}{\log((7/4)/(3/2))}\ll\log(2T).
+\]
+The bridge is necessary: it identifies each finite natural vanishing order
+with the nonnegative analytic divisor, rather than counting distinct roots.
+For $2\le T\le T_0$, all bin sums are bounded by the finite count
+$N(3/4,2T_0)$. Since $\log(2T)\ge\log4>0$, this bounded contribution is
+absorbed by increasing the same $C_b$.
+\end{proof}
+% Source correspondence: ZetaJensenInputs.lean; LocalZeroCount.lean}{euler_product_lower_bound_2; finset_analyticOrderNatAt_le_finsum_divisor; zeta_unit_bin_sum_le_jensen; zeta_local_multiplicity_bound}
+
+For any finite subset $S$ of these zeros, select the parity class with at
+least half the occupied unit bins, then one zero in each selected bin.
+Distinct selected bins of the same parity differ by at least two; their
+ordinates are one-separated. The ordinate map on the selected representatives
+is injective. Lemma~\ref{lem:localzeros} implies
+\begin{equation}\label{eq:weightedextract}
+ \sum_{\rho\in S}m(\rho)\le2C_b\log(2T)\,|U|,
+\end{equation}
+where $U$ is their ordinate set. This is a weighted finite extraction, retaining
+all the lost multiplicities in the factor $C_b\log(2T)$.
+% Source correspondence: ZeroSeparation.lean}{ordinateBin; occupied_bins_parity; weighted_separated_extraction}
+
+Let $S_{\rm short}$ be exactly those zeros in $\mathcal Z(\sigma;T,2T)$
+detected by \emph{some} fixed-family member at level
+$V_q=L_q^\sigma T^{-2\eta}$; set
+$N_{\rm short}=\sum_{\rho\in S_{\rm short}}m(\rho)$.
+Choose $\eta>0$ with $8\eta<\sigma-3/4$ and
+$\kappa=(\sigma-3/4)/2>0$.
+Use the comparison ambient height
+\[
+ H_T=32T(\log T)^2,
+\]
+which eventually satisfies $T\le H_T\le T^2$ and $H_T^{1/3}\le\sqrt T$.
+The fixed scales obey $L_q\ge T^a\ge\sqrt T$, $L_q\le T\le H_T$ and
+\[
+ V_q=L_q^\sigma T^{-2\eta}\ge L_q^{\sigma-4\eta}
+                                     \ge L_q^{3/4+\kappa}.
+\]
+Thus each family member satisfies \emph{all} hypotheses of Theorem~\ref{thm:LV}
+with height $H_T$; the slab is contained in an interval of that length.
+Partition the separated ordinate representatives into the superlevel subsets
+for each family member and use the finite union-cardinality bound.
+Combining with \eqref{eq:weightedextract} gives
+\begin{equation*}
+ N_{\rm short}\le C\log(2T)H_T^\eta
+       \sum_q\left(\frac{L_q^2}{V_q^2}+\frac{L_q^3\sqrt{H_T}}{V_q^4}\right).
+\end{equation*}
+Overlapping detection sets only enlarge this upper bound.
+% Source correspondence: Stronger/ShortZeroCount.lean; ShortExponentAccounting.lean}{smoothShortZeroFinset; zetaSubset_large_values_cover_indexed; smoothPoweredFamily_largeValues_admissible}
+
+The two summands are, exactly,
+\[
+ L_q^{2-2\sigma}T^{4\eta},\qquad
+ L_q^{3-4\sigma}\sqrt{H_T}\,T^{8\eta}.
+\]
+The first length exponent is nonnegative; use the upper length
+$2^KT^c$. The second is negative; use the lower length $T^a$.
+Equations~\eqref{eq:exponentidentities}, and
+$\sqrt{H_T}\le32T^{1/2}\log T$, give a bound by
+$(2^K+32)\log T\,T^{p+8\eta}$ per member.
+The family contributes at most $144K^2\log^2T$; the bin factor at most
+$2\log T$; $H_T^\eta\le T^{2\eta}$; and the remaining four logarithms
+are eventually at most $T^{2\eta}$. Therefore
+\begin{equation}\label{eq:shortcount}
+ N_{\rm short}\le C_{\sigma,\delta,\eta}T^{p+12\eta}.
+\end{equation}
+This accounts for $8\eta$ in the quotient terms, $2\eta$ in the ambient
+height and $2\eta$ in the logarithms. The fixed $2^K$ enlargement is not
+omitted, and no long-zero estimate was used.
+% Source correspondence: Stronger/ShortExponentAccounting.lean; ShortZeroCount.lean}{smooth_largeValue_term_le; smooth_family_sum_eventually; smoothShortZeroCount_bound}
+
+
+\section{The long-block count and the density theorem}
+\label{sec:long}
+Define the complementary zero set
+$S_{\rm long}=\mathcal Z(\sigma;T,2T)\setminus S_{\rm short}$ and its
+multiplicity count $N_{\rm long}$. This is an actual complement, not an
+independently selected family of difficult zeros. Hence
+\begin{equation}\label{eq:partition}
+ N_{\rm slab}(\sigma;T,2T)=N_{\rm short}+N_{\rm long}.
+\end{equation}
+The fixed-family cover implies that every member of $S_{\rm long}$ has a
+large smooth block with $2^j>Y^{1/2}$.
+
+\subsection{Uniform Mellin inversion for long blocks}
+For $q\ge0$ put $\psi_q(x)=\psi(x)e^{-qx}$ and
+$\widehat\psi_q(s)=\int_0^\infty\psi_q(x)x^{s-1}\dd x$.
+The compact support lies in $[5/8,3/2]$, so this Mellin transform is entire.
+Its rapid vertical decay is uniform in \emph{all} $q\ge0$ on any fixed
+real strip. For each derivative order, the inequality
+$q^ne^{-qx}\le n!/(5/8)^n$ on the support gives uniform derivative bounds;
+Leibniz differentiation and Fourier decay of the logarithmic lift give
+$|\widehat\psi_q(u+\ii v)|\le C_A(1+|v|)^{-A}$ and uniformly weighted
+$L^1$ bounds. Thus the damping parameter $q=2^j/Y$ need not be bounded.
+% Source correspondence: Stronger/DampedCutoff.lean; UniformMellin.lean; MellinEntire.lean}{dampedCutoff_uniform_derivatives; dampedCutoff_uniform_mellin_decay; dampedCutoff_uniform_mellin_weighted_L1; dampedCutoff_mellin_entire}
+
+For $N>0$ the smooth mollifier block is
+\[
+ B(\rho;X,N,q)=\sum_{n\ge1}b_X(n)n^{-\rho}\psi(n/N)e^{-qn/N}.
+\]
+It equals the normalized integral of
+$N^s\widehat\psi_q(s)\zeta(\rho+s)M_X(\rho+s)$ on $\Rea s=1/2$.
+Shift to $\Rea s=1/2-\beta$. The only pole is $s=1-\rho$ and its residue is
+\[
+ R_B=N^{1-\rho}\widehat\psi_q(1-\rho)M_X(1).
+\]
+There is no Gamma pole at zero in this smooth Mellin kernel; in particular the
+block-contour identity does not require the zero hypothesis. The smooth
+Mellin bounds and Abel zeta growth prove both-line integrability and vanishing
+horizontal edges. For $T\le|\gamma|$, $0\le X\le T$,
+$1\le N\le T^2$, the residue is at most $T^{-100}$ eventually,
+uniformly in $\beta\in[3/4,1)$ and $q\ge0$; a sufficiently high fixed
+Mellin-decay power absorbs all powers of $X,N,T$.
+For $N=2^j\ge2$ the removed $n=1$ term has zero smooth weight, so this is
+exactly $B_j(\rho)$ with $q=N/Y$.
+% Source correspondence: Stronger/SmoothMellinIdentity.lean; SmoothContourIdentity.lean; SmallResidue.lean; SmoothDetector.lean}{smoothMollifierBlock_eq_rightContour; smoothMollifierBlock_contour_identity; smoothDetectorResidue_eventually_small; smoothDetectorBlock_eq_smoothMollifierBlock}
+
+Define, for integer $A\ge3$,
+\[
+ w_A(u)=(1+|u|)^{-A},\qquad
+ \mathcal M_A(\gamma)=\int_{\R}w_A(u)\zabs(\gamma+u)\dd u.
+\]
+The uniform left-line Mellin bound and $|M_X(s(\gamma+u))|\le2\sqrt X$
+give
+\[
+ |B(\rho;X,N,q)|\le|R_B|+C\sqrt XN^{1/2-\beta}\mathcal M_A(\gamma).
+\]
+The residue is at most $1/(48\log T)$ eventually. Hence a block of norm at
+least $1/(24\log T)$ satisfies
+$1/(48\log T)\le C\sqrt XN^{1/2-\beta}\mathcal M_A(\gamma)$.
+For $N>Y^{1/2}$ and $\beta\ge\sigma$, the negative exponent gives
+$N^{1/2-\beta}\le Y^{-(\sigma-1/2)/2}$, so every long zero satisfies
+\begin{equation}\label{eq:longmean}
+ Y^{(\sigma-1/2)/2}\le48C\sqrt X\log T\,\mathcal M_{128}(\gamma).
+\end{equation}
+We have selected the fixed decay order $A=128$ at this point.
+% Source correspondence: Stronger/WeightedCriticalMean.lean; LongBlockDetection.lean; LongMeanCounting.lean}{weightedCriticalMean; uniform_smoothMollifierBlock_mean_bound; smoothMollifierBlock_eventually_detects_mean; smooth_long_mean_or_short_powered_cover}
+
+\subsection{Weighted sampling and the tail outside the height interval}
+For $A\ge2$, $0<\int w_A\le\pi$ and a nonnegative integrable weighted
+function $f$ satisfies
+\[
+ \left(\int w_A f\right)^{12}\le\left(\int w_A\right)^{11}
+                                      \int w_A f^{12}.
+\]
+We prove this by the tangent inequality
+$12a^{11}x\le x^{12}+11a^{12}$ for $a,x\ge0$: take
+$a=(\int w_Af)/(\int w_A)$, multiply by $w_A$, integrate and rearrange.
+All three required weighted integrals are proved integrable first. For
+$A=128$, coarse growth supplies the twelfth weighted integral.
+For a one-separated finite $U$ the kernel row sum
+$\sum_{u\in U}w_{128}(t-u)\le S$ is uniform, by comparison with
+$(1+|t-u|)^{-2}$ and the earlier separation bound.
+
+On the complement of $[0,3T]$, for $u\in[T,2T]$,
+$|t-u|\ge T$ and $|t|\le3|t-u|$. Thus
+\begin{equation*}
+ w_{128}(t-u)\zabs(t)^{12}
+       \le12^{12}T^{-114}w_2(t-u).
+\end{equation*}
+To verify it, coarse growth gives
+$\zabs(t)\le12(1+|t-u|)$; cancel twelve of the 128 denominator powers,
+reserve two powers for integrability, and use the remaining 114 powers to
+produce $T^{-114}$. Integrating gives at most
+$12^{12}\pi T^{-114}$ per sample. One-separated $U\subset[T,2T]$ has
+$|U|\le T+1\le2T$, so the total sample tail costs at most
+$2\cdot12^{12}\pi T^{-113}$.
+Consequently
+\begin{equation}\label{eq:sampling}
+ \sum_{u\in U}\mathcal M_{128}(u)^{12}
+ \le\pi^{11}S\int_{[0,3T]}\zabs(t)^{12}\dd t
+            +2\cdot12^{12}\pi^{12}T^{-113}.
+\end{equation}
+The whole-line means have not been replaced by a compact integral without
+accounting for the tails.
+% Source correspondence: Stronger/MomentPower.lean; SeparatedMoment.lean; PhysicalTwelfthTail.lean; SeparatedCriticalSampling.lean}{integral_weighted_twelfth; momentDecay_mass_bounds; weightedCriticalTwelfth_tail_pointwise; separated_weightedCriticalMean_twelfth_le}
+
+Select weighted separated representatives of $S_{\rm long}$ using
+\eqref{eq:weightedextract}, preserving the property \eqref{eq:longmean}.
+Raise \eqref{eq:longmean} to the twelfth power and sum over their ordinate set:
+\[
+ |U|Y^{6\sigma-3}\le(48C)^{12}X^6(\log T)^{12}
+                              \sum_{u\in U}\mathcal M_{128}(u)^{12}.
+\]
+Here $(\sqrt X)^{12}=X^6$ and
+$(Y^{(\sigma-1/2)/2})^{12}=Y^{6\sigma-3}$ exactly.
+Use \eqref{eq:sampling} and the local multiplicity factor
+$\log(2T)\le2\log T$. The result is the unconditional reduction
+\begin{equation}\label{eq:longraw}
+ N_{\rm long}Y^{6\sigma-3}
+ \le C X^6(\log T)^{13}
+          \left(\int_{[0,3T]}\zabs(t)^{12}\dd t+T^{-113}\right).
+\end{equation}
+Its right side contains the actual moment, not an assumed upper bound on it.
+% Source correspondence: Stronger/LongMeanCounting.lean; LongMultiplicityReduction.lean}{long_mean_twelfth_count; long_mean_count_le_physical_moment; smoothLongZeroCount_physical_moment_reduction}
+
+\subsection{The exponent saving and the final parameter choice}
+Use Theorem~\ref{thm:moment} with a positive loss
+$\nu\le(1-c)/8$. If its constant is $D>0$, then for $T\ge1$ eventually,
+\[
+ \int_{[0,3T]}\zabs^{12}+T^{-113}\le(D+1)T^{2+\nu}.
+\]
+Dividing \eqref{eq:longraw} by the positive $Y^{6\sigma-3}$ gives the scalar
+factor
+\begin{equation*}
+ \frac{X^6(\log T)^{13}T^{2+\nu}}{Y^{6\sigma-3}}
+   =(\log T)^{13}T^{p-(1-c)+6\delta+\nu}.
+\end{equation*}
+Since $6\delta<(1-c)/2$, the pre-logarithmic exponent is less than
+$p-3(1-c)/8$. Absorb $(\log T)^{13}$ using the further allowance
+$(1-c)/8$ to obtain
+\begin{equation}\label{eq:longcount}
+ N_{\rm long}\le C' T^{p-(1-c)/4}
+\end{equation}
+eventually. This fixed saving is possible precisely because $c<1$.
+% Source correspondence: Stronger/LongScalarBudget.lean; ConditionalDensity.lean}{long_count_scale_identity; long_count_scalar_log_eventually; smoothLongZeroCount_bound_of_twelfth_moment}
+
+\par\noindent We now prove Theorem~\ref{thm:main}.
+\begin{proof}
+First suppose $3/4<\sigma<1$. Given $\varepsilon>0$, choose, in the same
+order as the argument,
+\[
+ \delta=\min(1/16,(1-c)/24),\qquad
+ \eta=\min(\varepsilon/24,(\sigma-3/4)/16),\qquad
+ \nu=(1-c)/16.
+\]
+They satisfy $\delta>0$, $\delta\le1/8$, $\delta<(1-c)/12$,
+$\eta>0$, $8\eta<\sigma-3/4$, $12\eta\le\varepsilon$,
+and $0<\nu\le(1-c)/8$. Choose the actual moment constant and threshold
+with this $\nu$. Thus every parameter, power bound and coefficient family
+is fixed before heights and zeros vary.
+
+Combine the exact partition \eqref{eq:partition} with
+\eqref{eq:shortcount} and~\eqref{eq:longcount}. Since $T\ge1$ and $1-c>0$,
+the long power is at most $T^{p+12\eta}$. Therefore
+\[
+ N_{\rm slab}(\sigma;T,2T)\le C_s T^{r},\qquad r=p+12\eta>0,
+\]
+eventually in $T$.
+
+We detail the conversion from eventual slabs to a bound at every
+height, because dropping the compact part would weaken the stated endpoint.
+Let $R\ge1$ exceed the slab threshold and
+$Q=N_{\rm slab}(\sigma;0,2R)$. If $1\le T<R$, monotonicity gives
+$N_{\rm slab}(\sigma;T,2T)\le Q\le QT^r$; if $T\ge R$, use the eventual
+bound. Hence the same estimate, with constant $C_s+Q$, holds for every
+$T\ge1$.
+Put $b=2^r>1$, $Q_0=N_{\rm slab}(\sigma;0,1)$ and
+$A=Q_0+(C_s+Q)/(b-1)>0$. Then $A+(C_s+Q)\le Ab$.
+Inductively split the inclusive interval $[0,2^{k+1}]$ at $2^k$ to obtain
+\[
+ N_{\rm slab}(\sigma;0,2^k)\le A(2^k)^r.
+\]
+The shared boundary may be counted twice by this inequality, which is harmless
+for an upper bound and preserves every zero. For arbitrary $T\ge1$, choose
+$2^k\le T<2^{k+1}\le2T$. Monotonicity yields
+$N_{\rm slab}(\sigma;0,T)\le AbT^r$.
+Conjugation and its multiplicity identity give
+$N(\sigma,T)\le2AbT^r$.
+Since $r=p+12\eta\le p+\varepsilon$ and $T\ge2$, enlarge the power to
+$T^{p+\varepsilon}$. The resulting constant is positive and chosen before
+all $T$.
+
+For $\sigma\ge1$ the zero set is empty by Section~\ref{sec:zeros}.
+Take $C=1$; the right side is positive for $T\ge2$, even if its exponent
+is negative. Finally use the exact membership lemma to identify
+$\mathcal Z(\sigma;-T,T)$ with the finite set of \emph{all} zeros in the
+registered statement. Lemma~\ref{lem:zeroorder} supplies positive finite
+multiplicity and the equality of natural and extended order at every member.
+The natural-to-real sum casts merely change the numerical encoding
+of the same sum. This proves the complete endpoint, including its witnesses
+and all boundary conventions.
+\end{proof}
+% Source correspondence: Stronger/FinalParameters.lean; ConditionalDensity.lean; NativeDensity.lean; DensityDyadicSummation.lean; Solution.lean}{exists_stronger_loss_parameters; stronger_slab_bound_of_twelfth_moment; zetaDensity_bound_of_eventual_slabs; stronger_density_bound_native; DensityStronger.density_bound}
+
+\appendix
+\section{A contour proof of the fourth-moment bound}
+\label{sec:fourth}
+The fourth moment is classical; the mean-value theorem of
+Ingham~\cite{ingham28} already gives the bound required here. We retain this
+contour proof because it explains the squared-zeta representation used again
+in Appendix~\ref{sec:atkinson}. It constructs a one-sided contour integral,
+truncates an ordinary-divisor polynomial, and applies a mean-square inequality.
+The latter is the standard Dirichlet-polynomial mean-value argument
+(cf.~\cite{ik}), with its constants retained.
+
+\subsection{A one-sided contour representation}
+Let $\Lambda_0(s)=\Lambda(s)+s^{-1}+(1-s)^{-1}$ away from $0,1$,
+and take its entire extension at those two points. Thus
+\[
+ \Lambda(s)=\Lambda_0(s)-s^{-1}-(1-s)^{-1}.
+\]
+Define the entire function
+\[
+ \Xi_0(s)=s(1-s)\Lambda_0(s)-1.
+\]
+For $s\ne0,1$, it equals $s(1-s)\Lambda(s)$ and satisfies
+$\Xi_0(1-s)=\Xi_0(s)$. In particular it is the pole-cleared numerator, not a
+new independently specified zeta function. Put
+\begin{gather*}
+ H_*(w)=(1-4w^2)^4,\qquad A_t=(s(t)(1-s(t)))^2=(1/4+t^2)^2,\\
+ F_t(w)=\frac{e^{100w^2}H_*(w)\Xi_0(s(t)+w)^2}{A_t},\qquad
+ \mathscr I_t(w)=F_t(w)/w.
+\end{gather*}
+The denominator $A_t$ never vanishes. The numerator $F_t$ is entire,
+$F_t(0)=\Lambda(s(t))^2$, and $F_t(-w)=F_{-t}(w)$.
+% Source correspondence: Stronger/Fourth/SquareSource.lean}{completedXiNumerator; hughesYoungAuxiliaryZero; zetaSquarePoleNormalization; zetaSquareContourNumerator; zetaSquareContourIntegrand}
+
+With $t\in\R$ and $c>0$, set
+\[
+ J_c(t)=\frac1{2\pi}\int_{\R}\mathscr I_t(c+\ii u)\dd u,\quad
+ B_t=\Gamma_{\R}(s(t))\Gamma_{\R}(s(-t)),\quad R(t)=J_1(-t)/B_t.
+\]
+The following identity reduces the fourth moment to this one-sided integral.
+\par\medskip\noindent A one-sided squared-zeta representation.
+\begin{lemma}\label{lem:squaresource}
+For every $t\in\R$ and $c>0$, the integrals defining $J_c(t)$ converge
+absolutely, $B_t\ne0$, and
+\[
+ \Lambda(s(t))^2=J_c(t)+J_c(-t),\qquad Z(t)^2=2\Rea R(t).
+\]
+\end{lemma}
+\begin{proof}
+Integrate $\mathscr I_t$ around the rectangle with vertical edges $-c,c$ and
+horizontal heights $\pm U$. The only pole is the simple pole at $0$ and its
+residue is $F_t(0)$. Reflection $w\mapsto-w$ converts the left vertical
+edge to the right vertical edge for $-t$. We prove a polynomial
+bound for $\Xi_0$ on each fixed vertical strip and a Gaussian-polynomial
+majorant for $F_t(x+\ii u)$, uniform for $|x|\le c$. It follows that the
+horizontal edges tend to zero and both vertical integrals are absolutely
+integrable. Taking the limit of the finite rectangle identity gives the first
+formula, with its normalization $1/(2\pi)$ (equivalently $1/(2\pi\ii)$
+against $\mathrm dw$).
+
+On the critical line the functional equation gives
+$\Lambda(s(t))=\Lambda(s(-t))$, whereas conjugation gives
+$\Lambda(s(-t))=\overline{\Lambda(s(t))}$. Thus the completed critical-line
+value is real. The Gamma factors are nonzero, and
+\[
+ \Lambda(s(t))^2=\zabs(t)^2B_t.
+\]
+Conjugation of the right-hand integrands gives $J_1(t)=\overline{J_1(-t)}$
+and $B_t\in\R$. $\Lambda(s(t))^2=J_c(t)+J_c(-t)$, divided by $B_t$, supplies
+$\zabs(t)^2=2\Rea R(t)$. Squaring and using $|\Rea z|\le|z|$ also gives
+$Z(t)^4\le4|R(t)|^2$, which is the inequality needed for the fourth moment.
+\end{proof}
+% Source correspondence: Stronger/Fourth/SquareSource.lean; SquareContour.lean; SquareNormalized.lean}{zetaSquare_finiteRectangle; completedZeta_square_eq_vertical_integrals; zetaSquareNorm_eq_two_re_fourthRightPiece; zeta_fourth_le_four_mul_rightPiece_sq}
+
+The arithmetic identity used to open the right contour is
+\[
+ \zeta(s)^2=\sum_{n\ge1}d(n)n^{-s},\qquad \Rea s>1.
+\]
+It is proved locally from the Dirichlet convolution of the constant-one
+arithmetic function with itself, which counts divisors, and multiplication of
+absolutely convergent Dirichlet series. It is not inferred at $\Rea s=1/2$.
+For a shift $w$, put
+\begin{align*}
+ P_t(w)&=\left(\frac{(s(-t)+w)(1-s(-t)-w)}{s(-t)(1-s(-t))}\right)^2,\\
+ \mathcal K_t(w)&=\frac{e^{100w^2}H_*(w)}w P_t(w)
+             \frac{\Gamma_{\R}(s(-t)+w)^2}{B_t}.
+\end{align*}
+On $\Rea w=1$ the squared-zeta series is absolutely convergent and the exact
+normalized integral is
+\[
+ R(t)=\frac1{2\pi}\int_{\R}\mathcal K_t(1+\ii u)
+              \sum_{n\ge1}d(n)n^{-s(-t)-1-\ii u}\dd u.
+\]
+We prove summability of the integrals of term norms before interchanging
+the sum and this integral.
+% Source correspondence: Stronger/Fourth/SquareSource.lean; SquareNormalized.lean; SquareDivisorSeries.lean}{riemannZeta_sq_eq_divisorLSeries; zetaFourthKernel; zetaFourthRightPiece_eq_divisor_integral; hasSum_zetaSquareDivisorContribution}
+
+\subsection{Gamma shifts, finite prefixes and the tail}
+The kernel estimates are derived, not supplied as an asymptotic shortcut. The
+local digamma development starts from Euler's Gamma limit and the convergent
+series
+\[
+ \psi_\Gamma(z)+\gamma_E=\sum_{m\ge0}\left(\frac1{m+1}-\frac1{z+m}\right),
+ \qquad \Rea z>0,
+\]
+where $\psi_\Gamma=\Gamma'/\Gamma$ and $\gamma_E$ is Euler's constant. Comparing
+the reciprocal sum with the telescoping logarithmic integral gives
+\[
+ |\psi_\Gamma(z)-\log z|\le4/|\Ima z|\qquad(|\Ima z|\ge1,\ \Rea z>0).
+\]
+The normalized shift
+\[
+ \left(\frac{\Gamma_{\R}(s(-t)+vw)}{\Gamma_{\R}(s(-t))}\right)^2
+ e^{-vw\ell_t},\qquad
+ \ell_t=\log(t/(2\pi))-\ii\pi/2,
+\]
+has initial value one and logarithmic derivative bounded by
+$(17|w|+2|w|^2)/t$ when $t\ge4$, $\Rea w\ge0$, $|w|\le t/2$,
+$0\le v\le1$. Integrating the derivative bound gives both its exponential
+bound and its difference-from-one bound. The pole factor $P_t(w)$ is bounded
+and has difference from one at most $12|w|/t$ on this range. For the far
+$|u|$ range, reciprocal Gamma reflection and elementary exponential estimates
+are multiplied by $e^{-100u^2}$. These give, for every fixed $c>0$, a constant
+$K_c>0$ such that
+\begin{equation}\label{eq:fourthkernel}
+ |\mathcal K_t(c+\ii u)|\le K_c t^c e^{-98u^2}
+ \qquad(t\ge4,\ t\ge4c,\ u\in\R).
+\end{equation}
+The estimates explicitly separate near and far shifts and prove their
+integrability.
+% Source correspondence: Stronger/Fourth/DigammaSeries.lean; DigammaLog.lean; GammaShiftAmplitude.lean; SquareKernel.lean}{hasSum_digamma_of_re_pos; norm_digamma_sub_log_le; norm_gammaReal_shift_sq_le_exp; exists_norm_zetaFourthKernel_le}
+
+For $c>0$ and finite $S\subset\N$, or $S=\{n\in\N:n>N\}$ on a line $c>3/2$, define
+\[
+ R_S(t;c)=\frac1{2\pi}\int_{\R}\mathcal K_t(c+\ii u)
+       \sum_{n\in S}d(n)n^{-1/2-c+\ii(t-u)}\dd u.
+\]
+The $n=0$ term is defined to be zero. Each summand has no pole between two
+positive shift lines; the Gamma arguments remain in the positive half-plane,
+the explicit $1/w$ pole stays to the left, and the Gaussian kills horizontal
+edges. Thus its integral is independent of the chosen positive line. Shift the
+finite prefix to a small line $c$, and shift its complement to a large line
+$b>3/2$. The exact identity is
+\[
+ R(t)=R_{\{0,\ldots,N\}}(t;c)+R_{\{n>N\}}(t;b).
+\]
+This is an exact decomposition, not an approximate functional
+equation assumed for the prefix. The complement is absolutely convergent on
+$\Rea w=b$. Since $d(n)\le n$, comparison with an integral gives
+\[
+ \sum_{n>N}d(n)n^{-1/2-b}
+ \le\frac{N^{3/2-b}}{b-3/2}.
+\]
+From \eqref{eq:fourthkernel},
+\[
+ |R_{\{n>N\}}(t;b)|\le K_b' t^bN^{3/2-b}.
+\]
+If $N\ge H^{1+q}$, $H\le t\le2H$ and $q>0$, choose
+$b=2+2/q$. The identity
+\[
+ b+(1+q)(3/2-b)=-(1+q)/2
+\]
+then bounds the entire tail by a constant, uniformly in $H,t,N$ and in the
+positive prefix shift $c$.
+% Source correspondence: Stronger/Fourth/SquareTerm.lean; SquareLineShift.lean; SquareTruncation.lean; SquareTail.lean}{zetaFourthRightPiece_eq_prefix_add_tail; tsum_nat_rpow_tail_le; exists_norm_fourthRightPiece_sub_cutoff_le}
+
+\subsection{Mean squares of Dirichlet polynomials}
+\par\medskip\noindent Dyadic Dirichlet mean square.
+\begin{lemma}\label{lem:meanvalue}
+For arbitrary complex coefficients $a_n$, positive integer $N$ and $H\ge0$,
+\[
+ \int_0^H\left|\sum_{N<n\le2N}a_n n^{-\ii t}\right|^2\dd t
+ \le\bigl(H+2(5\pi+1)N\bigr)\sum_{N<n\le2N}|a_n|^2.
+\]
+The same bound is invariant under translation or reflection of the integration
+variable, with the interval length replacing $H$.
+\end{lemma}
+\begin{proof}
+Write
+\[
+ Q_N(a)=\sum_{N<m,n\le2N\atop m\ne n}
+ \frac{\overline{a_n}a_m}{\log m-\log n},\qquad
+ a_n^{(H)}=a_n n^{-\ii H}.
+\]
+Integration of each exponential term gives the exact identity
+\[
+ \int_0^H\left|\sum a_n n^{-\ii t}\right|^2\dd t
+ =H\sum|a_n|^2+\ii\bigl(Q_N(a^{(H)})-Q_N(a)\bigr),
+\]
+where the real left side is viewed inside $\C$.
+For $x,y>0$, $x\ne y$, elementary bounds for $\log(y/x)$ give
+\[
+ \left|\frac1{\log y-\log x}-\frac{x}{y-x}\right|\le1.
+\]
+Consequently $Q_N$ is the sum of a main discrete Hilbert form and an error
+whose norm is at most $(\sum|a_n|)^2\le N\sum|a_n|^2$.
+
+For completeness, the discrete Hilbert form here is obtained directly from
+Fourier orthogonality. For finite integer frequencies $S$ and coefficient
+families $a,b$, define
+\[
+ \mathcal H_S(a,b)=\sum_{m,n\in S\atop m\ne n}
+          \frac{\overline{a_n}b_m}{m-n},\quad
+ A(x)=\sum_{n\in S}a_ne^{\ii nx},\quad B(x)=\sum_{n\in S}b_ne^{\ii nx}.
+\]
+Termwise integration by parts yields
+\[
+ \int_0^{2\pi}(\pi-x)\overline{A(x)}B(x)\dd x
+     =2\pi\ii\mathcal H_S(a,b).
+\]
+Use $|\pi-x|\le\pi$, the elementary product bound
+$|A||B|\le|A|^2+|B|^2$, and Fourier orthogonality
+$\int_0^{2\pi}|A|^2=2\pi\sum|a_n|^2$ to obtain
+\[
+ |\mathcal H_S(a,b)|\le\pi\left(\sum|a_n|^2+\sum|b_n|^2\right).
+\]
+Take the scaled first family $\widetilde a_n=(n/N)a_n$, whose square mass is at most
+$4\sum|a_n|^2$. The main logarithmic form is $N\mathcal H_S(\widetilde a,a)$,
+so it has norm at most $5\pi N\sum|a_n|^2$. Adding the reciprocal-log error
+gives $|Q_N(a)|\le(5\pi+1)N\sum|a_n|^2$. The endpoint twist preserves
+square mass, so the two endpoint forms give the claimed factor $2$.
+A translation only twists coefficients by unit phases; reflection conjugates
+or reverses those phases. Thus the same estimate holds on translated intervals.
+\end{proof}
+% Source correspondence: Stronger/Fourth/MeanValueCore.lean; PrefixMean.lean}{hilbertForm_norm_le; abs_inv_log_sub_sub_div_le_one; logHilbertQuad_norm_le; integral_norm_sq_dirichletTime_le; integral_norm_sq_dirichletPrefix_reflected_le}
+
+\par\medskip\noindent Fourth moment.
+\begin{proposition}\label{prop:fourth}
+For every $\eta>0$ there are $C\ge0$ and $H_0$ such that for $H\ge H_0$,
+$H>0$,
+\[
+ \int_H^{2H}\zabs(t)^4\dd t\le C H^{1+\eta}.
+\]
+\end{proposition}
+\begin{proof}
+Choose $q=\min(\eta,1)/20$. Thus $0<q\le1/20$
+and $7q\le\eta$.
+Choose a dyadic length $N=2^M$ with
+$H^{1+q}\le2^M\le2H^{1+q}$. The preceding tail bound gives
+$|R(t)-R_{\{0,\ldots,N\}}(t;q)|\le K_t$ uniformly on $[H,2H]$.
+Define
+\[
+ a_n=d(n)n^{-1/2-q},\qquad
+ F(t)=\int_{\R}e^{-98u^2}\left|\sum_{1\le n\le N}a_n n^{-\ii(u-t)}\right|^2\dd u.
+\]
+The finite prefix representation and \eqref{eq:fourthkernel}, followed by weighted
+Cauchy--Schwarz with Gaussian mass $\sqrt{\pi/98}$, imply
+$|R_{\{0,\ldots,N\}}(t;q)|^2\le K_g t^{2q}F(t)$.
+Lemma~\ref{lem:squaresource} and $|x+y|^2\le2|x|^2+2|y|^2$ give
+\[
+ \zabs(t)^4\le8K_g(2H)^{2q}F(t)+8K_t^2.
+\]
+All Gaussian-product functions are integrable: a finite polynomial is bounded
+by its coefficient norm sum, and the Gaussian is integrable. Fubini may
+therefore be applied.
+
+The divisor subpower estimate gives, for every $q>0$, the uniform bound
+\[
+ \sum_{L<n\le2L}|d(n)n^{-1/2-c}|^2\le D(2L)^q\qquad(c\ge0).
+\]
+Partition the prefix into its $n=1$ term and dyadic blocks. Finite
+Cauchy--Schwarz costs $(M+1)^2$ after the common block bound is used.
+Lemma~\ref{lem:meanvalue} then gives
+\[
+ \int_H^{2H}F(t)\dd t
+ \le D_p(M+1)^2\bigl(H+2(5\pi+1)2^M\bigr)(2^M)^q.
+\]
+We absorb $(M+1)^2$ into a fixed multiple of $(2^M)^q$.
+With $2^M\le2H^{1+q}$ the full scaled expression is bounded by
+$D_b H^{1+7q}$: before the final simplification its power is
+$1+5q+2q^2\le1+7q$ for $q\le1$.
+Integrating the pointwise inequality gives
+\[
+ \int_H^{2H}\zabs(t)^4\dd t
+ \le8K_gD_pD_bH^{1+7q}+8K_t^2H
+ \le(8K_gD_pD_b+8K_t^2)H^{1+\eta}.
+\]
+The height threshold is chosen so that every kernel, tail and dyadic-cutoff
+condition holds before $t$ varies. This is the estimate consumed later.
+\end{proof}
+% Source correspondence: Stronger/Fourth/GaussianProducer.lean; SquarePrefix.lean; FourthMoment.lean}{exists_integral_gaussian_fourthPolynomial_le; exists_norm_sq_fourthPrefix_le_gaussian; exists_fourth_dyadic_budget; zeta_fourth_dyadic}
+
+
+\section{Pointwise values and local second moments}
+\label{sec:pointmean}
+The inequality in this appendix is Heath-Brown's Lemma 3~\cite{hb78},
+and the subsequent summation is the step behind equation (44) of that paper.
+The details below retain the rectangle, moving residue, and kernel convolution
+used in the registered reconstruction.
+For $t\in\R$ and $L\ge0$, define
+\[
+ M(t,L)=\int_{-L}^{L}e^{-|u|}\zabs(t+u)^2\dd u
+       =\int_{t-L}^{t+L}e^{-|t-v|}\zabs(v)^2\dd v.
+\]
+The second equality is exactly translation of the first, with no kernel
+replacement. Also put
+\[
+ M_\infty(t)=\int_{\R}e^{-|u|}\zabs(t+u)^2\dd u,\quad
+ M_\delta^*(t)=\int_{\R}\frac{e^{-4|u|/3}}{\delta+|u|}\zabs(t+u)^2\dd u
+ \quad(\delta>0).
+\]
+All these integrals are genuine convergent integrals by coarse quadratic growth
+and exponential decay.
+
+\par\medskip\noindent Pointwise control by a local mean.
+\begin{proposition}\label{prop:pointmean}
+There is $C>0$ such that, for every real $t\ge10$,
+\[
+ \zabs(t)^2\le C\log t\bigl(1+M(t,(\log t)^2)\bigr).
+\]
+\end{proposition}
+\begin{proof}
+Here the argument parameter is $\delta=1/\log t$ and the rectangle height is
+$R=(\log t)^2$. The initial finite rectangle integrates
+$\Gamma(w)\zeta(s(t)+w)^2$ over $-\delta\le\Rea w\le\delta$,
+$|\Ima w|\le R$. Since $t\ge10$, $\delta<1/2$, the moving zeta pole has real part $1/2$
+and is strictly to the right of this rectangle. Thus only the Gamma pole
+at zero is enclosed; its residue is $\zeta(s(t))^2$. The uniform
+$\delta\le1/4$ estimates below are used initially for sufficiently large
+$t$, and the compact remaining range is handled at the end.
+
+To bound its vertical sides, we first establish an off-critical
+inequality. For $s=1/2+\delta+\ii t$, Mellin inversion of the actual
+exponentially smoothed divisor series gives
+\[
+ \zeta(s)^2=\sum_{n\ge1}d(n)n^{-s}e^{-n}
+     -\operatorname{Res}_{w=1-s}\bigl(\Gamma(w)\zeta(s+w)^2\bigr)
+     -\frac1{2\pi}\int_{\R}\Gamma(-\delta+\ii u)
+                    \zeta(1/2+\ii(t+u))^2\dd u.
+\]
+The shift crosses the Gamma pole at zero and the moving double zeta pole
+$w=1-s$. The latter is evaluated by differentiating its cleared numerator:
+if $\zeta_1(z)=z\zeta(1+z)$ is the analytic pole-removed function with
+$\zeta_1(0)=1$, its residue is
+\[
+ \Gamma(1-s)\psi_\Gamma(1-s)+2\Gamma(1-s)\zeta_1'(0).
+\]
+The smoothed series is bounded absolutely by $\sum n e^{-n}$; the residue is
+uniformly bounded for $0<\delta\le1/4$, $t\ge10$ using Gamma decay and a
+digamma bound. All horizontal limits and vertical integrability are proved
+with exponential or polynomial strip majorants. Hence
+\[
+ |\zeta(1/2+\delta+\ii t)|^2\le C\bigl(1+M_\delta^*(t)\bigr).
+\]
+The functional equation transfers this to $1/2-\delta+\ii t$, with an
+additional factor at most
+$\exp(2\delta(\log(t/2+2)+D))$. This factor is obtained by integrating a
+Gamma logarithmic-derivative bound on the fixed positive-real-part strip.
+It is not assumed to be one.
+
+The Gamma bounds on the small vertical lines are
+\[
+ (\delta+|u|)|\Gamma(\pm\delta+\ii u)|\le144e^{-4|u|/3}.
+\]
+After substitution of the off-critical inequalities, the vertical-edge
+majorant contains a convolution of two kernels
+$k_\delta(u)=e^{-4|u|/3}/(\delta+|u|)$.
+The argument explicitly proves
+\[
+ \int_{\R}k_\delta(w)k_\delta(u-w)\dd w
+ \le\frac\pi\delta e^{-|u|}.
+\]
+Indeed the excess exponential reserve bounds the product by
+$e^{-|u|}/2$ times the sum of the squares of
+$r_\delta(x)=e^{-|x|/6}/(\delta+|x|)$ at $w$ and $u-w$.
+Each square is at most $(\delta^2+x^2)^{-1}$, whose integral is
+$\pi/\delta$. Tonelli and the proved product majorants then yield the
+convolution inequality and bound both vertical edges by
+$C\delta^{-1}(1+M_\infty(t))$.
+
+Eventually $R\le t/2$, so every shifted height on the edges is still large.
+For $|u|\le R$ the reflected Gamma factor above is at most $e^4$ when
+$D\le\log t$; this is proved before it is absorbed into the constant.
+The horizontal edges have bounds
+$C e^{-4R/3}(5(1+t+R))^2$ and are eventually at most one, since
+$R=(\log t)^2$. The residue rectangle therefore gives
+\[
+ \zabs(t)^2\le C\log t(1+M_\infty(t))
+\]
+eventually.
+
+Finally, if $|u|\ge(\log t)^2$ and $t$ is sufficiently large, coarse quadratic
+growth gives
+$e^{-|u|}\zabs(t+u)^2\le19C_0e^{-|u|/2}$.
+Its tail integral is uniformly bounded. Thus
+$M_\infty(t)\le M(t,(\log t)^2)+D_0$, and the last additive constant is
+absorbed into $1+M$. Continuity of $\zabs$ bounds the remaining compact range
+$10\le t\le t_0$; since $\log t\ge\log10>0$ and $M\ge0$, increasing $C$
+extends the estimate to every $t\ge10$.
+\end{proof}
+% Source correspondence: Stronger/PointMean/FiniteRectangle.lean; MellinShift.lean; DoubleConvolution.lean; VerticalEdges.lean; Native.lean}{heathBrownLemmaThree_finiteRectangle; heathBrown_twoPole_vertical_shift; integral_strongKernel_mul_strongMoment_le; exists_eventually_heathBrownLemmaThree_fullMoment; heathBrownLemmaThree_native}
+
+\par\medskip\noindent Exponential overlap and the finite-peak inequality.
+\begin{lemma}\label{lem:equation44}
+For a one-separated finite $W$ and any $x\in\R$,
+$\sum_{t\in W}e^{-|t-x|}\le4$.
+Suppose $W\subset[c-G/2,c+G/2]$, $G,L\ge0$, $G/2+L\le G$,
+$c-G/2\ge10$, $c+G/2\le T$, $T\ge10$,
+$(\log t)^2\le L$ and $\zabs(t)\ge V>0$ for $t\in W$. Then
+\[
+ V^2|W|\le C\log T\left(|W|+4\int_{c-G}^{c+G}\zabs(u)^2\dd u\right).
+\]
+\end{lemma}
+\begin{proof}
+For each integer $k\ge0$, at most two points of $W$ have
+$k\le|t-x|<k+1$, one on each side, by one-separatedness. On this shell
+$e^{-|t-x|}\le2^{-k}$. Summing $2\sum_{k\ge0}2^{-k}=4$ proves the overlap
+bound. Proposition~\ref{prop:pointmean} gives the displayed point inequality
+at each $t$; enlarge its integration radius from $(\log t)^2$ to $L$ and
+bound $\log t\le\log T$. Every resulting interval $[t-L,t+L]$ lies in
+$[c-G,c+G]$ by the fit condition. Interchange the finite sum and integral,
+apply the overlap bound to the nonnegative integrand, and sum the constant
+terms. This is exactly the equation-(44) sum interface.
+\end{proof}
+% Source correspondence: Stronger/PointMean/ExponentialOverlap.lean; IntegralOverlap.lean; Equation44.lean}{sum_exp_neg_abs_sub_le_four; sum_truncated_exp_kernel_zeta_sq_le_localSecondMoment; heathBrown_equation44_native}
+
+
+\section{Voronoi summation and the stationary expansion}
+\label{sec:atkinson}
+The oscillatory phase in this appendix belongs to the theory originating
+with Atkinson~\cite{atkinson} and used in Heath-Brown's moment argument~\cite{hb78}.
+Here the local-mean expansion is reconstructed through an exact compact-test
+divisor Voronoi formula and a stationary-phase calculation. We do not replace
+it by an unspecified version of Atkinson's formula: the weights, both signs,
+and width restrictions of the present calculation matter later.
+
+We assume $T>0$, $G>0$, $L>0$, and positive summation indices in
+this appendix unless stated otherwise. Zero-indexed terms containing
+negative powers are assigned the value zero.
+
+\subsection{Freezing the Gamma factor and Gaussian averaging}
+Put
+\[
+ \chi_t=\frac{\Gamma_{\R}(s(-t))}{\Gamma_{\R}(s(t))},\qquad |\chi_t|=1,
+ \qquad\ell_t=\log(t/(2\pi))-\ii\pi/2.
+\]
+The divisor weight is the entire function
+\begin{equation*}
+ \Omega(q)=\frac1{2\pi}\int_{\R}
+       \frac{e^{100(1+\ii u)^2}H_*(1+\ii u)e^{-q(1+\ii u)}}{1+\ii u}\dd u.
+\end{equation*}
+It obeys $\Omega(q)+\Omega(-q)=1$. To see this, shift the line from $1$ to $-1$;
+the numerator is entire, its value at zero is one, and the only pole of its
+quotient by $w$ is at zero. Gaussian horizontal decay permits the limit of the
+finite rectangle. The left line, after $w\mapsto-w$, is the negative of the
+right line for $-q$. Thus their difference is one. The same Gaussian majorants
+justify differentiation under the integral, so $\Omega$ is entire, with
+$\Omega'(q)=-(2\pi)^{-1}\int e^{100w^2}H_*(w)e^{-qw}\dd u$,
+where $w=1+\ii u$.
+On a fixed imaginary strip it satisfies
+\begin{gather*}
+ |\Omega(q)|\le C\min(1,e^{-\Rea q}),\\
+ |\Omega(q+h)-\Omega(q)|\le C|h|e^{|h|}\min(e^{-\Rea q},e^{\Rea q})
+ \quad(h\in\R).
+\end{gather*}
+The first decay follows on the right contour and then by reflection;
+the second follows by integrating the derivative and using the same
+reflection. These estimates precede all physical heights and indices.
+% Source correspondence: Stronger/Atkinson/DivisorWeightKernel.lean; DivisorWeightReflection.lean; DivisorWeightVariation.lean}{zetaDivisorWeight; zetaDivisorWeight_add_neg; exists_norm_zetaDivisorWeight_min_le; exists_norm_zetaDivisorWeight_real_sub_min_le}
+
+The Gamma shift calculation from Section~\ref{sec:fourth} approximates the
+normalized right integral by
+\[
+ \chi_t\sum_{n\ge1}d(n)n^{-1/2+\ii t}\Omega(\log n-\ell_t)
+\]
+with a bounded error. The exact near-kernel error has an integrable majorant
+$C e^{-90u^2}(1+|u|)^{12}$, and the far-kernel part has the same form.
+Coefficientwise errors sum because $\sum d(n)n^{-3/2}<\infty$.
+Freeze the weight at a center $T$ to define
+\[
+ F(T,x)=\chi_{T+x}\sum_{n\ge1}d(n)n^{-1/2+\ii(T+x)}\Omega(\log n-\ell_T).
+\]
+For $T\ge8$, $|x|\le T/2$, every fixed $\theta>0$ gives
+\begin{equation}\label{eq:frozenerror}
+ |\zabs(T+x)^2-2\Rea F(T,x)|\le C_\theta(1+|x|T^{-1/2+\theta}).
+\end{equation}
+Indeed $\log(T+x)-\log T$ has absolute value at most $2|x|/T$,
+and the weight difference bound can be summed against
+$d(n)n^{-1/2}\min(1,T/(2\pi n))$; this mass is
+$O_\theta(T^{1/2+\theta})$. This is the freezing error, not a
+formal replacement of the height-dependent phase by a constant.
+% Source correspondence: Stronger/Atkinson/KernelApproximation.lean; DivisorWeightSource.lean; DivisorWeightFreezing.lean; RealFrozenSource.lean}{exists_integral_norm_zetaSquareRightKernel_error_le; zetaSquareLeadingDivisorContribution_eq_weight; exists_abs_zetaSquareNorm_sub_frozen_le}
+
+For $G>0$ define
+\[
+ A(T,G)=G^{-2}+\ii/(2T),\quad
+ Q(T,G;v)=\int_{\R}e^{\ii vx}e^{-A(T,G)x^2}\dd x
+       =\left(\frac\pi{A(T,G)}\right)^{1/2}e^{-v^2/(4A(T,G))}.
+\]
+The real part of $A$ is positive; the principal half-power is therefore the
+one in the convergent complex Gaussian formula. If $G^2\le2T$, then
+\begin{equation}\label{eq:Gaussianbound}
+ |Q(T,G;v)|\le\sqrt\pi G e^{-(Gv)^2/8}.
+\end{equation}
+This follows from $|\Ima A|\le\Rea A$,
+$\Rea A^{-1}\ge1/(2\Rea A)$ and the norm of the half-power.
+
+The logarithmic derivative of $\chi_t$ is
+$\ii(\log\pi-\Rea\psi_\Gamma(s(t)/2))\chi_t$, and the quantity in parentheses
+is $-\log(t/(2\pi))+O(1/t)$. On $|x|\le r\le T/2$ we prove
+\[
+ |\chi_{T+x}-\chi_Te^{-\ii(x\log(T/(2\pi))+x^2/(2T))}|
+ \le(18/T+2r^2/T^2)|x|.
+\]
+Integrating this error on $[-r,r]$ against the physical Gaussian
+$e^{-(x/G)^2}$ costs at most $2r^2(18/T+2r^2/T^2)$.
+The two omitted Gaussian tails cost
+$2\sqrt{2\pi}G e^{-(r/G)^2/2}$. Thus the actual phase-Gaussian transform
+is compared to $\chi_T Q(T,G;v-\log(T/(2\pi)))$, with both errors stated
+and proved. Summability of frozen coefficients and product Gaussian
+majorants justify the integral/series exchanges.
+% Source correspondence: Stronger/Atkinson/QuadraticGaussian.lean; GammaQuadratic.lean; GammaGaussianTransform.lean; FrozenDivisorGaussian.lean}{zetaGaussianQuadraticIntegral_eq; norm_zetaGaussianQuadraticIntegral_le; norm_zetaSquareGammaGaussianTransform_sub_quadratic_le; hasSum_zetaFrozenDivisorGaussianMean}
+
+\subsection{A compact test function and its lattice phase}
+Recall the fixed transition $S_0$ from Section~\ref{sec:detector}.
+For $L>0$ set
+\[
+ b_v=\frac{T}{2\pi}e^{v/G},\qquad
+ \vartheta_{T,G,L}(x)=S_0\!\left(\frac{x-b_{-2L}}{b_{-L}-b_{-2L}}\right)
+ S_0\!\left(\frac{b_{2L}-x}{b_{2L}-b_L}\right).
+\]
+It equals one on $[b_{-L},b_L]$ and is supported in $[b_{-2L},b_{2L}]$.
+The compact test is
+\begin{equation}\label{eq:compacttest}
+ g_{T,G,L}(x)=\vartheta_{T,G,L}(x)x^{-1/2+\ii T}
+ \Omega(\log x-\ell_T)\chi_TQ(T,G;\log x-\log(T/(2\pi)))e^{-2\pi\ii x}
+ \quad(x>0),
+\end{equation}
+and is zero off the positive support interval. The phase $e^{-2\pi\ii x}$
+is not cosmetic: it is identically one on the integer lattice, so it preserves
+the discrete divisor sum, but it is retained in every subsequent continuous
+Voronoi integral. Removing it would alter the saddles.
+Define $\Sigma(T,G,L)=\sum_{n\ge1}d(n)g_{T,G,L}(n)$.
+The compact test has a positive lower support endpoint, an upper endpoint,
+smoothness on $\R$, and support contained between those endpoints.
+Hence its Mellin transform is
+entire and decreases faster than any fixed power on each vertical line.
+% Source correspondence: Stronger/Atkinson/DivisorBandCutoff.lean; SmoothDivisorTest.lean; DivisorLatticePhase.lean; AtkinsonAmplitude.lean}{zetaDivisorBandCutoff; zetaSmoothDivisorVoronoiTest; zetaAtkinsonDivisorTest; zetaAtkinsonDivisorTest_eq_amplitude_phase}
+
+For every fixed $\delta>0$, eventually for
+$T^\delta\le G\le T^{1/2-\delta}$, the preceding Gaussian averaging argument,
+with $L=\log T$, yields
+\begin{equation}\label{eq:physicalsource}
+ \left|\int_{\R}e^{-((t-T)/G)^2}\zabs(t)^2\dd t
+                  -2\Rea\Sigma(T,G,\log T)\right|\le C_\delta G\log T.
+\end{equation}
+We obtain this by integrating \eqref{eq:frozenerror}, replacing the
+actual Gamma Gaussian transform by its quadratic one, restricting to
+$|G(\log n-\log(T/(2\pi)))|\le\log T$, and smoothing the band. Each omitted
+term is bounded before summation; \eqref{eq:Gaussianbound} makes the band
+complement exponentially small. The freezing and quadratic errors use fixed
+positive losses smaller than the width margin $\delta$.
+On $[T-G,T+G]$, $e^{-((t-T)/G)^2}\ge e^{-1}$, so
+\eqref{eq:physicalsource} also implies
+\begin{equation}\label{eq:localsource}
+ I(T,G):=\int_{T-G}^{T+G}\zabs(t)^2\dd t
+          \le2e\Rea\Sigma(T,G,\log T)+C_\delta G\log T.
+\end{equation}
+% Source correspondence: Stronger/Atkinson/GaussianAveraging.lean; SmoothDivisorSource.lean}{exists_zetaSquareGaussianMean_smooth_approximation; exists_zetaSquareLocalMean_le_smooth_divisor}
+
+\subsection{The divisor Voronoi formula}
+For clarity, the Bessel kernels used here have the integral representations
+\begin{align*}
+ K_0(x)&=\int_0^\infty e^{-x\cosh u}\dd u,\\
+ Y_0(x)&=\frac2\pi\left(\int_0^{\pi/2}\sin(x\cos u)\dd u
+                -\int_0^\infty\frac{e^{-xu}}{\sqrt{1+u^2}}\dd u\right),\quad x>0.
+\end{align*}
+\par\medskip\noindent The divisor Voronoi formula.
+\begin{lemma}\label{lem:voronoi}
+Let $g:\R\to\C$ be $C^\infty$ and supported in $[a,b]$ with $0<a\le b$.
+Then
+\begin{align}\label{eq:voronoi}
+ \sum_{n\ge1}d(n)g(n)
+ &=\int_0^\infty(\log x+2\gamma_E)g(x)\dd x\\
+ &\quad-2\pi\sum_{n\ge1}d(n)\int_0^\infty
+                          g(x)Y_0(4\pi\sqrt{nx})\dd x\nonumber\\
+ &\quad+4\sum_{n\ge1}d(n)\int_0^\infty
+                          g(x)K_0(4\pi\sqrt{nx})\dd x.\nonumber
+\end{align}
+Both dual series converge absolutely.
+\end{lemma}
+\begin{proof}
+The initial Mellin integral is
+$(2\pi\ii)^{-1}\int_{(2)}\zeta(s)^2\Mell g(s)\mathrm ds$.
+Termwise Mellin inversion gives the divisor sum, since the coefficient series
+is absolutely convergent on this line. Shift to $\Rea s=-1/2$.
+The double pole at $s=1$ has cleared numerator
+$((s-1)\zeta(s))^2\Mell g(s)$. Since
+$\zeta(s)=(s-1)^{-1}+\gamma_E+O(s-1)$, its derivative at $1$ equals
+$(\Mell g)'(1)+2\gamma_E\Mell g(1)$, hence the integral main term in
+\eqref{eq:voronoi}. Smooth compact support proves arbitrary Mellin vertical
+decay and entireness, and coarse zeta strip growth makes the horizontal edges
+vanish; the infinite-line shift is therefore a limit of proved finite
+rectangle identities.
+
+The actual functional equation splits the reflected squared-zeta multiplier
+into two exact multipliers. If
+$A(s)=(2\pi)^{-s}\Gamma(s)$, these are
+\[
+ M_-(z)=A(1-z)^2(e^{\pi\ii(1-z)}+e^{-\pi\ii(1-z)}),\qquad
+ M_+(z)=2A(1-z)^2.
+\]
+For $n\ge1$ define $\mathcal V_\pm[g](n)$ by
+\[
+ \mathcal V_\pm[g](n)=\frac1{2\pi\ii}\int_{(-1/2)}
+           n^{z-1}M_\pm(z)\Mell g(z)\mathrm dz.
+\]
+Both multipliers are holomorphic on $\Rea z<1$; on the initial dual line their
+norms are bounded by a quadratic polynomial in $|\Ima z|$. Absolute Mellin
+integrability, followed by $\sum d(n)n^{-3/2}<\infty$, permits both complete
+series to be opened and added separately.
+
+Gaussian domination establishes the first integral's convergence; exponential
+domination establishes the second tail's convergence, and the oscillatory
+integral is over a finite interval.
+Fubini and the beta integral give
+$\Mell[K_0](s)=2^{s-2}\Gamma(s/2)^2$ for $\Rea s>0$.
+For $Y_0$, we prove its Mellin identity first in the absolute strip
+$1/4<\Rea s<1/2$ and identify the continued symbol by
+\[
+ \Mell[Y_0](2w)=-\frac2\pi\cos(\pi w)\Mell[K_0](2w).
+\]
+Here the identity first holds where the Mellin integral of $Y_0$ converges.
+For subsequent line shifts, $\Mell[Y_0](s)$ denotes its explicit meromorphic
+Gamma-function continuation, not a divergent integral.
+To pair the actual $Y_0$ kernel with $g$, move the dual line to
+$\Rea z=13/16$, so $2(1-z)$ has real part $3/8$ inside that strip.
+Mellin pairing then gives $\mathcal V_-[g](n)=-2\pi\int g(x)Y_0(4\pi\sqrt{nx})\dd x$.
+Moving back is justified by holomorphy and proved decay; it is not an assumed
+identification of a divergent Mellin integral. The analogous $K_0$ pairing
+gives $\mathcal V_+[g](n)=4\int g(x)K_0(4\pi\sqrt{nx})\dd x$.
+Substitution into the two complete dual series proves \eqref{eq:voronoi}.
+\end{proof}
+% Source correspondence: Stronger/Atkinson/OrdinaryDivisorVoronoi.lean; BesselK0Mellin.lean; BesselY0Mellin.lean; BesselTransformBridge.lean; VoronoiMinusTransport.lean; ZetaAtkinsonVoronoi.lean}{ordinaryDivisorVoronoi_native; dfiVoronoiPlusTransform_mellin_eq_bessel; verticalIntegral_dfiVoronoiMinus_mellin_thirteenSixteenths_eq_bessel; ordinaryDivisorVoronoi_bessel}
+
+\paragraph{What is removed, and why.}
+Apply Lemma~\ref{lem:voronoi} to \eqref{eq:compacttest}. The logarithmic main
+term is retained initially. The $K_0$ branch is bounded as a complete series
+using its exponential large-argument decay and the fact that its positive
+support is comparable to $T$. We prove a power saving
+$O_{\delta,A}(GT^{-A})$ for every fixed $A$; in the local-mean
+composition only the $A=0$ consequence is needed. The main logarithmic
+integral is bounded by $O_\delta(G\log T)$ using its exact carrier phase and
+its smooth amplitude, not by replacing the divisor sum with an assumed
+asymptotic main term. Both bounds are absorbed into the existing error in
+\eqref{eq:localsource}.
+% Source correspondence: Stronger/Atkinson/AtkinsonK0Scales.lean; AtkinsonMainIntegral.lean; ZetaAtkinsonMinusSource.lean}{exists_zetaAtkinsonBesselPlus_powerSaving; exists_zetaSquareLocalMean_le_atkinson_minus}
+
+\subsection{The Bessel expansion and its stationary points}
+We prove the following two-term expansion for every $x>0$:
+\begin{align}\label{eq:Ytwo}
+ Y_0(x)&=\frac{\sqrt\pi}\pi\left((\sin x-\cos x)x^{-1/2}
+           -\frac{\sin x+\cos x}{8}x^{-3/2}\right)+E_Y(x),\\
+ |E_Y(x)|&\le\frac2\pi\frac9{128}\sqrt\pi\,x^{-5/2}.\nonumber
+\end{align}
+It follows from the proved complex Laplace-ray representation of the literal
+Schl\"afli integral, a second-order amplitude remainder, and evaluation of the
+first two Laplace moments. Thus no large-argument Bessel expansion is left as
+a premise. Expressing the sine/cosine terms as exponentials retains two leading
+coefficients
+\[
+ c_+=-(1+\ii)/2,\qquad c_-=-(1-\ii)/2
+\]
+and two correction coefficients $(1-\ii)/2,(1+\ii)/2$, together with the
+$1/8$ factor. The complete correction and remainder series are proved
+absolutely integrable and are bounded by $O_\delta(G\log T)$ in the physical
+width range. Their terms are not silently discarded.
+% Source correspondence: Stronger/Atkinson/NeumannTwoTermExpansion.lean; ZetaNeumannSeries.lean; AtkinsonCorrectionSeries.lean; ZetaAtkinsonTwoTermSource.lean}{abs_dfiBesselY0_sub_neumannTwoTerm_le; exists_zetaAtkinsonBesselMinus_twoTerm_log_bound; exists_zetaSquareLocalMean_le_atkinson_twoTerm}
+
+For a real signed frequency $b$, the leading continuous carrier is
+\[
+ \Phi(T,b;x)=T\log x-2\pi x+4\pi b\sqrt x.
+\]
+Write $A=T/(2\pi)$ and
+\[
+ r_b=\frac{b+\sqrt{b^2+4A}}2,\qquad x_b=r_b^2.
+\]
+For $T>0$, $r_b>0$ and $r_b^2-br_b=A$. Differentiation gives
+\[
+ \Phi_x=T/x-2\pi+2\pi b/\sqrt x
+         =\frac{2\pi}{x}(A-x+b\sqrt x).
+\]
+The positive solution of $x-b\sqrt x=A$ is uniquely $x_b$, so it is the
+unique positive saddle. Its second derivative is
+$-\pi(2r_b-b)/r_b^3<0$. The exact paired identities are
+\[
+ r_{-b}=r_b-b,\quad r_br_{-b}=A,\quad x_bx_{-b}=A^2,\quad
+ \log(x_b/A)=2\arsinh\!\left(\frac b{2\sqrt A}\right).
+\]
+All are obtained from the positive quadratic root and positive logarithm;
+there is no choice of a second branch.
+% Source correspondence: Stronger/Atkinson/ZetaAtkinsonSaddle.lean; AtkinsonSaddleNormalization.lean}{zetaAtkinsonPhase_stationary_iff; zetaAtkinsonPhase_secondDeriv_saddle_neg; atkinsonSaddleRoot_mul_neg; zetaAtkinsonSaddle_log_argument}
+
+The exact amplitude for power $\alpha$ is
+\[
+ a_\alpha(T,G,L;x)=x^{-\alpha}\Omega(\log x-\ell_T)
+       \vartheta_{T,G,L}(x)\chi_TQ(T,G;\log x-\log A),
+\]
+on positive support. Define its carrier integral by
+\[
+ \mathcal A_\alpha(T,G,L;b)
+       =\int_0^\infty x^{-1/2}a_\alpha(T,G,L;x)e^{\ii\Phi(T,b;x)}\dd x.
+\]
+The extra $x^{-1/2}$ belongs to the original divisor test; it is precisely
+canceled by the Jacobian under $x=y^2$.
+Put $h_b=1+A/r_b^2>1$. The stationary term is exactly
+\begin{equation*}
+ \mathcal S_\alpha(T,G,L;b)=
+ 2a_\alpha(T,G,L;x_b)e^{\ii\Phi(T,b;x_b)}
+             \frac{e^{-\ii\pi/4}}{\sqrt{2h_b}}.
+\end{equation*}
+The $2$ is the root-coordinate Jacobian combined with the root
+amplitude convention. The Fresnel value is proved from a damped Gaussian and
+an Abel limit; its tails are estimated before removing the damping.
+% Source correspondence: Stronger/Atkinson/AtkinsonPowerWeight.lean; AtkinsonRootIntegral.lean; AtkinsonQuadraticKernel.lean; AtkinsonStationaryMain.lean; FresnelEvaluation.lean}{atkinsonPowerWeight; atkinsonPowerIntegral; atkinsonStationaryMain; fresnelGaussianValue_eq_phase}
+
+\par\medskip\noindent Uniform stationary error above the fourth-root width.
+\begin{lemma}\label{lem:stationaryerror}
+For each fixed real $\alpha$ there is $C_\alpha>0$ such that, if
+\[
+ T\ge1,\quad T^{1/4}\le G\le\sqrt T,\quad L\ge1,\quad8L\le G,
+ \quad |b|\le\sqrt T/100,
+\]
+then
+\[
+ |\mathcal A_\alpha(T,G,L;b)-\mathcal S_\alpha(T,G,L;b)|
+ \le C_\alpha G\sqrt G\,T^{-\alpha-1/4}.
+\]
+\end{lemma}
+The same estimate applies to both $b=\sqrt n$ and $b=-\sqrt n$ whenever
+$10000n\le T$.
+\begin{proof}
+Set $x=y^2$. The root phase is
+$2\pi(2A\log y-y^2+2by)$, with saddle $r_b$ and quadratic part
+$\Phi(T,b;x_b)-2\pi h_b(y-r_b)^2$.
+We prove compact $C^2$ bounds for the root amplitude: its norm is at
+most a constant times $GT^{-\alpha}$, and first and second derivatives have
+scales $G/\sqrt T$ and $(G/\sqrt T)^2$. These follow by differentiating the
+fixed Mellin profile, the smooth band cutoff, and the actual quadratic
+Gaussian; bounds remain uniform on the support, rather than depending on
+$n$ or the chosen saddle.
+
+For a symmetric radius $h$ around $r_b$, the exact logarithmic Taylor
+expansion has cubic correction $2T(y-r_b)^3/(3r_b^3)$ and a bounded
+fourth-order remainder. Expand the amplitude to its linear term and the
+exponential phase to its cubic term. The linear amplitude and the cubic phase
+correction are odd around $r_b$, while the quadratic exponential is even;
+their two integrals vanish exactly. The remaining local error is bounded,
+with amplitude norm bound $M$ and derivative scale $R$, by
+\[
+ M\left(2R^2h^3+4RT h^5/r_b^3+8Th^5/r_b^4+8T^2h^7/r_b^6\right).
+\]
+This is obtained by Bounding these four residual terms before integration
+and multiplying by the interval length $2h$. The nonstationary portions are
+handled by the proved first-derivative/integration-by-parts estimates, and
+the finite quadratic window differs from its Fresnel value by an explicit
+reciprocal-radius tail.
+
+For $|b|\le\sqrt T/100$, we prove $r_b\asymp\sqrt T$ with explicit
+window margins. Choose
+$X=T^{1/4}/\sqrt G$ and actual local radius $h=X/12$.
+The width assumptions give
+$X\ge1$, $GX^2=\sqrt T$, $X^4=T/G^2\le\sqrt T$.
+After inserting $R=G/\sqrt T$, the combined reciprocal-radius and symmetric
+error is bounded by
+\[
+ \frac4{h\pi}+\frac{4G^2h^3}T+\frac{216Gh^5}T
+       +\frac{1296h^5}T+\frac{11664h^7}T\le20/X.
+\]
+Each of the last four terms is bounded by $1/X$ from the displayed balances;
+the first is at most $16/X$ because $\pi>3$.
+Multiplying by $C_\alpha GT^{-\alpha}$ gives
+$C_\alpha GT^{-\alpha}/X=C_\alpha G\sqrt G T^{-\alpha-1/4}$.
+The small-frequency bound for both signs of $\sqrt n$ is exactly the
+consequence of $10000n\le T$.
+\end{proof}
+% Source correspondence: Stronger/Atkinson/StationaryOddRemainder.lean; AtkinsonSymmetricStationary.lean; AtkinsonSymmetricBalance.lean; AtkinsonFourthRootRadius.lean}{integral_atkinsonRootQuadratic_odd; IntervalC2Bound.atkinsonLocalSymmetric; exists_atkinsonPowerIntegral_symmetric_balance; exists_atkinsonPowerIntegral_fourthRoot_pair}
+
+Define the complete stationary leading sum
+\begin{equation}\label{eq:stationarysum}
+ \begin{split}
+ \mathcal S(T,G,L)&=\sum_{n\ge1}d(n)(-2\pi)
+ \frac{\sqrt\pi}\pi(4\pi)^{-1/2}n^{-1/4}\\
+ &\quad\times\left(c_+\mathcal S_{1/4}(T,G,L;\sqrt n)
+      +c_-\mathcal S_{1/4}(T,G,L;-\sqrt n)\right).
+ \end{split}
+\end{equation}
+For $8L\le G$, both saddle amplitudes vanish when
+$n\ge N_*(T,G,L)=\lceil36T(L/G)^2\rceil$; hence this sum is a finite sum
+with exactly the displayed terms. We prove the cutoff condition from
+the saddle logarithms and the support of $\vartheta$, before taking the sum.
+The original leading carrier is also truncated at this cutoff with a proved
+tail bound. Lemma~\ref{lem:stationaryerror} at $\alpha=1/4$ and the divisor
+prefix bound $\sum_{n<N}d(n)n^{-1/4}\ll_\theta N^{3/4+\theta}$ give the
+finite sum error
+\[
+ O_\theta\bigl(G\sqrt G\,T^{-1/2}N_*^{3/4+\theta}\bigr).
+\]
+When $G\ge T^{1/4+\kappa}$ and $L=\log T$, a smaller positive loss depending
+on $\delta,\kappa$ makes this $O(G)$; the strict $\kappa$ margin absorbs the
+logarithms. We also prove that the complete two-term Neumann source
+differs from this complete stationary sum by $O_{\delta,\kappa}(G)$.
+Combining with \eqref{eq:localsource} yields
+\begin{equation}\label{eq:stationarylocal}
+ I(T,G)\le2e\Rea\mathcal S(T,G,\log T)+C_{\delta,\kappa}G\log T
+\end{equation}
+for sufficiently large $T$ and
+$T^\delta\le G\le T^{1/2-\delta}$, $G\ge T^{1/4+\kappa}$.
+% Source correspondence: Stronger/Atkinson/AtkinsonStationarySeries.lean; AtkinsonFiniteStationaryError.lean; AtkinsonTwoTermStationary.lean; AtkinsonNativeLocalMean.lean}{atkinsonStationaryLeadingSum_eq_finite; exists_norm_atkinsonLeadingFiniteSum_sub_stationary_le; exists_tsum_zetaAtkinsonTwoTerm_sub_stationary_above_fourthRoot; localMeanStationaryInput_native}
+
+\subsection{Signed weights and partial summation}
+The phase evaluated at the two saddles is expressed with
+\[
+ f(T,n)=2T\arsinh\sqrt{\frac{\pi n}{2T}}
+       +\sqrt{2\pi nT+\pi^2n^2}-\frac\pi4,
+ \qquad c(T)=T\log(T/(2\pi))-T.
+\]
+It satisfies
+\[
+ \Phi(T,\sqrt n;x_{\sqrt n})=c(T)+\pi n+f(T,n)+\pi/4,
+\]
+and the negative saddle gives $c(T)+\pi n-f(T,n)-\pi/4$.
+After multiplying by the Fresnel factor $e^{-\ii\pi/4}$, the positive
+carrier is $e^{\ii f}$ while the negative carrier is
+$-\ii e^{-\ii f}$. Neither is replaced by an unsigned absolute main term.
+
+To display the full signed weights define
+\begin{gather*}
+ C_*(T,b)=\frac1{\sqrt2}(b^2+2T/\pi)^{-1/4},\qquad
+ c_n(T)=n^{-1/4}C_*(T,\sqrt n),\\
+ U(T,G;n)=Q\!\left(T,G;2\arsinh\sqrt{\pi n/(2T)}\right),\\
+ R_\pm(T,G,L;n)=\Omega(\log x_{\pm\sqrt n}-\ell_T)
+                         \vartheta_{T,G,L}(x_{\pm\sqrt n}),\\
+ w_\pm(T,G,L;n)=c_n(T)U(T,G;n)R_\pm(T,G,L;n),\\
+ E_\pm(T,n)=d(n)(-1)^n e^{\pm\ii f(T,n)}.
+\end{gather*}
+Then the exact identity for \eqref{eq:stationarysum} is
+\begin{equation}\label{eq:signedstationary}
+ \mathcal S(T,G,L)=(1+\ii)\chi_Te^{\ii c(T)}
+       \left(\sum_{n<N_*}w_+(T,G,L;n)E_+(T,n)
+                    -\sum_{n<N_*}w_-(T,G,L;n)E_-(T,n)\right).
+\end{equation}
+It follows by algebraic substitution of the evaluated saddle formulas and the
+fourth-root normalization
+$2\sqrt\pi(4\pi)^{-1/2}n^{-1/4}=n^{-1/4}$.
+The two residual weights are different functions at different saddles;
+$E_- =\overline{E_+}$ does not equate the weights. The common phase has modulus
+at most two.
+% Source correspondence: Stronger/Atkinson/AtkinsonEvaluatedPhases.lean; AtkinsonCoefficientVariation.lean; AtkinsonSaddleProfileNormalization.lean; AtkinsonSignedPhaseSeries.lean}{atkinsonStationaryMain_neg_sqrt; atkinsonFourthRootCoefficient_eq; atkinsonStationaryLeadingSum_eq_signed}
+
+For a finite sequence $w_i$, assume the uniform bound $|w_i|\le M$ for
+$0\le i\le N$ and a separate bound
+$\sum_{i<N}|w_{i+1}-w_i|\le M$, with $M\ge0$.
+For later notation, set
+\[
+ \mathcal V_{m,N}(w)=\max\left\{
+    \max_{0\le i\le N}|w(m+i)|,
+    \sum_{i=0}^{N-1}|w(m+i+1)-w(m+i)|\right\}.
+\]
+Thus the two bounds are equivalent to $\mathcal V_{m,N}(w)\le M$.
+This is a combined bound, not total variation alone.
+The finite summation-by-parts identity bounds
+$|\sum_{i<N}w_iE_i|$ by $2M$ times the maximum of the \emph{actual}
+prefix sums $|\sum_{i<j}E_i|$, $0\le j\le N$.
+For the two weights in \eqref{eq:signedstationary}, we prove the
+variation bounds
+\[
+ \mathcal V_{m,N}(w_\pm)
+ \le C G T^{-1/4}m^{-1/4}e^{-G^2m/(12T)}
+\]
+when $m\ge1$ and $10000(m+N)\le T$. The real fourth-root coefficient is
+positive antitone, so its variation telescopes. The Gaussian increment bound
+is derived by differentiating $Q$, and the two saddle residuals have uniform
+variation by differentiating the actual compact profiles. Multiplying the
+three variation bounds yields the displayed estimate.
+
+Let
+\[
+ P_{m,N}(T)=\max_{0\le j\le N}
+           \left|\sum_{i=0}^{j-1}d(m+i)(-1)^{m+i}e^{\ii f(T,m+i)}\right|,
+\]
+and define the undamped dyadic prefix bound
+\[
+ \mathscr B(T,N)=\sum_{0\le j<J(N)}
+                     (2^j)^{-1/4}P_{2^j,2^j}(T).
+\]
+Here $J(N)=0$ for $N\le1$, and
+$J(N)=\lceil\log N/\log2\rceil$ for $N\ge2$.
+This avoids taking a logarithm at $N=0$.
+The empty sum and the zero-indexed stationary term are zero. Truncated dyadic
+pieces partition every finite prefix exactly. Summation by parts on each,
+then enlargement of its prefix maximum to the full block, gives
+\begin{equation}\label{eq:prefixsource}
+ |\mathcal S(T,G,\log T)|\le C_\delta GT^{-1/4}
+           \mathscr B(T,N_*(T,G,\log T)).
+\end{equation}
+The damped factors are first kept; only their inequality $e^{-G^2m/(12T)}\le1$
+is used when passing to this undamped bound. Equations \eqref{eq:stationarylocal} and~\eqref{eq:prefixsource} give the required
+bound of a local second moment by maximal prefixes.
+% Source correspondence: Stronger/Atkinson/FiniteWeightVariation.lean; AtkinsonMainVariation.lean; AtkinsonStationaryBlockBound.lean; AtkinsonDampedDyadic.lean; AtkinsonStationaryDyadic.lean; AtkinsonStationarySourceAssembly.lean}{exists_finiteVariationBound_atkinsonMainWeights; exists_norm_atkinsonStationarySum_le_undamped; localMeanSourceToPrefix_of_stationary}
+
+
+\section{Maximal prefixes and sums of local means}
+\label{sec:sums}
+\subsection{A Gram inequality for maximal prefixes}
+For a positive dyadic block $[m,m+N)$, the coefficients are
+$\alpha_i=d(m+i)(-1)^{m+i}$ and its unit phase vector at height $t$ is
+$v_t(i)=e^{\ii f(t,m+i)}$. At each height select a maximizing prefix length
+$j_t\in\{0,\ldots,N\}$ for $P_{m,N}(t)$. Define the masked vector
+$v_t^{j_t}(i)=\mathbf1_{i<j_t}v_t(i)$.
+The exact Gram entry of two such vectors is
+\[
+ \sum_{i<N}\overline{v_t^{j_t}(i)}v_u^{j_u}(i)
+   =\sum_{i<\min(j_t,j_u)}e^{\ii(f(u,m+i)-f(t,m+i))}.
+\]
+Thus each pair keeps the minimum of its two own maximizing prefixes. There is
+no single maximizing prefix imposed on all heights. If
+\[
+ G_{m,N}(t,u)=\max_{0\le j\le N}
+       \left|\sum_{i<j}e^{\ii(f(u,m+i)-f(t,m+i))}\right|,
+ \quad E_{m,N}=\sum_{i<N}d(m+i)^2,
+\]
+finite Hilbert-space Cauchy--Schwarz applied to the sum of phase-aligned masked
+vectors yields
+\begin{equation}\label{eq:Gram}
+ \left(\sum_{t\in W}P_{m,N}(t)\right)^2
+          \le E_{m,N}\sum_{t,u\in W}G_{m,N}(t,u).
+\end{equation}
+Indeed choose a unit scalar at each height to make its coefficient-vector inner
+product real and nonnegative. Cauchy--Schwarz bounds the square of their sum by
+the coefficient norm squared times the summed-vector norm squared; expanding
+that norm and taking absolute values gives \eqref{eq:Gram}. Zero prefixes or
+zero values cause no difficulty. We prove this finite lemma before
+using any analytic cancellation estimate.
+% Source correspondence: Stronger/Atkinson/AtkinsonPrefixVectors.lean; AtkinsonPrefixMax.lean; FiniteWeightedGram.lean; AtkinsonDyadicGramBudget.lean}{atkinsonMaskedPhaseVector_gram; sum_atkinsonPhaseBlockMax_sq_le_gramMax; sum_atkinsonUndampedDyadicPhaseBound_sq_le_budget}
+
+Finite Cauchy--Schwarz over dyadic blocks gives, with $J=J(N)$,
+\begin{equation}\label{eq:dyadicGram}
+ \left(\sum_{t\in W}\mathscr B(t,N)\right)^2
+ \le J\sum_{j<J}(2^j)^{-1/2}E_{2^j,2^j}
+                        \sum_{t,u\in W}G_{2^j,2^j}(t,u).
+\end{equation}
+The right side is the divisor-weighted sum of dyadic Gram entries.
+The divisor subpower estimate bounds
+$(2^j)^{-1/2}E_{2^j,2^j}\ll_\eta(2^j)^{1/2+\eta}$ for every $\eta>0$.
+
+\subsection{First- and second-derivative bounds for each prefix}
+Treat the summation index as a positive real variable $x$. The exact phase
+slope and curvature are
+\[
+ f_x(T,x)=\sqrt{2\pi T/x+\pi^2},\qquad
+ f_{xx}(T,x)=-\frac{\pi T}{x^2\sqrt{2\pi T/x+\pi^2}}.
+\]
+For $0<x\le u<t\le2u$, the phase difference
+$f(u,x)-f(t,x)$ has positive second derivative. Differentiating curvature
+with respect to height and integrating from $u$ to $t$ gives explicit upper
+and lower scales. On the entire block $m\le x\le m+N+2$ they are
+\begin{gather*}
+ \lambda=\frac{\pi(t-u)}{2(m+N+2)^2
+        \sqrt{(2\pi+\pi^2)2u/m}},\\
+ \lambda'=\frac{\pi(t-u)}{m^2\sqrt{2\pi u/(m+N+2)}}.
+\end{gather*}
+Both are positive for $t>u$, $m\ge1$. A second-order mean-value theorem
+puts every unit-spaced second difference between $\lambda$ and $\lambda'$.
+The finite second-derivative estimate proved in
+Appendix~\ref{app:adapters} therefore bounds each prefix by
+\[
+ \left(\frac{N\lambda'}{2\pi}+2\right)
+ \left(\frac{2\pi}{\sqrt\lambda}
+       +2\left(\frac{\sqrt\lambda}{\lambda}+1\right)\right).
+\]
+A shorter prefix uses the same block curvature parameters; its length factor
+is merely enlarged to $N$. The zero prefix is handled separately.
+
+For near height gaps, the first difference of $f(t,x)-f(u,x)$ is monotone
+and positive. The exact first-derivative scales place it in
+$[\delta_*,\pi]$ when $|t-u|\le\sqrt{Hm}$ and $t,u\in[H,2H]$,
+where $\delta_*>0$ is the proved lower difference bound. The Kusmin--Landau
+one-period estimate gives $2\pi/\delta_*$. We take the minimum of
+this bound, the second-derivative estimate bound, and the triangle bound $N$. For the dyadic
+case $N=m$, its orientation-free majorant satisfies
+\begin{align}\label{eq:nearfar}
+ G_{m,m}(t,t)&=m,\\
+ G_{m,m}(t,u)&\le60\frac{\sqrt{Hm}}{|t-u|}
+                  &&(0<|t-u|\le\sqrt{Hm}),\nonumber\\
+ G_{m,m}(t,u)&\le2000\sqrt{\frac{m|t-u|}{\sqrt{Hm}}}
+                  &&(|t-u|\ge\sqrt{Hm}).\nonumber
+\end{align}
+These statements require the block-plus-two endpoint at most the smaller
+height and the larger height at most twice the smaller. The physical
+cutoff guarantees both conditions simultaneously. In the far range the argument
+uses the triangle branch when curvature is large, so there is no extra linear
+gap term left in \eqref{eq:nearfar}. More explicitly, put
+$d=|t-u|$, $R=\sqrt{Hm}$ and $Q=mR$.
+The actual curvature bounds give $\lambda\ge d/(320Q)$,
+$\lambda'\le4d/Q$. If $R\le d\le Q$, the first second-derivative estimate factor is
+at most $6d/R$, while the second is at most $202\sqrt{Q/d}$.
+Their product is at most $1212\sqrt{md/R}\le2000\sqrt{md/R}$.
+If $d>Q$, the triangle bound $m\le\sqrt{md/R}$ is stronger.
+These two cases prove the far estimate without an upper restriction on the gap.
+% Source correspondence: Stronger/Atkinson/AtkinsonIndexCurvature.lean; AtkinsonIndexScales.lean; AtkinsonIndexBProcess.lean; AtkinsonPrefixCancellation.lean; AtkinsonNearGap.lean; AtkinsonFarGap.lean}{hasDerivAt_deriv_atkinsonIndexRealPhase; atkinsonIndexPositiveDifference_B_process; atkinsonPrefixGramMax_le_firstDerivative; atkinsonPrefixGapMajorant_le_near; atkinsonPrefixGapMajorant_le_far}
+
+A finite set is $G$-separated if distinct elements have distance at least
+$G$; here $G>0$. The following estimate sums maximal prefixes over such
+ordinate sets.
+\par\medskip\noindent Physical prefix sum bound.
+\begin{lemma}\label{lem:prefixsum}
+For $\delta,\eta>0$ there are $C>0$ and $H_0\ge40000$ such that, for
+$H\ge H_0$, $H^\delta\le G$, $L\ge0$, a $G$-separated finite
+$W\subset[H,2H]\cap[A,A+L]$, and
+$N=N_*(2H,G,\log(2H))$, $R=|W|$,
+\[
+ \left(\sum_{t\in W}\mathscr B(t,N)\right)^2\le C\mathcal P_\eta(H,G,L,N,R),
+\]
+where $J_N=J(N)$ and
+\begin{align*}
+ \mathcal P_\eta(H,G,L,N,R)
+ &=J_N^2\left[R N^{3/2+\eta}
+  +\frac{120R\sqrt H}{G}N^{1+\eta}
+       \mathsf H_{\lceil\sqrt{HN}/G\rceil}\right.\\
+ &\hspace{42mm}\left.+2000R^2H^{-1/4}\sqrt L\,N^{3/4+\eta}\right],\\
+ \mathsf H_k&=\sum_{j=1}^k1/j.
+\end{align*}
+\end{lemma}
+\begin{proof}
+Eventually $1200\log(2H)\le H^{\delta/2}\le G$ after the harmless doubled
+height adjustment. The explicit ceiling cutoff then satisfies
+$2N+2\le H$ and $N\le H$. Hence every dyadic block in
+\eqref{eq:dyadicGram} satisfies the prefix geometry needed for
+\eqref{eq:nearfar}. The diagonal contributes $Rm$. For fixed $t$, order the
+$G$-separated points on either side of $t$. The $j$th has distance at least
+$jG$, so the near reciprocal sum is at most
+$120\sqrt{Hm}\,\mathsf H_{\lceil\sqrt{Hm}/G\rceil}/G$.
+Since every pair gap is at most $L$, the far double sum is at most
+$2000R^2\sqrt{mL/\sqrt{Hm}}$.
+Multiply these three contributions by the coefficient factor
+$Cm^{1/2+\eta}$. They become respectively
+$CRm^{3/2+\eta}$,
+$C(120R\sqrt H/G)m^{1+\eta}\mathsf H_{\lceil\sqrt{Hm}/G\rceil}$,
+and $C2000R^2H^{-1/4}\sqrt Lm^{3/4+\eta}$.
+Each is nondecreasing with $m$ on positive indices; use $m\le N$.
+The outer dyadic Cauchy--Schwarz factor and the number of blocks give
+$\lceil\log_2N\rceil^2$. This proves the stated budget, including the
+empty-set case, for which all terms are zero.
+\end{proof}
+% Source correspondence: Stronger/Atkinson/AtkinsonNearGapBudget.lean; AtkinsonPowerGapBudget.lean; AtkinsonPhysicalCutoff.lean; AtkinsonLocalizedGram.lean}{exists_atkinsonPhysicalCutoff_prefix_geometry; exists_sum_atkinsonUndampedDyadicPhaseBound_sq_le_power}
+
+\par\medskip\noindent Sums of local second-moment excesses.
+\begin{proposition}\label{prop:localsum}
+For every $\delta,\kappa,\nu>0$ there exist positive $C,D$ and $H_0\ge40000$
+such that the following holds. Let $H\ge H_0$, $G>0$, $L\ge0$ and a finite
+$G$-separated set $W$ satisfy, for every $t\in W$,
+\[
+ H\le t\le2H,\quad t^\delta\le G\le t^{1/2-\delta},\quad
+ t^{1/4+\kappa}\le G,\quad A\le t\le A+L.
+\]
+Set $E_G(t)=\max(0,I(t,G)-CG\log t)$. Then
+\begin{equation}\label{eq:localsum}
+ \left(\sum_{t\in W}E_G(t)\right)^2
+       \le DH^\nu\left(\frac{|W|H}{G}+|W|^2\sqrt{GL}\right).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Equations \eqref{eq:stationarylocal} and~\eqref{eq:prefixsource} give
+$E_G(t)\le CGt^{-1/4}\mathscr B(t,N_*(t,G,\log t))$.
+The cutoff is monotone in $t\ge1$ and the undamped prefix bound monotone in its
+cutoff. Thus $t\in[H,2H]$ yields
+\[
+ E_G(t)\le CGH^{-1/4}\mathscr B(t,N),
+ \qquad N=N_*(2H,G,\log(2H)).
+\]
+Apply Lemma~\ref{lem:prefixsum} with loss $\nu/2$ and square the factor
+$CGH^{-1/4}$.
+
+To evaluate the physical budget, the ceiling bound gives
+$N\le74H(\log(2H))^2/G^2$, since $G\le\sqrt{2H}$.
+The diagonal index power then satisfies
+\[
+ G^2H^{-1/2}N^{3/2}\le5476(H/G)(\log(2H))^3.
+\]
+The near power becomes
+$(\sqrt H/G)(G^2H^{-1/2}N)=74(H/G)(\log(2H))^2$.
+The harmonic factor is at most $2\log(2H)$ and the dyadic-count factor at
+most $((1/\log2+1)\log(2H))^2$.
+The far power satisfies
+\[
+ H^{-1/4}\sqrt L\,G^2H^{-1/2}N^{3/4}
+       \le74\sqrt{GL}(\log(2H))^3.
+\]
+The factor $N^{\nu/2}\le H^{\nu/2}$ and the remaining fifth power of the
+logarithm is eventually at most $H^{\nu/2}$. Substitution into all three
+terms proves \eqref{eq:localsum}. The constants are chosen before
+$H,G,A,L,W$; the analytic input is supplied by the
+stationary estimate. A nonempty sum gives $G\le\sqrt{2H}$ from one of its
+points; an empty sum has zero sum and is dealt with directly.
+\end{proof}
+% Source correspondence: Stronger/Atkinson/AtkinsonPhysicalBudget.lean; AtkinsonSourceAssembly.lean; AtkinsonStationarySourceAssembly.lean; AtkinsonNativeLocalMean.lean}{exists_atkinsonPhysicalGapBudget_le_twoTerm; localMeanPacketInput_of_sourceToPrefix; localMeanPacketInput_of_stationary; localMeanStationaryInput_native}
+
+
+\section{Large critical-line values and the twelfth moment}
+\label{sec:peaks}
+\subsection{Absorption in a short physical interval}
+\par\medskip\noindent Finite local-to-global absorption.
+\begin{lemma}\label{lem:absorption}
+Let $A,H,G,Y>0$, and a finite $W\subset[H,2H]$ have nonnegative values
+$f(t)\ge Y$. Suppose every $U\subset W$ localized in an interval of length
+\[
+ L_*=(Y^2/(4A))^2/G
+\]
+satisfies
+$\bigl(\sum_{t\in U}f(t)\bigr)^2\le A(|U|H/G+|U|^2\sqrt{GL_*})$.
+Then
+\[
+ |W|\le\frac{2AH}{GY^2}+\frac{32A^3H^2}{Y^6}.
+\]
+\end{lemma}
+\begin{proof}
+$\sqrt{GL_*}=Y^2/(4A)$, so $2A\sqrt{GL_*}\le Y^2$.
+For $R=|U|>0$, use $\sum f\ge RY$ in the local sum and absorb its
+quadratic term to get $R\le2AH/(GY^2)$. The empty fiber also satisfies this.
+Partition $[H,2H]$ by the natural floor bins of $(t-H)/L_*$;
+at most $\lfloor H/L_*\rfloor+1$ fibers are occupied. This convention also
+captures a point on the closed right boundary. Sum the fiber cardinality
+bounds and use $\lfloor H/L_*\rfloor\le H/L_*$. Expanding gives exactly
+$2AH/(GY^2)+32A^3H^2/Y^6$.
+\end{proof}
+% Source correspondence: Stronger/AtkinsonCardinalityAbsorption.lean; AtkinsonHeightCover.lean; AtkinsonGlobalCardinality.lean}{atkinsonAbsorptionLength; atkinson_card_le_of_packet; atkinson_card_le_of_local_packets}
+
+Applying this lemma to Proposition~\ref{prop:localsum}, with its loss
+$\nu/3$, yields the actual local-mean-excess count
+\begin{equation}\label{eq:excesscount}
+ |W|\le D H^\nu\left(\frac H{GY^2}+\frac{H^2}{Y^6}\right)
+ \quad(E_G(t)\ge Y).
+\end{equation}
+The cube of $H^{\nu/3}$ is $H^\nu$; the first term is enlarged to that same
+loss. Thus no unseen exponent is spent in the global height cover.
+
+\subsection{Clustering separated large values}
+Let $W\subset[H,2H]$ be one-separated and satisfy $\zabs(t)\ge V>0$.
+For a width $G$, partition by
+$n=\lfloor(t-H)/(G/2)\rfloor$. The center assigned to bin $n$ is its
+\emph{left} endpoint $c_n=H+nG/2$, not its midpoint. Its cluster lies in
+$[c_n,c_n+G/2]$, hence also in $[c_n-G/2,c_n+G/2]$.
+The nonempty cluster centers remain in $[H,2H]$. Centers with equal parity
+are $G$-separated; split into even and odd bins before using
+\eqref{eq:excesscount}.
+
+Set $\ell=\log(3H)$, and let $P>0$ be the point-mean constant in
+Lemma~\ref{lem:equation44}. If $2\ell^2\le G\le H$, that lemma gives, for
+cluster occupancy $r_n$,
+\[
+ V^2r_n\le P\ell(r_n+4I(c_n,G)).
+\]
+If $V^2\ge2P\ell$, then
+\[
+ I(c_n,G)\ge2r_n A_V,\qquad A_V=V^2/(16P\ell).
+\]
+If the local-mean error $CG\ell\le A_V$, then for every integer $m\ge1$
+with $r_n\ge m$, the excess at $c_n$ is at least $mA_V$.
+Apply \eqref{eq:excesscount} to the two parity classes of centers. The result
+is
+\[
+ \#\{n:r_n\ge m\}\le2D H^\nu
+ \left(\frac H{G(mA_V)^2}+\frac{H^2}{(mA_V)^6}\right)
+ \le\frac{2D H^\nu}{m^2}
+       \left(\frac H{GA_V^2}+\frac{H^2}{A_V^6}\right).
+\]
+The exact integer layer-cake identity $\sum_nr_n=\sum_{m\ge1}\#\{n:r_n\ge m\}$
+and $\sum_{m\ge1}m^{-2}\le2$ therefore give
+\begin{equation}\label{eq:widthcount}
+ |W|\le D' H^\nu\left(\frac H{GA_V^2}+\frac{H^2}{A_V^6}\right).
+\end{equation}
+This occupancy step restores \emph{all} peaks, not merely one representative
+per cluster.
+% Source correspondence: Stronger/Peaks/Clusters.lean; ClusterCount.lean; FiniteOccupancy.lean}{pointClusterCenter; pointClusterCenters_separated; exists_pointCluster_superlevel_entry; exists_pointCluster_superlevel_count; sum_nat_occupancy_le_of_superlevels; exists_pointValue_card_le_with_width}
+
+Choose $K=16PC+1$ and
+\[
+ G=\frac{V^2}{K\ell^2}.
+\]
+The error absorption is automatic: $CG\ell\le V^2/(16P\ell)=A_V$.
+When
+\[
+ K\ell^2(2H)^{1/4+\kappa}\le V^2
+        \le K\ell^2H^{1/2-\delta},\qquad0<\delta\le1/4,
+\]
+all physical width conditions hold simultaneously throughout $[H,2H]$;
+the lower bound also makes $2\ell^2\le G$ eventually.
+Substitution into \eqref{eq:widthcount} gives
+\begin{equation}\label{eq:sourcepeakcount}
+ |W|\le D H^\nu\left(\frac{H\ell^4}{V^6}
+                           +\frac{H^2\ell^6}{V^{12}}\right).
+\end{equation}
+The factors of $K$ and $16P$ are explicitly absorbed into $D$ by
+direct substitution.
+% Source correspondence: Stronger/Peaks/WidthRanges.lean}{pointValueWidth_error_absorption; pointValueWidth_count_identity; exists_pointValue_card_le_source_range}
+
+\par\medskip\noindent High-value finite-set bound.
+\begin{proposition}\label{prop:peakcard}
+For every $\varepsilon>0$, eventually in $H$, for all $V>0$ with
+$V\ge H^{1/8+\varepsilon}$ and every one-separated finite
+$W\subset\{t\in[H,2H]:\zabs(t)\ge V\}$,
+\[
+ |W|V^{12}\le H^{2+\varepsilon}.
+\]
+\end{proposition}
+\begin{proof}
+Choose $\eta=\min(\varepsilon/16,1/1000)$, use
+$\delta=1/48$, $\kappa=\eta$, $\nu=\eta$ in
+\eqref{eq:sourcepeakcount}. The lower source range follows eventually from
+$V^2\ge H^{1/4+2\varepsilon}\ge H^{1/4+2\eta}$, because the extra
+positive $\eta$ power absorbs $K\ell^2 2^{1/4+\eta}$.
+If $W$ is empty there is nothing to prove. Otherwise take a point in $W$.
+Proposition~\ref{prop:weyl} gives $V\le H^{1/6+\eta}$. Consequently
+$V^2\le H^{1/3+2\eta}\le K\ell^2 H^{1/2-1/48}$ eventually, so the
+upper source range also holds uniformly.
+Multiply \eqref{eq:sourcepeakcount} by $V^{12}$:
+\[
+ |W|V^{12}\le D H^\eta(H\ell^4V^6+H^2\ell^6)
+       \le D\ell^4H^{2+7\eta}+D\ell^6H^{2+\eta}.
+\]
+Each logarithm and constant is absorbed into the spare positive loss, giving
+$H^{2+8\eta}\le H^{2+\varepsilon}$.
+The choices and thresholds depend on $\varepsilon$ and the two
+analytic estimates, but precede $H,V,W$. Substituting the proved point-mean
+and stationary sum estimates removes both explicit input hypotheses.
+\end{proof}
+% Source correspondence: Stronger/Peaks/WidthRanges.lean; NativePeaks.lean}{exists_pointValue_twelfth_weighted_card_le_of_inputs; pointValue_peak_card_of_inputs; pointValue_peak_card_native}
+
+\par\medskip\noindent From every finite separated set to full measure.
+\begin{lemma}\label{lem:peakmeasure}
+Put $S(H,V)=\{t:H\le t\le2H,\ \zabs(t)\ge V\}$.
+Under the eventual conditions of Proposition~\ref{prop:peakcard},
+\[
+ |S(H,V)|_{\rm Leb}\le2H^{2+\varepsilon}/V^{12}.
+\]
+\end{lemma}
+\begin{proof}
+A uniform cardinality bound $|W|\le B$ on every one-separated finite subset
+of a set $S$ implies that the possible cardinalities have a largest value:
+they lie in the finite set $\{0,\ldots,\lceil B\rceil\}$.
+Choose a one-separated subset of that maximal size. If a point of $S$ were
+farther than one from every chosen point, it could be inserted to increase the
+size. Thus closed radius-one balls about the chosen points cover $S$.
+Their total length is at most $2B$. Take $B=H^{2+\varepsilon}/V^{12}$.
+Continuity of $\zabs$ makes $S(H,V)$ closed and measurable. This proves a
+measure bound for the full superlevel set, not just for a sampled subset.
+\end{proof}
+% Source correspondence: Stronger/SeparatedVolume.lean; NativePeaks.lean}{exists_unitSeparated_closedBall_cover_of_card_bound; volume_le_two_mul_of_separated_card_bound; pointValue_volume_native}
+
+\subsection{Layer cake, the high/low split and the physical interval}
+\par\medskip\noindent Truncated high moment.
+\begin{lemma}\label{lem:highmoment}
+Suppose $V>0$, $V^{12}\le M$, $C\ge0$, $\zabs(t)^{12}\le M$ on $S(H,V)$,
+and $|S(H,U)|_{\rm Leb}\le C/U^{12}$ for every $U\ge V$.
+Then
+\[
+ \int_{S(H,V)}\zabs(t)^{12}\dd t
+       \le C\bigl(1+\log(M/V^{12})\bigr).
+\]
+\end{lemma}
+\begin{proof}
+For the restriction to $S(H,V)$ the distribution of $f(t)=\zabs(t)^{12}$
+is bounded by $C/\max(V^{12},s)$ at level $s>0$. If $s\le V^{12}$ use
+the whole-set bound; if $s>V^{12}$ use the level
+$U=s^{1/12}\ge V$. Positivity and monotonicity of the twelfth power justify
+this change of level. The function is integrable on this bounded measurable
+set by continuity of $\zabs$. Apply layer cake up to $M$ and integrate:
+\[
+ \int_0^M\frac C{\max(V^{12},s)}\dd s
+       =C+C\int_{V^{12}}^M\frac{\dd s}s
+       =C\bigl(1+\log(M/V^{12})\bigr).
+\]
+\end{proof}
+% Source correspondence: Stronger/TruncatedLayerCake.lean; CriticalMoment.lean}{integral_le_log_of_truncated_tail; pointValue_power_tail_measure_le; zeta_twelfth_high_integral_le_log}
+
+\par\noindent We now reconstruct the proof of Theorem~\ref{thm:moment}.
+\begin{proof}
+First prove the dyadic bound. Given $\varepsilon>0$ put $q=\varepsilon/20$.
+Proposition~\ref{prop:fourth} gives
+$\int_H^{2H}\zabs^4\le C H^{1+q}$ eventually.
+For the high-moment step use a smaller loss
+$\eta=\min(q/2,1/100)$ in Lemma~\ref{lem:peakmeasure}, start at
+$V_0=H^{1/8+\eta}$ and use the coarse upper truncation
+$M=H^3$ from Proposition~\ref{prop:weyl}. Then
+$1\le V_0^{12}\le H^3$ for $H\ge1$, and Lemma~\ref{lem:highmoment} gives
+\[
+ \int_{S(H,V_0)}\zabs(t)^{12}\dd t
+ \le2H^{2+\eta}\bigl(1+\log(H^3/V_0^{12})\bigr)
+ \le2H^{2+\eta}(1+3\log H)\le H^{2+q}
+\]
+eventually, since $\eta<q$. The set
+$S(H,H^{1/8+q})$ is a subset of this starting high set, so its integral
+obeys the same bound.
+
+On the complement of $S(H,H^{1/8+q})$ within $[H,2H]$,
+$\zabs^{12}\le H^{8(1/8+q)}\zabs^4$. Thus
+\begin{align*}
+ \int_H^{2H}\zabs(t)^{12}\dd t
+ &\le H^{2+q}+H^{1+8q}\int_H^{2H}\zabs(t)^4\dd t\\
+ &\le H^{2+q}+C H^{2+9q}
+ \le(1+C)H^{2+\varepsilon}.
+\end{align*}
+This is the dyadic estimate, with a positive constant $1+C$.
+All integrals over the high set and its complement are finite because they
+are restrictions of a continuous function on a compact interval.
+
+To pass to $[0,3T]$, let $B\ge1$ exceed the dyadic threshold and set
+$r=2+\varepsilon\ge1$. For $f=\zabs^{12}$ choose
+$A=|\int_0^Bf|+(1+C)+1>0$, so the dyadic constant $1+C\le A$.
+Continuity proves that the compact initial integral is finite, and
+$\int_0^Bf\le AB^r$. If
+$\int_0^{2^mB}f\le A(2^mB)^r$, split at $2^mB$ and apply the dyadic
+bound to the next interval. The sum is at most
+$2A(2^mB)^r\le A(2^{m+1}B)^r$, because $2\le2^r$.
+This induction is exactly the zero-origin adapter.
+For $X\ge B$, choose $X\le2^mB\le2X$. Nonnegativity permits enlargement
+to this dyadic endpoint, giving $\int_0^Xf\le A2^rX^r$ with no further loss.
+Put $X=3T$ and use $(3T)^r=3^rT^r$; choose $K=A2^r3^r>0$.
+The identity between interval and closed-set integrals gives the literal
+$\int_{[0,3T]}$ endpoint. Finally continuity of $s(t)$ and analyticity of
+$\zeta$ away from $1$ show $\zabs$ continuous on $\R$, hence all its natural
+powers are integrable on every finite $[a,b]$. This completes the
+reconstruction of the moment estimate.
+\end{proof}
+% Source correspondence: Stronger/ConditionalMoment.lean; DyadicMoment.lean; NativeMoment.lean; Solution.lean}{zeta_twelfth_high_eventually_of_tail; zeta_twelfth_dyadic_of_fourth_and_tail; integral_zero_le_of_dyadic; zeta_twelfth_physical_native; actual_moment_integrable}
+
+
+\section{Finite exponential sums and analytic details}
+\label{app:adapters}
+This appendix expands selected analytic adapters whose exact construction is
+important for reading the main proof. They are locally proved results, not
+extra assumptions. All branches and finite-limit conventions here agree with
+the production imports.
+
+\subsection{Weyl growth and a sharp approximate functional equation}
+For $s\in\C$ and a real cutoff $x$, let
+$S(s,x)=\sum_{1\le n\le\lfloor x\rfloor_+}n^{-s}$ and define the literal
+remainder
+\[
+ R_{\rm AFE}(s;x,y)=\zeta(s)-S(s,x)-\chi(s)S(1-s,y),
+ \quad \chi(s)=2^s\pi^{s-1}\Gamma(1-s)\sin(\pi s/2).
+\]
+The unit term is included in both sums. Defining this remainder alone supplies
+no estimate on it; the bounded-error estimate is the following.
+
+For $t\ge1$, $s=1/2+\ii t$, assume
+\begin{gather*}
+ x,y\ge1,\quad y\le x,\quad 2\pi xy=t,\quad x=k+1/2\ (k\in\Z),\\
+ \lfloor y\rfloor_++1/8\le y\le\lfloor y\rfloor_++1/2,
+ \qquad e^{-\pi t}(t^2+1)\le1.
+\end{gather*}
+Then $|R_{\rm AFE}(s;x,y)|\le C_{\rm AFE}$, where the calculation gives the
+explicit positive constant
+\begin{align*}
+ C_P&=\frac{\log2+1}{2\pi}
+ +\frac{1+2\pi}{4\pi^2}(\pi/2+\log2)
+ +\frac{2(1+2\pi)}{4\pi^3}\,9
+ +\frac{1+2\pi}{4\pi^3}\,17,\\
+ C_{\rm AFE}&=C_P+3+24/\pi+(1-e^{-\pi})^{-1}.
+\end{align*}
+Here is the decomposition and error proof. Define the actual finite
+oscillatory integral
+\[
+ J(s;a,b;m)=\int_a^b u^{-s}e^{2\pi\ii mu}\dd u
+\]
+and $J_\infty(s;a;m)$ as the limit as $b\to\infty$ of this integral for
+$0<\Rea s<1$, $m>0$. It is not an undamped whole-half-line Lebesgue
+integral.
+The upper-tail integrals are defined initially for $a>0$; at $a=0$,
+$J_\infty(s;0;m)$ means the limit of the improper integral from zero,
+which converges at its lower endpoint when $\Rea s<1$.
+Let $M=\lfloor y\rfloor_+$ and
+\begin{gather*}
+ B=\frac{x^{1-s}}{s-1},\qquad F=\sum_{m=1}^M J_\infty(s;x;m),\qquad
+ F_0=\sum_{m=1}^M J_\infty(s;0;m),\\
+ L=\sum_{m=1}^M J(s;0,x;m),\qquad Q=\chi(s)S(1-s,y).
+\end{gather*}
+The Abel sawtooth identity for actual zeta, followed by its finite Poisson
+expansion and the proved limit of its positive and negative frequency tails,
+gives
+\[
+ |\zeta(s)-S(s,x)-B-F|\le C_P.
+\]
+For clarity, the four contributions to $C_P$ are the endpoint first-order
+coefficient, the paired harmonic endpoint coefficient, and the two higher
+coefficient tails. On the half-integral $x$, alternating harmonic tails have
+their explicit bounds. The first coefficient bounds are denoted by $C_2^+(y),C_3^+(y)$,
+and the upper-frequency coefficient bounds by $C_2^-(M,y),C_3^-(M,y)$.
+Explicitly, with $d_y=M+1-y$, they are
+\begin{align*}
+ C_2^+(y)&=\frac{\log(y+1)+\gamma_E}{y^2}
+                 -\frac{1+2y}{2y^2(y+1)},\\
+ C_3^+(y)&=\frac{\log(y+1)+\gamma_E}{y^3}
+                 -\frac{1+3y+3y^2}{2y^3(y+1)^2},\\
+ C_2^-(M,y)&=\frac{d_y^{-2}+(d_y+1)^{-2}+(d_y+1)^{-1}}{y}
+ -\frac{\log(M+1)-(M+1)^{-1}-\Rea\psi_\Gamma(d_y)}{y^2},\\
+ C_3^-(M,y)&=\frac{d_y^{-3}+(d_y+1)^{-3}+[2(d_y+1)^2]^{-1}}{y}
+ -\frac{d_y^{-2}+(d_y+1)^{-1}}{y^2}\\
+ &\quad+\frac{\log(M+1)-[2(M+1)]^{-1}-\Rea\psi_\Gamma(d_y)}{y^3}.
+\end{align*}
+Under the cutoff gaps, the coefficient estimates give
+\[
+ C_2^-(M,y)+C_2^+(y)\le9/y,\qquad
+ C_3^-(M,y)+C_3^+(y)\le17/y.
+\]
+The differentiated endpoint amplitudes are
+\[
+ H=(1/2+t)x^{-3/2},\qquad H_1=(3/2)(1/2+t)x^{-5/2}.
+\]
+They arise from $g(u)=u^{-1/2}$ and $f(u)=(t/(2\pi))\log u$ through
+$H=|g'(x)|+2\pi|g(x)f'(x)|$ and
+$H_1=|g''(x)|+2\pi(|g(x)f''(x)|+|g'(x)f'(x)|)$.
+They satisfy
+$H/y\le1+2\pi$, $H_1/y\le2(1+2\pi)$ and
+$H(y/x)/y\le1+2\pi$, because $y\le x$ and $x\ge1$.
+Substitution into the four terms yields exactly $C_P$.
+
+The elementary pole term obeys $|B|\le1$.
+For the lower integrals, integration by parts in their logarithmic phase and
+retention of the half-integer endpoint produce the arithmetic gap sum
+\[
+ \sum_{m=1}^M\frac{m^2}{y^2(y-m)}\le8(1+\log y).
+\]
+The gap $y-M\ge1/8$ controls the closest term; for the other terms the
+harmonic sum comparison gives the logarithm. Since
+$x^{-1/2}(1+\log y)\le3$ for $1\le y\le x$, and the two boundary factors
+are each at most one, this proves $|L|\le2+24/\pi$.
+
+To evaluate $F_0$, introduce positive damping $e^{-\epsilon u}$.
+The convergent Gamma--Laplace integral is
+\[
+ \int_0^\infty u^{-s}e^{2\pi\ii mu-\epsilon u}\dd u
+   =(\epsilon-2\pi\ii m)^{s-1}\Gamma(1-s),\qquad\epsilon>0.
+\]
+On any finite interval, dominated convergence removes the damping. On an upper
+interval starting at $R>t/(\pi m)$, the phase derivative has magnitude at
+least $\pi m$, and the nonnegative amplitude $u^{-\Rea s}e^{-\epsilon u}$
+is decreasing. The proved primitive bound and integration by parts give the
+uniform tail bound $2R^{-\Rea s}/(\pi m)$. Thus the finite-interval Abel
+limit and this tail bound identify
+\[
+ J_\infty(s;0;m)=(-2\pi\ii m)^{s-1}\Gamma(1-s).
+\]
+The negative-imaginary-axis principal branch is retained. Its exact factorization
+is
+\[
+ \Gamma(1-s)(2\pi/\ii)^{s-1}
+       =\chi(s)(1+e_\Gamma(s)),\qquad
+ e_\Gamma(s)=\frac{e^{\pi\ii s}}{1-e^{\pi\ii s}}.
+\]
+The denominator has norm at least $1-e^{-\pi|t|}$; hence for $t\ge1$,
+$|e_\Gamma(s)|\le e^{-\pi t}/(1-e^{-\pi})$.
+Also $|S(1-s,y)|\le y^{1/2}\log y+1\le t^2+1$.
+Since $|\chi(s)|=1$, this gives $|F_0-Q|\le(1-e^{-\pi})^{-1}$.
+The exact relation $F=F_0-L$ and
+\[
+ R_{\rm AFE}=(\zeta-S-B-F)+B+(F-Q)
+\]
+prove the displayed constant bound. This makes all three analytic error sources
+explicit, rather than postulating a sharp functional equation.
+
+Finally we construct the cutoffs at every $t\ge200\pi$.
+Let $r=\sqrt{t/(2\pi)}\ge10$, set
+\[
+ M=\lfloor r/2\rfloor_+,\quad b=M+1/2,\quad u=r^2/b,\quad
+ A=\lfloor u+1/2\rfloor_+,\quad x=A+1/2,\quad y=r^2/x.
+\]
+The floor inequalities give $u<x\le u+1$, and consequently
+\[
+ r\le x\le(12/5)r,\quad(2/5)r\le y\le r,\quad
+ M+1/8\le y\le M+1/2,\quad\lfloor y\rfloor_+=M.
+\]
+The first scale range and $2\pi>6$ give $A^2\le t$; the second gives
+$M^2\le t$. The exponential envelope is eventually at most one.
+These are precisely the short-polynomial cutoffs used in
+Proposition~\ref{prop:weyl}.
+% Source correspondence: WeylPort/AFE/Objects.lean; WeylPort/AFE/DampedWeightedKernel.lean; WeylPort/AFE/ChiGammaFactor.lean; WeylPort/AFE/UniformError.lean; WeylPort/CutoffSelection.lean}{afeRemainder; weightedIntegralTail_zero_eq_gamma; gamma_factor_eq_chi_mul_one_add; norm_critical_afe_uniform; exists_afe_cutoffs_all_heights}
+
+\subsection{A Laplace proof of the Bessel remainder}
+The exact ray proof of \eqref{eq:Ytwo} is short enough to give explicitly.
+Define, with principal half-powers,
+\[
+ K_x(z)=e^{\ii xz}(1-z)^{-1/2}(1+z)^{-1/2},\qquad
+ V_x(b)=\int_0^\infty K_x(b+\ii t)\dd t.
+\]
+For $0\le b<1$ a rectangle in the upper half-plane, its upper edge bounded by
+$C/H$ times $e^{-xH}$, yields the equality of the two vertical integrals and
+the finite real edge. Under $z=\sin u$, the positive cosines cancel the two
+principal half-powers, giving
+\[
+ \int_0^{\pi/2}e^{\ii x\cos u}\dd u=\ii V_x(0)-\ii V_x(1).
+\]
+We take $b=\sin(\pi/2-H^{-1})\to1$ and prove convergence of the
+vertical integral at $b=1$, where the local endpoint majorant is $t^{-1/2}$.
+The $b=0$ integral is the real tail
+$\int_0^\infty e^{-xt}/\sqrt{1+t^2}\dd t$.
+Taking imaginary parts and comparing with the Schl\"afli definition gives
+$Y_0(x)=-(2/\pi)\Rea V_x(1)$.
+
+On the unit ray,
+\[
+ V_x(1)=e^{\ii x}\frac{1+\ii}{2}
+       \int_0^\infty t^{-1/2}e^{-xt}(1+\ii t/2)^{-1/2}\dd t.
+\]
+This factorization uses multiplication of a positive real base with a
+nonzero complex base, which does not cross the principal logarithm's cut.
+The constant is exactly $(-\ii)^{-1/2}2^{-1/2}=(1+\ii)/2$.
+Put $w=(1+\ii u)^{1/2}$. Then
+$\Rea w\ge1$, $|w|\ge1$, $|w+1|\ge2$, and
+$w-1=\ii u/(w+1)$. The algebraic identity
+\[
+ 2w\bigl(w^{-1}-1+\ii u/2\bigr)=(w-1)^2(w+2)
+\]
+therefore implies the global bound
+\[
+ |(1+\ii u)^{-1/2}-1+\ii u/2|\le3u^2/8.
+\]
+At $u=t/2$, multiply by $t^{-1/2}e^{-xt}$ and integrate.
+The three exact moments are
+\[
+ \int_0^\infty t^{k-1/2}e^{-xt}\dd t
+    =\Gamma(k+1/2)x^{-k-1/2},\quad k=0,1,2.
+\]
+Their values are $\sqrt\pi x^{-1/2}$,
+$(\sqrt\pi/2)x^{-3/2}$ and $(3\sqrt\pi/4)x^{-5/2}$.
+Thus the Laplace integral differs from
+$\sqrt\pi x^{-1/2}-\ii\sqrt\pi x^{-3/2}/8$ by at most
+$(9/128)\sqrt\pi x^{-5/2}$.
+Multiplication by $e^{\ii x}(1+\ii)/2$, taking its real part, and multiplying
+by $-2/\pi$ give \eqref{eq:Ytwo} and its stated error. All these integrals
+are absolutely convergent for $x>0$; no asymptotic series or unproved Bessel
+property enters the computation.
+% Source correspondence: Stronger/Atkinson/NeumannContourShift.lean; NeumannSchlafliEntry.lean; NeumannLaplaceRepresentation.lean; NeumannRayFactorization.lean; NeumannLaplaceAmplitude.lean; NeumannLaplaceRemainder.lean}{neumann_schlafli_complex_identity; dfiBesselY0_eq_neumannLaplaceIntegral; norm_neumannLaplaceAmplitude_sub_linear_le; norm_neumannLaplaceIntegral_sub_approximation_le}
+
+\subsection{Finite Fresnel windows and the symmetric stationary cancellation}
+For $c>0$, let
+$F_c(H)=\int_{-H}^H e^{-2\pi\ii cz^2}\dd z$.
+For positive damping, the whole-line Gaussian value is
+$G_\epsilon(c)=(\pi/(\epsilon+2\pi c\ii))^{1/2}$.
+The phase derivative outside a window of radius $H$ is at least $4\pi cH$;
+using its explicit reciprocal derivative, integration by parts on each tail
+bounds the difference between $G_\epsilon(c)$ and its damped window uniformly
+in $\epsilon>0$ by $2/(cH\pi)$.
+On the finite interval the damped integrand converges continuously to the
+undamped one. The principal half-power is continuous at
+$\pi/(2\pi c\ii)=-\ii/(2c)$, so
+\[
+ |F_c(H)-(-\ii/(2c))^{1/2}|\le2/(cH\pi).
+\]
+The number $(1-\ii)/(2\sqrt c)$ has positive real part and square
+$-\ii/(2c)$, hence is that principal square root. Equivalently it is
+$e^{-\ii\pi/4}/\sqrt{2c}$, proving the exact Fresnel normalization and its
+finite-window error.
+
+For the stationary integral, write $y=r+z$ with $r=r_b$ and
+$\Theta(z)=\Phi(T,b;(r+z)^2)$.
+For $|z|\le r/2$, the actual logarithm expansion gives
+\[
+ \Theta(z)=\Theta(0)-2\pi h_bz^2+\frac{2T}{3r^3}z^3+E_4(z),
+ \qquad |E_4(z)|\le4T|z|^4/r^4.
+\]
+This follows from the logarithmic power-series remainder, multiplied by $2T$,
+and the exact quadratic-root equation canceling its linear term.
+If the root amplitude is $a(r+z)$, its $C^2$ bound gives
+$|a(r+z)-a(r)-za'(r)|\le MR^2z^2$.
+The cubic correction multiplied by $a(r)$ is odd, as is $za'(r)$; both
+integrate to zero against the even quadratic exponential on $[-h,h]$.
+The remaining terms are: the quadratic amplitude remainder;
+the product of linear amplitude with cubic phase;
+the fourth-order phase remainder times the bounded amplitude; and the
+second-order exponential remainder of the cubic term.
+Bounding these four terms before integration gives respectively
+\[
+ 2MR^2h^3,\quad4MRT h^5/r^3,\quad8MTh^5/r^4,
+                    \quad8MT^2h^7/r^6.
+\]
+This is the local symmetric estimate in Lemma~\ref{lem:stationaryerror}.
+The tails use actual compact support, vanishing endpoint amplitudes,
+and the nonstationary primitive estimates; the Fresnel-window bound then
+provides the reciprocal $h$ term. Hence the fourth-root balance follows from
+an exact odd-term cancellation, not from a generic stationary-phase theorem
+with an unspecified remainder.
+% Source correspondence: Stronger/Atkinson/FresnelAbelLimit.lean; FresnelEvaluation.lean; StationaryOddRemainder.lean; AtkinsonSymmetricStationary.lean}{norm_atkinsonQuadraticWindow_sub_gaussianValue_le; fresnelGaussianValue_eq_phase; integral_atkinsonRootQuadratic_odd; IntervalC2Bound.atkinsonLocalSymmetric}
+
+\subsection{Finite cancellation lemmas used twice in the development}
+The Weyl estimate and the maximal-prefix argument both use the following
+finite cancellation mechanism. It is the discrete first-derivative test,
+followed by a second-derivative estimate.
+Let $\theta_n=f(n+1)-f(n)$ be monotone with
+$\delta\le\theta_n\le2\pi-\delta$, $\delta>0$, $0\le n\le N$.
+The phase resolvent
+\[
+ q(\theta)=\frac1{1-e^{\ii\theta}}
+           =\frac12+\frac{\ii}2\cot(\theta/2)
+\]
+has constant real part. The identity
+$e^{\ii f(n)}=q(\theta_n)(e^{\ii f(n)}-e^{\ii f(n+1)})$
+telescopes by finite summation by parts. Its resulting norm bound is the two
+endpoint resolvent norms plus the variation of $q(\theta_n)$.
+Since $\cot$ is decreasing on $(0,\pi)$, that variation is
+$(\cot(\theta_0/2)-\cot(\theta_N/2))/2$. Each endpoint satisfies
+$|q(\theta)|\le\pi/(2\delta)$; its cotangent absolute value divided by two
+is at most $|q(\theta)|$. Thus the phase sum is at most $2\pi/\delta$.
+Subtracting $2\pi kn$ leaves every phase unchanged and reduces any fixed
+period to this case. Replacing $f(n)$ by $-f(n)+2\pi n$ gives the decreasing
+increment version by complex conjugation.
+
+If instead the successive second differences satisfy
+$0<\lambda\le\theta_{n+1}-\theta_n\le\Lambda$ for $n<N$, partition by
+$k_n=\lfloor\theta_n/(2\pi)\rfloor$.
+The index is monotone. The number of periods from $k_0$ to $k_N$ is at most
+$N\Lambda/(2\pi)+2$, since $\theta_N-\theta_0\le N\Lambda$.
+In each period the good increments lie in
+$[2\pi k+\delta,2\pi(k+1)-\delta]$ and form a consecutive index set;
+their phase sum is at most $2\pi/\delta$ by the resolvent estimate.
+The two remaining endpoint bands have at most $\delta/\lambda+1$ indices
+each: if $i$ and $j$ are in a band of width $\delta$, then
+$(j-i)\lambda\le\theta_j-\theta_i\le\delta$.
+Absolute estimation on those bands gives
+\[
+ \left|\sum_{n=0}^N e^{\ii f(n)}\right|
+ \le\left(\frac{N\Lambda}{2\pi}+2\right)
+                \left(\frac{2\pi}{\delta}+2(\delta/\lambda+1)\right).
+\]
+This estimate remains valid if the good band is empty or the two excluded
+bands overlap, since the partition inequalities are upper bounds.
+Taking $\delta=\sqrt\lambda$ proves the second-derivative estimate used in
+Section~\ref{sec:sums} with its exact constants.
+% Source correspondence: GuthMaynard/VanDerCorput.lean; GuthMaynard/SecondDerivative.lean}{kusminLandau_one_period; kusminLandau_one_period_decreasing; filter_card_bound; period_count_bound; vanDerCorput_second_derivative; vanDerCorput_B_process}
+
+For completeness, the finite Weyl A-process is also an exact sum argument.
+Extend a coefficient sequence by zero off $[0,N)$ and average its $H$ shifts
+on $[-H,N)$. Each original term appears $H$ times.
+Cauchy--Schwarz on this padded interval gives
+\[
+ H^2\left|\sum_{n<N}a_n\right|^2
+ \le(N+H)\left(HN+H^2C\right)
+\]
+when $|a_n|\le1$ and every off-diagonal shifted correlation has norm at most
+$C$. Expansion of the square supplies $HN$ from the $H$ diagonal shifts;
+the other correlations have real part at most their norm, so their total is
+at most $H^2C$.
+For the logarithmic phase $f(x)=-t\log x$ on a block starting at $A$, the
+shift difference has exact curvature
+$t/u^2-t/v^2=tr(u+v)/(u^2v^2)$, where $v-u=r>0$ and
+$A\le u\le v\le2A$. Hence its unit second differences lie between
+$tr/(8A^3)$ and $4tr/A^3$. The preceding second-derivative estimate and the elementary
+product estimate, when $tr/(8A^3)\le1$, give the correlation bound
+\[
+ 100\left(N\sqrt{tr/(8A^3)}+1/\sqrt{tr/(8A^3)}\right).
+\]
+Uniformize over $1\le r\le H$ by replacing the first square root with its
+value at $H$ and the second denominator with its value at one.
+For $t=Y^3$, $1\le Y\le A$, $A^2\le Y^3$, choose
+$H=\lfloor A/Y\rfloor_+$. Then $1\le H\le A$,
+$HY\le A\le2HY$. The uniform correlation is at most $400Y$.
+With outer block length $A$, the A-process gives a square bound at most
+$900AY$, hence phase-prefix norm at most $30\sqrt{AY}$. For shorter
+prefixes, if their length is below $H$, use the triangle bound; otherwise
+apply the same shift argument and enlarge its length factors to $A$.
+Thus the prefix bound is genuinely uniform over all prefix lengths.
+
+Finally for any nonnegative antitone weight $u_n$, summation by parts gives
+\[
+ \left|\sum_{n<N}u_nv_n\right|
+ \le B\left(u_{N-1}+\sum_{n<N-1}(u_n-u_{n+1})\right)=Bu_0
+\]
+if every phase prefix has norm at most $B$. Take
+$u_n=(A+n)^{-1/2}$ and $B=30\sqrt{AY}$ to get
+$30\sqrt Y=30t^{1/6}$, the physical block estimate in
+Proposition~\ref{prop:weyl}.
+% Source correspondence: GuthMaynard/Weyl.lean; GuthMaynard/WeylExplicit.lean; GuthMaynard/WeylZeta.lean; WeylPort/Block.lean}{interval_weyl_differencing_complex; logarithmicDifferenceCurvature_bounds; logarithmic_weyl_exponent_pair_prefix; norm_weighted_sum_le_of_antitone; norm_criticalLine_cpow_block_le}
+
+\subsection{Summable nonstationary terms}
+Here are the concrete series majorants behind the removals in
+Section~\ref{sec:atkinson}.
+On the support $x\in[T/16,T]$, the actual $K_0$ integral has exponential
+large-argument domination. For every fixed integer $k$, its pointwise
+bound is at most $C_k/(T^kn^k)$ at $4\pi\sqrt{nx}$.
+We first use $\cosh u\ge1+u^2/2$ to prove
+$|K_0(z)|\le2/\sqrt z$ for $z>0$.
+Splitting the exponential as two equal factors gives
+$K_0(z)\le e^{-z/2}K_0(z/2)$, hence $|K_0(z)|\le2e^{-z/2}$ for $z\ge2$.
+Since $e^{-z/2}\le(2k)!/(z/2)^{2k}$, and
+$(4\pi\sqrt{nx})^2\ge Tn$ on the support, the power constant can be chosen
+$C_k=2\cdot2^{2k}(2k)!$. The compact source test has integral norm at most
+$CGT$. Therefore its $n$th full plus term is at most
+\[
+ \frac{C_kGT}{T^k}d(n)n^{-2}\qquad(k\ge2).
+\]
+The zero term vanishes. Since $\sum d(n)n^{-2}<\infty$, summing proves
+$|\text{plus branch}|\le C_kGT/T^k$. Choose $k>A+2$ and then $T\ge C_k$
+to obtain the power saving $GT^{-A}$.
+
+The correction carriers in \eqref{eq:Ytwo} have $\alpha=3/4$.
+The uniform root-kernel primitive bound is at most four, obtained by splitting
+at $r_b-1,r_b+1$ and applying the one-sided nonstationary derivative bound
+outside the middle interval of length two. Integration by parts with the
+actual $C^1$ amplitude gives
+$|\mathcal A_\alpha(T,G,L;b)|\le C_\alpha GT^{-\alpha}$ for every real $b$.
+For $b\ge8\sqrt T$, the support is away from both signed saddles and the
+stronger bound is $C_\alpha GT^{-\alpha}/b$ for each sign.
+Combining these two bounds at $b=\sqrt n$, using
+$T^{-3/4}\sqrt T\le1$, gives a correction pair bounded by $CG/\sqrt n$.
+Its explicit Bessel factor $(4\pi)^{-3/2}n^{-3/4}/8$ and divisor factor
+then give $CGd(n)n^{-5/4}$ per term. The convergent divisor series at
+$5/4$ bounds the complete correction by $O(G)$.
+
+The genuine remainder in \eqref{eq:Ytwo} is bounded on the same support by a
+constant times $T^{-5/4}n^{-5/4}$. Multiply by the compact-test integral norm
+$CGT$ and sum against $d(n)$; the resulting bound is
+$CGT^{-1/4}\sum d(n)n^{-5/4}\le C'G$. These are full-series bounds,
+so neither correction nor remainder can hide an unresolved infinite tail.
+
+The logarithmic main term is written as a smooth weighted reflection integral
+with kernel $x^{-1}e^{\ii(T\log x-2\pi x)}$ on $[T/16,T]$.
+Its $C^1$ weight bound is $CG\sqrt T\log T$. The all-frequency estimate in
+Lemma~\ref{lem:allfreq}, followed by integration by parts with this weight,
+cancels the $\sqrt T$ scale and bounds the main term by $C'G\log T$.
+This is why that term is absorbed into the local-mean error rather than set to
+zero. The fixed support, coefficient norms, derivative integrals and primitive
+estimates all enter before physical scales are specialized to $L=\log T$.
+% Source correspondence: Stronger/Atkinson/AtkinsonK0Integral.lean; AtkinsonK0Series.lean; AtkinsonCorrectionBounds.lean; NeumannRemainderSeries.lean; AtkinsonMainIntegral.lean}{exists_norm_integral_zetaAtkinsonK0_le; exists_norm_zetaAtkinsonBesselPlus_le; exists_norm_atkinsonCorrectionTerm_le; exists_norm_zetaAtkinsonVoronoiMain_le}
+
+
+\begin{thebibliography}{99}
+\raggedright
+\bibitem{atkinson} F.~V. Atkinson, The mean-value of the Riemann zeta function,
+\emph{Acta Math.} \textbf{81} (1949), 353--376.
+\url{https://doi.org/10.1007/BF02395027}.
+\bibitem{bourgain} J. Bourgain, On the distribution of Dirichlet sums. II,
+in \emph{Number Theory for the Millennium, I}, A K Peters, Natick, MA, 2002,
+87--109.
+\bibitem{gm} L. Guth and J. Maynard, New large value estimates for Dirichlet polynomials,
+\emph{Ann. of Math. (2)} \textbf{203} (2026), no.~2, 623--675.
+\url{https://doi.org/10.4007/annals.2026.203.2.6}.
+\bibitem{hb78} D.~R. Heath-Brown, The twelfth power moment of the Riemann zeta-function,
+\emph{Q. J. Math. Oxford Ser. (2)} \textbf{29} (1978), no.~4, 443--462.
+\url{https://doi.org/10.1093/qmath/29.4.443}.
+\bibitem{hb79} D.~R. Heath-Brown, Zero density estimates for the Riemann zeta-function
+and Dirichlet $L$-functions, \emph{J. London Math. Soc. (2)} \textbf{19} (1979),
+no.~2, 221--232. \url{https://doi.org/10.1112/jlms/s2-19.2.221}.
+\bibitem{ingham28} A.~E. Ingham, Mean-value theorems in the theory of the Riemann
+zeta-function, \emph{Proc. London Math. Soc. (2)} \textbf{27} (1928), 273--300.
+\url{https://doi.org/10.1112/plms/s2-27.1.273}.
+\bibitem{ingham} A.~E. Ingham, On the estimation of $N(\sigma,T)$,
+\emph{Q. J. Math. Oxford Ser.} \textbf{11} (1940), 201--202.
+\url{https://doi.org/10.1093/qmath/os-11.1.201}.
+\bibitem{ivic} A. Ivi\'c, \emph{The Riemann Zeta-Function: Theory and Applications},
+Dover, Mineola, NY, 2003; reprint of the 1985 Wiley edition.
+\bibitem{ik} H. Iwaniec and E. Kowalski, \emph{Analytic Number Theory},
+American Mathematical Society Colloquium Publications, vol.~53,
+American Mathematical Society, Providence, RI, 2004.
+\url{https://doi.org/10.1090/coll/053}.
+\bibitem{kerr} B. Kerr, Large values of Dirichlet polynomials and zero density
+estimates for the Riemann zeta function, preprint, 2019,
+arXiv:1909.12075v1. \url{https://arxiv.org/abs/1909.12075}.
+\bibitem{source} M. Lewko and the contributors credited upstream,
+\emph{A zero-density estimate with exponent $3(1-\sigma)/(2\sigma)$ for the
+Riemann zeta function: Lean development}, registered revision
+\texttt{804bdb55b1fc40e6a1a6878fd96078644a70e288}, 2026.
+\url{https://github.com/mrklwk/zeta-density-three-over-two-sigma-lean/tree/804bdb55b1fc40e6a1a6878fd96078644a70e288}.
+\bibitem{mathlib} The mathlib community, \emph{mathlib4}, revision
+\texttt{065356127b1dc0016f66b7283ce0ce2c4055aa55}, 2026.
+\url{https://github.com/leanprover-community/mathlib4/tree/065356127b1dc0016f66b7283ce0ce2c4055aa55}.
+\bibitem{montgomery} H.~L. Montgomery, \emph{Topics in Multiplicative Number Theory},
+Lecture Notes in Mathematics, vol.~227, Springer, Berlin--New York, 1971.
+\bibitem{registry} Palomar Registry, \emph{A zero-density estimate with exponent
+$3(1-\sigma)/(2\sigma)$ for the Riemann zeta function}, version~1, 2026.
+\url{https://data.palomar-registry.org/entries/PALOMAR-2026-10-09-000005-v1.json}.
+\bibitem{tty} T. Tao, T. Trudgian and A. Yang,
+New exponent pairs, zero density estimates, and zero additive energy estimates:
+a systematic approach, \emph{Math. Comp.} \textbf{95} (2026), no.~362, 2941--2990;
+published online 6 November 2025.
+\url{https://doi.org/10.1090/mcom/4138}.
+The comparison in this note uses the accessible preprint
+\url{https://arxiv.org/pdf/2501.16779}.
+\bibitem{titchmarsh} E.~C. Titchmarsh, \emph{The Theory of the Riemann Zeta-Function},
+second edition, revised by D.~R. Heath-Brown, Oxford University Press, Oxford, 1986.
+\end{thebibliography}
+
+\end{document}
