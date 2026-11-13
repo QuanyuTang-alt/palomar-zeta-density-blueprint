@@ -9,3 +9,4 @@ __pycache__/
 paper-version/.workflow/
 paper-version/build-study.py
 paper-version/diagram-brief.md
+paper-version/zeta-density-study.log
