@@ -1,0 +1,6 @@
+*.aux
+*.toc
+*.out
+*.xdv
+.DS_Store
+__pycache__/

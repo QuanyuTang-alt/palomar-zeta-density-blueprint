@@ -1,0 +1,3761 @@
+{
+  "method": "Text/import traversal and regex declaration recognition, not Lean kernel replay.",
+  "source_commit": "804bdb55b1fc40e6a1a6878fd96078644a70e288",
+  "local_import_modules": 448,
+  "local_import_lines": 69776,
+  "regex_declarations": 3538,
+  "total_lean_files": 460,
+  "total_lean_lines": 71726,
+  "archive_sha256": "e6fb642043c8e24fcc8ea171d7786cb6a7a2a47467d9a0fe741fe815e2566efc",
+  "archive_regular_files": 560,
+  "snapshot_mismatches": [],
+  "solution_sha256": "2316b521f6b5e1775c7498f797e04a92dcc53960416e98c6602b4e1debd8d11f",
+  "solution_matches_registry": true,
+  "tex_lines": 3012,
+  "tex_whitespace_words": 16100,
+  "source_correspondence_groups": 81,
+  "unresolved_correspondences": [],
+  "undefined_labels": [],
+  "duplicate_labels": [],
+  "unexpected_control_characters": [],
+  "references": [
+    {
+      "tex_line": 147,
+      "files": [
+        "lean/Solution.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "DensityStronger.density_bound",
+          "locations": [
+            {
+              "file": "lean/Solution.lean",
+              "line": 36
+            }
+          ]
+        },
+        {
+          "display_name": "exact_membership",
+          "locations": [
+            {
+              "file": "lean/Solution.lean",
+              "line": 13
+            }
+          ]
+        },
+        {
+          "display_name": "exact_multiplicity",
+          "locations": [
+            {
+              "file": "lean/Solution.lean",
+              "line": 26
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 158,
+      "files": [
+        "lean/Solution.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "DensityStronger.twelfth_moment",
+          "locations": [
+            {
+              "file": "lean/Solution.lean",
+              "line": 62
+            }
+          ]
+        },
+        {
+          "display_name": "actual_moment_integrable",
+          "locations": [
+            {
+              "file": "lean/Solution.lean",
+              "line": 55
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 184,
+      "files": [
+        "lean/MathCollab/Density/ZetaCounting.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "IsNontrivialZetaZero",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaCounting.lean",
+              "line": 19
+            }
+          ]
+        },
+        {
+          "display_name": "zetaMultiplicity",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaCounting.lean",
+              "line": 24
+            }
+          ]
+        },
+        {
+          "display_name": "zetaZeroRegion",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaCounting.lean",
+              "line": 56
+            }
+          ]
+        },
+        {
+          "display_name": "zetaZeroFinset",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaCounting.lean",
+              "line": 75
+            }
+          ]
+        },
+        {
+          "display_name": "zetaSlabCount",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaCounting.lean",
+              "line": 83
+            }
+          ]
+        },
+        {
+          "display_name": "zetaDensityCount",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaCounting.lean",
+              "line": 87
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 214,
+      "files": [
+        "lean/MathCollab/Density/ZetaCounting.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "zetaZeroRegion_finite",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaCounting.lean",
+              "line": 59
+            }
+          ]
+        },
+        {
+          "display_name": "zeta_analyticOrder_ne_top",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaCounting.lean",
+              "line": 26
+            }
+          ]
+        },
+        {
+          "display_name": "zetaMultiplicity_pos",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaCounting.lean",
+              "line": 43
+            }
+          ]
+        },
+        {
+          "display_name": "zetaMultiplicity_cast",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaCounting.lean",
+              "line": 39
+            }
+          ]
+        },
+        {
+          "display_name": "zetaMultiplicity_local_factorization",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaCounting.lean",
+              "line": 49
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 232,
+      "files": [
+        "lean/Solution.lean",
+        "lean/MathCollab/Density/DensityConclusion.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "exact_membership",
+          "locations": [
+            {
+              "file": "lean/Solution.lean",
+              "line": 13
+            }
+          ]
+        },
+        {
+          "display_name": "zetaDensityCount_eq_zero_of_one_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/DensityConclusion.lean",
+              "line": 28
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 251,
+      "files": [
+        "lean/MathCollab/Density/ZetaCounting.lean",
+        "lean/MathCollab/Density/ZetaConjugation.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "zetaSlabCount_mono",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaCounting.lean",
+              "line": 101
+            }
+          ]
+        },
+        {
+          "display_name": "zetaDensityCount_mono",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaCounting.lean",
+              "line": 109
+            }
+          ]
+        },
+        {
+          "display_name": "zetaDensityCount_le_twice_positive",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaConjugation.lean",
+              "line": 83
+            }
+          ]
+        },
+        {
+          "display_name": "zetaSlabCount_split_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaConjugation.lean",
+              "line": 66
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 342,
+      "files": [
+        "lean/WeylPort/Block.lean",
+        "lean/WeylPort/ShortSum.lean",
+        "lean/WeylPort/ActualZeta.lean",
+        "lean/MathCollab/Density/WeylInput.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "norm_criticalLine_cpow_block_le",
+          "locations": [
+            {
+              "file": "lean/WeylPort/Block.lean",
+              "line": 25
+            }
+          ]
+        },
+        {
+          "display_name": "norm_critical_sum_le_log",
+          "locations": [
+            {
+              "file": "lean/WeylPort/ShortSum.lean",
+              "line": 103
+            }
+          ]
+        },
+        {
+          "display_name": "eventually_norm_riemannZeta_critical_lt_rpow",
+          "locations": [
+            {
+              "file": "lean/WeylPort/ActualZeta.lean",
+              "line": 31
+            }
+          ]
+        },
+        {
+          "display_name": "exists_riemannZeta_critical_dyadic_weyl",
+          "locations": [
+            {
+              "file": "lean/WeylPort/ActualZeta.lean",
+              "line": 124
+            }
+          ]
+        },
+        {
+          "display_name": "actual_zeta_weyl_input",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/WeylInput.lean",
+              "line": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 352,
+      "files": [
+        "lean/MathCollab/Density/Stronger/MomentGrowth.lean",
+        "lean/MathCollab/Density/Stronger/PointMean/Native.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "zetaMomentCriticalNorm_le_linear",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/WeightedTwelfth.lean",
+              "line": 19
+            }
+          ]
+        },
+        {
+          "display_name": "zetaMomentCriticalNorm_twelfth_eventually_le_cube",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/MomentGrowth.lean",
+              "line": 41
+            }
+          ]
+        },
+        {
+          "display_name": "exists_zetaMomentCriticalNorm_sq_le_quadratic",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/PointMean/Native.lean",
+              "line": 28
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 378,
+      "files": [
+        "lean/MathCollab/Density/LargeValueDefinitions.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "detectingPolynomial",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LargeValueDefinitions.lean",
+              "line": 19
+            }
+          ]
+        },
+        {
+          "display_name": "oneSeparated",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LargeValueDefinitions.lean",
+              "line": 25
+            }
+          ]
+        },
+        {
+          "display_name": "localDiameter",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LargeValueDefinitions.lean",
+              "line": 31
+            }
+          ]
+        },
+        {
+          "display_name": "divisorMaximum",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LargeValueDefinitions.lean",
+              "line": 33
+            }
+          ]
+        },
+        {
+          "display_name": "bootstrapScalar",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LargeValueDefinitions.lean",
+              "line": 36
+            }
+          ]
+        },
+        {
+          "display_name": "LargeValueData",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LargeValueDefinitions.lean",
+              "line": 40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 389,
+      "files": [
+        "lean/MathCollab/Density/LargeValues.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "large_values_data",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LargeValues.lean",
+              "line": 17
+            }
+          ]
+        },
+        {
+          "display_name": "large_values",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LargeValues.lean",
+              "line": 81
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 409,
+      "files": [
+        "lean/MathCollab/Density/ReflectionDefinitions.lean",
+        "lean/MathCollab/Density/ComparisonCutoff.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "ReflectionCutoff",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ReflectionDefinitions.lean",
+              "line": 21
+            }
+          ]
+        },
+        {
+          "display_name": "ComparisonCutoff",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ComparisonCutoff.lean",
+              "line": 19
+            }
+          ]
+        },
+        {
+          "display_name": "comparisonCutoff",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ComparisonCutoff.lean",
+              "line": 25
+            }
+          ]
+        },
+        {
+          "display_name": "cutoffIntegral",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ReflectionDefinitions.lean",
+              "line": 33
+            }
+          ]
+        },
+        {
+          "display_name": "hKernel",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ReflectionDefinitions.lean",
+              "line": 37
+            }
+          ]
+        },
+        {
+          "display_name": "dyadicPolynomial",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ReflectionDefinitions.lean",
+              "line": 41
+            }
+          ]
+        },
+        {
+          "display_name": "completePairEnergy",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ReflectionDefinitions.lean",
+              "line": 44
+            }
+          ]
+        },
+        {
+          "display_name": "kernelEnergy",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LargeValueDefinitions.lean",
+              "line": 22
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 456,
+      "files": [
+        "lean/MathCollab/Density/CompletePairs.lean",
+        "lean/MathCollab/Density/Comparison.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "completePairEnergy_gram",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ComparisonAlgebra.lean",
+              "line": 19
+            }
+          ]
+        },
+        {
+          "display_name": "completePairEnergy_diagonal_lower",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ComparisonAlgebra.lean",
+              "line": 30
+            }
+          ]
+        },
+        {
+          "display_name": "comparison_extension_bound",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Comparison.lean",
+              "line": 18
+            }
+          ]
+        },
+        {
+          "display_name": "comparison_continuous_bound",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Comparison.lean",
+              "line": 83
+            }
+          ]
+        },
+        {
+          "display_name": "comparison_remainder_bound",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Comparison.lean",
+              "line": 132
+            }
+          ]
+        },
+        {
+          "display_name": "uniform_comparison",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Comparison.lean",
+              "line": 173
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 480,
+      "files": [
+        "lean/MathCollab/Density/UniformIBP.lean",
+        "lean/MathCollab/Density/CutoffTransforms.lean",
+        "lean/MathCollab/Density/FixedBandError.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "ibpIntegral_recurrence",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/UniformIBP.lean",
+              "line": 214
+            }
+          ]
+        },
+        {
+          "display_name": "uniform_offBand_decay",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/UniformIBP.lean",
+              "line": 310
+            }
+          ]
+        },
+        {
+          "display_name": "hKernel_poisson",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/CutoffTransforms.lean",
+              "line": 176
+            }
+          ]
+        },
+        {
+          "display_name": "uniform_fixedBand_and_diagonal_error",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/FixedBandError.lean",
+              "line": 86
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 510,
+      "files": [
+        "lean/MathCollab/Density/Oscillatory.lean",
+        "lean/MathCollab/Density/AllFrequency.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "norm_gmReflectionIntegral_le_left",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Oscillatory.lean",
+              "line": 279
+            }
+          ]
+        },
+        {
+          "display_name": "norm_gmReflectionIntegral_le_right",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Oscillatory.lean",
+              "line": 309
+            }
+          ]
+        },
+        {
+          "display_name": "norm_gmReflectionIntegral_le_six_div_sqrt",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/AllFrequency.lean",
+              "line": 23
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 559,
+      "files": [
+        "lean/MathCollab/Density/MellinKernel.lean",
+        "lean/MathCollab/Density/BandEnergy.lean",
+        "lean/MathCollab/Density/LocalCover.lean",
+        "lean/MathCollab/Density/Reflection.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "band_modeIntegral_mellin",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/MellinKernel.lean",
+              "line": 221
+            }
+          ]
+        },
+        {
+          "display_name": "norm_reflectionKernel_sq_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/MellinKernel.lean",
+              "line": 246
+            }
+          ]
+        },
+        {
+          "display_name": "norm_bandContribution_sq_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/BandEnergy.lean",
+              "line": 66
+            }
+          ]
+        },
+        {
+          "display_name": "sum_card_localSet",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LocalCover.lean",
+              "line": 142
+            }
+          ]
+        },
+        {
+          "display_name": "uniform_reflection",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Reflection.lean",
+              "line": 97
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 573,
+      "files": [
+        "lean/MathCollab/Density/BootstrapDomain.lean",
+        "lean/MathCollab/Density/BootstrapSupremum.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "bootstrapFamily",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/BootstrapDomain.lean",
+              "line": 36
+            }
+          ]
+        },
+        {
+          "display_name": "crude_kernel_bound",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/BootstrapSupremum.lean",
+              "line": 19
+            }
+          ]
+        },
+        {
+          "display_name": "bootstrapValues_bddAbove",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/BootstrapSupremum.lean",
+              "line": 67
+            }
+          ]
+        },
+        {
+          "display_name": "bootstrapBound",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/BootstrapSupremum.lean",
+              "line": 59
+            }
+          ]
+        },
+        {
+          "display_name": "kernelEnergy_le_bootstrapBound",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/BootstrapSupremum.lean",
+              "line": 102
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 634,
+      "files": [
+        "lean/MathCollab/Density/BootstrapShell.lean",
+        "lean/MathCollab/Density/BootstrapAbsorption.lean",
+        "lean/MathCollab/Density/UniformThreshold.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "bootstrap_one_shell",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/BootstrapShell.lean",
+              "line": 121
+            }
+          ]
+        },
+        {
+          "display_name": "bootstrap_preabsorption",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/BootstrapAbsorption.lean",
+              "line": 18
+            }
+          ]
+        },
+        {
+          "display_name": "bootstrap_absorption_inequality",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/BootstrapAbsorption.lean",
+              "line": 84
+            }
+          ]
+        },
+        {
+          "display_name": "uniform_scalar_decay",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/UniformThreshold.lean",
+              "line": 40
+            }
+          ]
+        },
+        {
+          "display_name": "uniform_absorbed_kernel",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/UniformThreshold.lean",
+              "line": 102
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 666,
+      "files": [
+        "lean/MathCollab/Density/LargeValuesOptimization.lean",
+        "lean/MathCollab/Density/LargeValues.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "cardinality_at_length",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LargeValuesOptimization.lean",
+              "line": 17
+            }
+          ]
+        },
+        {
+          "display_name": "optimal_integer_scale",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LargeValuesOptimization.lean",
+              "line": 53
+            }
+          ]
+        },
+        {
+          "display_name": "large_values_with_divisors",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LargeValuesOptimization.lean",
+              "line": 100
+            }
+          ]
+        },
+        {
+          "display_name": "large_values_data",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LargeValues.lean",
+              "line": 17
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 694,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Fourth/SquareSource.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "completedXiNumerator",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareSource.lean",
+              "line": 94
+            }
+          ]
+        },
+        {
+          "display_name": "hughesYoungAuxiliaryZero",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareSource.lean",
+              "line": 140
+            }
+          ]
+        },
+        {
+          "display_name": "zetaSquarePoleNormalization",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareSource.lean",
+              "line": 187
+            }
+          ]
+        },
+        {
+          "display_name": "zetaSquareContourNumerator",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareSource.lean",
+              "line": 217
+            }
+          ]
+        },
+        {
+          "display_name": "zetaSquareContourIntegrand",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareSource.lean",
+              "line": 263
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 733,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Fourth/SquareSource.lean",
+        "lean/MathCollab/Density/Stronger/Fourth/SquareContour.lean",
+        "lean/MathCollab/Density/Stronger/Fourth/SquareNormalized.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "zetaSquare_finiteRectangle",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareSource.lean",
+              "line": 278
+            }
+          ]
+        },
+        {
+          "display_name": "completedZeta_square_eq_vertical_integrals",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareContour.lean",
+              "line": 258
+            }
+          ]
+        },
+        {
+          "display_name": "zetaSquareNorm_eq_two_re_fourthRightPiece",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareNormalized.lean",
+              "line": 159
+            }
+          ]
+        },
+        {
+          "display_name": "zeta_fourth_le_four_mul_rightPiece_sq",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareNormalized.lean",
+              "line": 174
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 756,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Fourth/SquareSource.lean",
+        "lean/MathCollab/Density/Stronger/Fourth/SquareNormalized.lean",
+        "lean/MathCollab/Density/Stronger/Fourth/SquareDivisorSeries.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "riemannZeta_sq_eq_divisorLSeries",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareSource.lean",
+              "line": 49
+            }
+          ]
+        },
+        {
+          "display_name": "zetaFourthKernel",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareNormalized.lean",
+              "line": 283
+            }
+          ]
+        },
+        {
+          "display_name": "zetaFourthRightPiece_eq_divisor_integral",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareNormalized.lean",
+              "line": 328
+            }
+          ]
+        },
+        {
+          "display_name": "hasSum_zetaSquareDivisorContribution",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareDivisorSeries.lean",
+              "line": 179
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 791,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Fourth/DigammaSeries.lean",
+        "lean/MathCollab/Density/Stronger/Fourth/DigammaLog.lean",
+        "lean/MathCollab/Density/Stronger/Fourth/GammaShiftAmplitude.lean",
+        "lean/MathCollab/Density/Stronger/Fourth/SquareKernel.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "hasSum_digamma_of_re_pos",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/DigammaSeries.lean",
+              "line": 230
+            }
+          ]
+        },
+        {
+          "display_name": "norm_digamma_sub_log_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/DigammaLog.lean",
+              "line": 187
+            }
+          ]
+        },
+        {
+          "display_name": "norm_gammaReal_shift_sq_le_exp",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/GammaShiftAmplitude.lean",
+              "line": 136
+            }
+          ]
+        },
+        {
+          "display_name": "exists_norm_zetaFourthKernel_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareKernel.lean",
+              "line": 125
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 825,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Fourth/SquareTerm.lean",
+        "lean/MathCollab/Density/Stronger/Fourth/SquareLineShift.lean",
+        "lean/MathCollab/Density/Stronger/Fourth/SquareTruncation.lean",
+        "lean/MathCollab/Density/Stronger/Fourth/SquareTail.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "zetaFourthRightPiece_eq_prefix_add_tail",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareTruncation.lean",
+              "line": 107
+            }
+          ]
+        },
+        {
+          "display_name": "tsum_nat_rpow_tail_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareTail.lean",
+              "line": 26
+            }
+          ]
+        },
+        {
+          "display_name": "exists_norm_fourthRightPiece_sub_cutoff_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquareTail.lean",
+              "line": 129
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 884,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Fourth/MeanValueCore.lean",
+        "lean/MathCollab/Density/Stronger/Fourth/PrefixMean.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "hilbertForm_norm_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/MeanValueCore.lean",
+              "line": 368
+            }
+          ]
+        },
+        {
+          "display_name": "abs_inv_log_sub_sub_div_le_one",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/MeanValueCore.lean",
+              "line": 439
+            }
+          ]
+        },
+        {
+          "display_name": "logHilbertQuad_norm_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/MeanValueCore.lean",
+              "line": 676
+            }
+          ]
+        },
+        {
+          "display_name": "integral_norm_sq_dirichletTime_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/MeanValueCore.lean",
+              "line": 911
+            }
+          ]
+        },
+        {
+          "display_name": "integral_norm_sq_dirichletPrefix_reflected_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/PrefixMean.lean",
+              "line": 190
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 941,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Fourth/GaussianProducer.lean",
+        "lean/MathCollab/Density/Stronger/Fourth/SquarePrefix.lean",
+        "lean/MathCollab/Density/Stronger/Fourth/FourthMoment.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "exists_integral_gaussian_fourthPolynomial_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/GaussianProducer.lean",
+              "line": 111
+            }
+          ]
+        },
+        {
+          "display_name": "exists_norm_sq_fourthPrefix_le_gaussian",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/SquarePrefix.lean",
+              "line": 60
+            }
+          ]
+        },
+        {
+          "display_name": "exists_fourth_dyadic_budget",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/GaussianProducer.lean",
+              "line": 160
+            }
+          ]
+        },
+        {
+          "display_name": "zeta_fourth_dyadic",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Fourth/FourthMoment.lean",
+              "line": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1042,
+      "files": [
+        "lean/MathCollab/Density/Stronger/PointMean/FiniteRectangle.lean",
+        "lean/MathCollab/Density/Stronger/PointMean/MellinShift.lean",
+        "lean/MathCollab/Density/Stronger/PointMean/DoubleConvolution.lean",
+        "lean/MathCollab/Density/Stronger/PointMean/VerticalEdges.lean",
+        "lean/MathCollab/Density/Stronger/PointMean/Native.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "heathBrownLemmaThree_finiteRectangle",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/PointMean/FiniteRectangle.lean",
+              "line": 160
+            }
+          ]
+        },
+        {
+          "display_name": "heathBrown_twoPole_vertical_shift",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/PointMean/MellinShift.lean",
+              "line": 255
+            }
+          ]
+        },
+        {
+          "display_name": "integral_strongKernel_mul_strongMoment_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/PointMean/DoubleConvolution.lean",
+              "line": 352
+            }
+          ]
+        },
+        {
+          "display_name": "exists_eventually_heathBrownLemmaThree_fullMoment",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/PointMean/VerticalEdges.lean",
+              "line": 433
+            }
+          ]
+        },
+        {
+          "display_name": "heathBrownLemmaThree_native",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/PointMean/Native.lean",
+              "line": 264
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1065,
+      "files": [
+        "lean/MathCollab/Density/Stronger/PointMean/ExponentialOverlap.lean",
+        "lean/MathCollab/Density/Stronger/PointMean/IntegralOverlap.lean",
+        "lean/MathCollab/Density/Stronger/PointMean/Equation44.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "sum_exp_neg_abs_sub_le_four",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/PointMean/ExponentialOverlap.lean",
+              "line": 116
+            }
+          ]
+        },
+        {
+          "display_name": "sum_truncated_exp_kernel_zeta_sq_le_localSecondMoment",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/PointMean/IntegralOverlap.lean",
+              "line": 116
+            }
+          ]
+        },
+        {
+          "display_name": "heathBrown_equation44_native",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/PointMean/Equation44.lean",
+              "line": 104
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1102,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/DivisorWeightKernel.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/DivisorWeightReflection.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/DivisorWeightVariation.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "zetaDivisorWeight",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/DivisorWeightKernel.lean",
+              "line": 30
+            }
+          ]
+        },
+        {
+          "display_name": "zetaDivisorWeight_add_neg",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/DivisorWeightReflection.lean",
+              "line": 219
+            }
+          ]
+        },
+        {
+          "display_name": "exists_norm_zetaDivisorWeight_min_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/DivisorWeightReflection.lean",
+              "line": 236
+            }
+          ]
+        },
+        {
+          "display_name": "exists_norm_zetaDivisorWeight_real_sub_min_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/DivisorWeightVariation.lean",
+              "line": 108
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1125,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/KernelApproximation.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/DivisorWeightSource.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/DivisorWeightFreezing.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/RealFrozenSource.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "exists_integral_norm_zetaSquareRightKernel_error_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/KernelApproximation.lean",
+              "line": 181
+            }
+          ]
+        },
+        {
+          "display_name": "zetaSquareLeadingDivisorContribution_eq_weight",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/DivisorWeightSource.lean",
+              "line": 67
+            }
+          ]
+        },
+        {
+          "display_name": "exists_abs_zetaSquareNorm_sub_frozen_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/RealFrozenSource.lean",
+              "line": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1155,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/QuadraticGaussian.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/GammaQuadratic.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/GammaGaussianTransform.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/FrozenDivisorGaussian.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "zetaGaussianQuadraticIntegral_eq",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/QuadraticGaussian.lean",
+              "line": 48
+            }
+          ]
+        },
+        {
+          "display_name": "norm_zetaGaussianQuadraticIntegral_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/QuadraticGaussian.lean",
+              "line": 102
+            }
+          ]
+        },
+        {
+          "display_name": "norm_zetaSquareGammaGaussianTransform_sub_quadratic_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/GammaGaussianTransform.lean",
+              "line": 115
+            }
+          ]
+        },
+        {
+          "display_name": "hasSum_zetaFrozenDivisorGaussianMean",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/FrozenDivisorGaussian.lean",
+              "line": 83
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1181,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/DivisorBandCutoff.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/SmoothDivisorTest.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/DivisorLatticePhase.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonAmplitude.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "zetaDivisorBandCutoff",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/DivisorBandCutoff.lean",
+              "line": 70
+            }
+          ]
+        },
+        {
+          "display_name": "zetaSmoothDivisorVoronoiTest",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/SmoothDivisorTest.lean",
+              "line": 64
+            }
+          ]
+        },
+        {
+          "display_name": "zetaAtkinsonDivisorTest",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/DivisorLatticePhase.lean",
+              "line": 27
+            }
+          ]
+        },
+        {
+          "display_name": "zetaAtkinsonDivisorTest_eq_amplitude_phase",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonAmplitude.lean",
+              "line": 57
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1202,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/GaussianAveraging.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/SmoothDivisorSource.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "exists_zetaSquareGaussianMean_smooth_approximation",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/SmoothDivisorSource.lean",
+              "line": 25
+            }
+          ]
+        },
+        {
+          "display_name": "exists_zetaSquareLocalMean_le_smooth_divisor",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/SmoothDivisorSource.lean",
+              "line": 59
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1273,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/OrdinaryDivisorVoronoi.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/BesselK0Mellin.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/BesselY0Mellin.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/BesselTransformBridge.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/VoronoiMinusTransport.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/ZetaAtkinsonVoronoi.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "ordinaryDivisorVoronoi_native",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/OrdinaryDivisorVoronoi.lean",
+              "line": 88
+            }
+          ]
+        },
+        {
+          "display_name": "dfiVoronoiPlusTransform_mellin_eq_bessel",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/BesselTransformBridge.lean",
+              "line": 198
+            }
+          ]
+        },
+        {
+          "display_name": "verticalIntegral_dfiVoronoiMinus_mellin_thirteenSixteenths_eq_bessel",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/BesselTransformBridge.lean",
+              "line": 331
+            }
+          ]
+        },
+        {
+          "display_name": "ordinaryDivisorVoronoi_bessel",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/ZetaAtkinsonVoronoi.lean",
+              "line": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1286,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonK0Scales.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonMainIntegral.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/ZetaAtkinsonMinusSource.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "exists_zetaAtkinsonBesselPlus_powerSaving",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonK0Scales.lean",
+              "line": 49
+            }
+          ]
+        },
+        {
+          "display_name": "exists_zetaSquareLocalMean_le_atkinson_minus",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/ZetaAtkinsonMinusSource.lean",
+              "line": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1307,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/NeumannTwoTermExpansion.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/ZetaNeumannSeries.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonCorrectionSeries.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/ZetaAtkinsonTwoTermSource.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "abs_dfiBesselY0_sub_neumannTwoTerm_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/NeumannTwoTermExpansion.lean",
+              "line": 51
+            }
+          ]
+        },
+        {
+          "display_name": "exists_zetaAtkinsonBesselMinus_twoTerm_log_bound",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/ZetaAtkinsonTwoTermSource.lean",
+              "line": 33
+            }
+          ]
+        },
+        {
+          "display_name": "exists_zetaSquareLocalMean_le_atkinson_twoTerm",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/ZetaAtkinsonTwoTermSource.lean",
+              "line": 75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1331,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/ZetaAtkinsonSaddle.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSaddleNormalization.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "zetaAtkinsonPhase_stationary_iff",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/ZetaAtkinsonSaddle.lean",
+              "line": 87
+            }
+          ]
+        },
+        {
+          "display_name": "zetaAtkinsonPhase_secondDeriv_saddle_neg",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/ZetaAtkinsonSaddle.lean",
+              "line": 122
+            }
+          ]
+        },
+        {
+          "display_name": "atkinsonSaddleRoot_mul_neg",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSaddleNormalization.lean",
+              "line": 38
+            }
+          ]
+        },
+        {
+          "display_name": "zetaAtkinsonSaddle_log_argument",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSaddleNormalization.lean",
+              "line": 77
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1354,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonPowerWeight.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonRootIntegral.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonQuadraticKernel.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonStationaryMain.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/FresnelEvaluation.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "atkinsonPowerWeight",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonPowerWeight.lean",
+              "line": 25
+            }
+          ]
+        },
+        {
+          "display_name": "atkinsonPowerIntegral",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonPowerIntegral.lean",
+              "line": 38
+            }
+          ]
+        },
+        {
+          "display_name": "atkinsonStationaryMain",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonStationaryMain.lean",
+              "line": 31
+            }
+          ]
+        },
+        {
+          "display_name": "fresnelGaussianValue_eq_phase",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/FresnelEvaluation.lean",
+              "line": 52
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1415,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/StationaryOddRemainder.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSymmetricStationary.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSymmetricBalance.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonFourthRootRadius.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "integral_atkinsonRootQuadratic_odd",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSymmetricStationary.lean",
+              "line": 40
+            }
+          ]
+        },
+        {
+          "display_name": "IntervalC2Bound.atkinsonLocalSymmetric",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSymmetricStationary.lean",
+              "line": 74
+            }
+          ]
+        },
+        {
+          "display_name": "exists_atkinsonPowerIntegral_symmetric_balance",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSymmetricBalance.lean",
+              "line": 105
+            }
+          ]
+        },
+        {
+          "display_name": "exists_atkinsonPowerIntegral_fourthRoot_pair",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonFourthRootRadius.lean",
+              "line": 102
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1447,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonStationarySeries.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonFiniteStationaryError.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonTwoTermStationary.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonNativeLocalMean.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "atkinsonStationaryLeadingSum_eq_finite",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonStationarySeries.lean",
+              "line": 59
+            }
+          ]
+        },
+        {
+          "display_name": "exists_norm_atkinsonLeadingFiniteSum_sub_stationary_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonFiniteStationaryError.lean",
+              "line": 99
+            }
+          ]
+        },
+        {
+          "display_name": "exists_tsum_zetaAtkinsonTwoTerm_sub_stationary_above_fourthRoot",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonTwoTermStationary.lean",
+              "line": 49
+            }
+          ]
+        },
+        {
+          "display_name": "localMeanStationaryInput_native",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonNativeLocalMean.lean",
+              "line": 64
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1487,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonEvaluatedPhases.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonCoefficientVariation.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSaddleProfileNormalization.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSignedPhaseSeries.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "atkinsonStationaryMain_neg_sqrt",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonEvaluatedPhases.lean",
+              "line": 60
+            }
+          ]
+        },
+        {
+          "display_name": "atkinsonFourthRootCoefficient_eq",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonCoefficientVariation.lean",
+              "line": 49
+            }
+          ]
+        },
+        {
+          "display_name": "atkinsonStationaryLeadingSum_eq_signed",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSignedPhaseSeries.lean",
+              "line": 67
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1530,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/FiniteWeightVariation.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonMainVariation.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonStationaryBlockBound.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonDampedDyadic.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonStationaryDyadic.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonStationarySourceAssembly.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "exists_finiteVariationBound_atkinsonMainWeights",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonMainVariation.lean",
+              "line": 32
+            }
+          ]
+        },
+        {
+          "display_name": "exists_norm_atkinsonStationarySum_le_undamped",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonStationaryDyadic.lean",
+              "line": 96
+            }
+          ]
+        },
+        {
+          "display_name": "localMeanSourceToPrefix_of_stationary",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonStationarySourceAssembly.lean",
+              "line": 36
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1564,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonPrefixVectors.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonPrefixMax.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/FiniteWeightedGram.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonDyadicGramBudget.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "atkinsonMaskedPhaseVector_gram",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonPrefixVectors.lean",
+              "line": 93
+            }
+          ]
+        },
+        {
+          "display_name": "sum_atkinsonPhaseBlockMax_sq_le_gramMax",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonWeightedGram.lean",
+              "line": 80
+            }
+          ]
+        },
+        {
+          "display_name": "sum_atkinsonUndampedDyadicPhaseBound_sq_le_budget",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonDyadicGramBudget.lean",
+              "line": 54
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1631,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonIndexCurvature.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonIndexScales.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonIndexBProcess.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonPrefixCancellation.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonNearGap.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonFarGap.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "hasDerivAt_deriv_atkinsonIndexRealPhase",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonIndexCurvature.lean",
+              "line": 75
+            }
+          ]
+        },
+        {
+          "display_name": "atkinsonIndexPositiveDifference_B_process",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonIndexBProcess.lean",
+              "line": 212
+            }
+          ]
+        },
+        {
+          "display_name": "atkinsonPrefixGramMax_le_firstDerivative",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonPrefixCancellation.lean",
+              "line": 135
+            }
+          ]
+        },
+        {
+          "display_name": "atkinsonPrefixGapMajorant_le_near",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonNearGap.lean",
+              "line": 104
+            }
+          ]
+        },
+        {
+          "display_name": "atkinsonPrefixGapMajorant_le_far",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonFarGap.lean",
+              "line": 48
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1672,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonNearGapBudget.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonPowerGapBudget.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonPhysicalCutoff.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonLocalizedGram.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "exists_atkinsonPhysicalCutoff_prefix_geometry",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonPhysicalCutoff.lean",
+              "line": 100
+            }
+          ]
+        },
+        {
+          "display_name": "exists_sum_atkinsonUndampedDyadicPhaseBound_sq_le_power",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonLocalizedGram.lean",
+              "line": 64
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1722,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonPhysicalBudget.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSourceAssembly.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonStationarySourceAssembly.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonNativeLocalMean.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "exists_atkinsonPhysicalGapBudget_le_twoTerm",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonPhysicalBudget.lean",
+              "line": 271
+            }
+          ]
+        },
+        {
+          "display_name": "localMeanPacketInput_of_sourceToPrefix",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSourceAssembly.lean",
+              "line": 53
+            }
+          ]
+        },
+        {
+          "display_name": "localMeanPacketInput_of_stationary",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonStationarySourceAssembly.lean",
+              "line": 68
+            }
+          ]
+        },
+        {
+          "display_name": "localMeanStationaryInput_native",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonNativeLocalMean.lean",
+              "line": 64
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1750,
+      "files": [
+        "lean/MathCollab/Density/Stronger/AtkinsonCardinalityAbsorption.lean",
+        "lean/MathCollab/Density/Stronger/AtkinsonHeightCover.lean",
+        "lean/MathCollab/Density/Stronger/AtkinsonGlobalCardinality.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "atkinsonAbsorptionLength",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/AtkinsonCardinalityAbsorption.lean",
+              "line": 33
+            }
+          ]
+        },
+        {
+          "display_name": "atkinson_card_le_of_packet",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/AtkinsonCardinalityAbsorption.lean",
+              "line": 58
+            }
+          ]
+        },
+        {
+          "display_name": "atkinson_card_le_of_local_packets",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/AtkinsonGlobalCardinality.lean",
+              "line": 32
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1798,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Peaks/Clusters.lean",
+        "lean/MathCollab/Density/Stronger/Peaks/ClusterCount.lean",
+        "lean/MathCollab/Density/Stronger/FiniteOccupancy.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "pointClusterCenter",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Peaks/Clusters.lean",
+              "line": 36
+            }
+          ]
+        },
+        {
+          "display_name": "pointClusterCenters_separated",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Peaks/Clusters.lean",
+              "line": 105
+            }
+          ]
+        },
+        {
+          "display_name": "exists_pointCluster_superlevel_entry",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Peaks/ClusterCount.lean",
+              "line": 119
+            }
+          ]
+        },
+        {
+          "display_name": "exists_pointCluster_superlevel_count",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Peaks/ClusterCount.lean",
+              "line": 153
+            }
+          ]
+        },
+        {
+          "display_name": "sum_nat_occupancy_le_of_superlevels",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/FiniteOccupancy.lean",
+              "line": 61
+            }
+          ]
+        },
+        {
+          "display_name": "exists_pointValue_card_le_with_width",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Peaks/ClusterCount.lean",
+              "line": 241
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1819,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Peaks/WidthRanges.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "pointValueWidth_error_absorption",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Peaks/WidthRanges.lean",
+              "line": 53
+            }
+          ]
+        },
+        {
+          "display_name": "pointValueWidth_count_identity",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Peaks/WidthRanges.lean",
+              "line": 64
+            }
+          ]
+        },
+        {
+          "display_name": "exists_pointValue_card_le_source_range",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Peaks/WidthRanges.lean",
+              "line": 71
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1850,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Peaks/WidthRanges.lean",
+        "lean/MathCollab/Density/Stronger/NativePeaks.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "exists_pointValue_twelfth_weighted_card_le_of_inputs",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Peaks/WidthRanges.lean",
+              "line": 238
+            }
+          ]
+        },
+        {
+          "display_name": "pointValue_peak_card_of_inputs",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Peaks/WidthRanges.lean",
+              "line": 298
+            }
+          ]
+        },
+        {
+          "display_name": "pointValue_peak_card_native",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/NativePeaks.lean",
+              "line": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1870,
+      "files": [
+        "lean/MathCollab/Density/Stronger/SeparatedVolume.lean",
+        "lean/MathCollab/Density/Stronger/NativePeaks.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "exists_unitSeparated_closedBall_cover_of_card_bound",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SeparatedVolume.lean",
+              "line": 24
+            }
+          ]
+        },
+        {
+          "display_name": "volume_le_two_mul_of_separated_card_bound",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SeparatedVolume.lean",
+              "line": 74
+            }
+          ]
+        },
+        {
+          "display_name": "pointValue_volume_native",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/NativePeaks.lean",
+              "line": 34
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1895,
+      "files": [
+        "lean/MathCollab/Density/Stronger/TruncatedLayerCake.lean",
+        "lean/MathCollab/Density/Stronger/CriticalMoment.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "integral_le_log_of_truncated_tail",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/TruncatedLayerCake.lean",
+              "line": 57
+            }
+          ]
+        },
+        {
+          "display_name": "pointValue_power_tail_measure_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/CriticalMoment.lean",
+              "line": 67
+            }
+          ]
+        },
+        {
+          "display_name": "zeta_twelfth_high_integral_le_log",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/CriticalMoment.lean",
+              "line": 101
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1944,
+      "files": [
+        "lean/MathCollab/Density/Stronger/ConditionalMoment.lean",
+        "lean/MathCollab/Density/Stronger/DyadicMoment.lean",
+        "lean/MathCollab/Density/Stronger/NativeMoment.lean",
+        "lean/Solution.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "zeta_twelfth_high_eventually_of_tail",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ConditionalMoment.lean",
+              "line": 47
+            }
+          ]
+        },
+        {
+          "display_name": "zeta_twelfth_dyadic_of_fourth_and_tail",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ConditionalMoment.lean",
+              "line": 97
+            }
+          ]
+        },
+        {
+          "display_name": "integral_zero_le_of_dyadic",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/DyadicMoment.lean",
+              "line": 63
+            }
+          ]
+        },
+        {
+          "display_name": "zeta_twelfth_physical_native",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/NativeMoment.lean",
+              "line": 29
+            }
+          ]
+        },
+        {
+          "display_name": "actual_moment_integrable",
+          "locations": [
+            {
+              "file": "lean/Solution.lean",
+              "line": 55
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1966,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Parameters.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "lowerExponent",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Parameters.lean",
+              "line": 17
+            }
+          ]
+        },
+        {
+          "display_name": "smoothingExponent",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Parameters.lean",
+              "line": 20
+            }
+          ]
+        },
+        {
+          "display_name": "densityExponent",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Parameters.lean",
+              "line": 23
+            }
+          ]
+        },
+        {
+          "display_name": "exists_detector_exponent",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Parameters.lean",
+              "line": 60
+            }
+          ]
+        },
+        {
+          "display_name": "short_exponent_identities",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Parameters.lean",
+              "line": 70
+            }
+          ]
+        },
+        {
+          "display_name": "long_exponent_identity",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Parameters.lean",
+              "line": 77
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 1986,
+      "files": [
+        "lean/MathCollab/Density/MollifierCoefficients.lean",
+        "lean/MathCollab/Density/MollifierBound.lean",
+        "lean/MathCollab/Density/Stronger/InitialDetector.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "zetaMollifier",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/MollifierCoefficients.lean",
+              "line": 20
+            }
+          ]
+        },
+        {
+          "display_name": "mollifierCoefficient_vanishes",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/MollifierCoefficients.lean",
+              "line": 39
+            }
+          ]
+        },
+        {
+          "display_name": "mollifierCoefficient_norm_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/MollifierCoefficients.lean",
+              "line": 58
+            }
+          ]
+        },
+        {
+          "display_name": "norm_zetaMollifier_le_two_sqrt",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/MollifierBound.lean",
+              "line": 34
+            }
+          ]
+        },
+        {
+          "display_name": "detectorTail",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/InitialDetector.lean",
+              "line": 91
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2018,
+      "files": [
+        "lean/MathCollab/Density/DetectorMellin.lean",
+        "lean/MathCollab/Density/DetectorContour.lean",
+        "lean/MathCollab/Density/DetectorEstimates.lean",
+        "lean/MathCollab/Density/DetectorIdentity.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "smoothedDetector_eq_rightContour",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/DetectorMellin.lean",
+              "line": 454
+            }
+          ]
+        },
+        {
+          "display_name": "detector_finite_rectangle_kernel",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/DetectorContour.lean",
+              "line": 235
+            }
+          ]
+        },
+        {
+          "display_name": "summable_zeta_detector_series",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/DetectorIdentity.lean",
+              "line": 70
+            }
+          ]
+        },
+        {
+          "display_name": "zeta_detector_identity",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/DetectorIdentity.lean",
+              "line": 79
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2049,
+      "files": [
+        "lean/MathCollab/Density/Stronger/InitialDetector.lean",
+        "lean/MathCollab/Density/Stronger/Parameters.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "detector_eventually_small",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/InitialDetector.lean",
+              "line": 46
+            }
+          ]
+        },
+        {
+          "display_name": "detector_error_scale",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Parameters.lean",
+              "line": 92
+            }
+          ]
+        },
+        {
+          "display_name": "detectorTail_decomposition",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/InitialDetector.lean",
+              "line": 94
+            }
+          ]
+        },
+        {
+          "display_name": "detectorTail_eventually_large",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/InitialDetector.lean",
+              "line": 112
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2073,
+      "files": [
+        "lean/MathCollab/Density/Stronger/SmoothPartition.lean",
+        "lean/MathCollab/Density/Stronger/SmoothExpansion.lean",
+        "lean/MathCollab/Density/Stronger/SmoothDetector.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "dyadicStep",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmoothPartition.lean",
+              "line": 22
+            }
+          ]
+        },
+        {
+          "display_name": "smoothDyadicWeight",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmoothPartition.lean",
+              "line": 50
+            }
+          ]
+        },
+        {
+          "display_name": "tsum_smoothDyadicWeight",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmoothPartition.lean",
+              "line": 163
+            }
+          ]
+        },
+        {
+          "display_name": "tsum_smoothDyadicBlock",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmoothExpansion.lean",
+              "line": 71
+            }
+          ]
+        },
+        {
+          "display_name": "smoothDetectorBlock_zero_of_small",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmoothDetector.lean",
+              "line": 51
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2099,
+      "files": [
+        "lean/MathCollab/Density/Stronger/SmoothDetector.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "tsum_norm_detector_tail_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmoothDetector.lean",
+              "line": 67
+            }
+          ]
+        },
+        {
+          "display_name": "smoothDetectorBlock_scale_tail_le_two_rpow",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmoothDetector.lean",
+              "line": 122
+            }
+          ]
+        },
+        {
+          "display_name": "smoothScaleIndices",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmoothDetector.lean",
+              "line": 165
+            }
+          ]
+        },
+        {
+          "display_name": "exists_smoothDetectorBlock",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmoothDetector.lean",
+              "line": 248
+            }
+          ]
+        },
+        {
+          "display_name": "smoothDetector_eventually_large",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmoothDetector.lean",
+              "line": 302
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2116,
+      "files": [
+        "lean/MathCollab/Density/Stronger/SmoothShortBlock.lean",
+        "lean/MathCollab/Density/Stronger/ShortFixedFamily.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "smoothShortCoefficient",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmoothShortBlock.lean",
+              "line": 17
+            }
+          ]
+        },
+        {
+          "display_name": "smoothHalfScale",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortFixedFamily.lean",
+              "line": 20
+            }
+          ]
+        },
+        {
+          "display_name": "smoothDetectorBlock_eq_halves",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortFixedFamily.lean",
+              "line": 58
+            }
+          ]
+        },
+        {
+          "display_name": "exists_smoothShort_half",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmoothShortBlock.lean",
+              "line": 127
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2138,
+      "files": [
+        "lean/MathCollab/Density/DetectorTaylorFamily.lean",
+        "lean/MathCollab/Density/DetectorBinomial.lean",
+        "lean/MathCollab/Density/Stronger/GenericTaylorFamily.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "detectorTaylorRatio",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/DetectorTaylorFamily.lean",
+              "line": 24
+            }
+          ]
+        },
+        {
+          "display_name": "detectorTaylorWeight",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/DetectorTaylorFamily.lean",
+              "line": 27
+            }
+          ]
+        },
+        {
+          "display_name": "hasSum_detector_binomial",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/DetectorBinomial.lean",
+              "line": 46
+            }
+          ]
+        },
+        {
+          "display_name": "hasSum_genericTaylorPolynomial",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/GenericTaylorFamily.lean",
+              "line": 111
+            }
+          ]
+        },
+        {
+          "display_name": "genericBlock_eq_normalized",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/GenericTaylorFamily.lean",
+              "line": 87
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2156,
+      "files": [
+        "lean/MathCollab/Density/DetectorFamilyScales.lean",
+        "lean/MathCollab/Density/Stronger/GenericTaylorFamily.lean",
+        "lean/MathCollab/Density/Stronger/ShortTaylorCover.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "detectorTaylorCutoff",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/DetectorFamilyScales.lean",
+              "line": 16
+            }
+          ]
+        },
+        {
+          "display_name": "norm_fixedGenericTaylor_tail_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/GenericTaylorFamily.lean",
+              "line": 156
+            }
+          ]
+        },
+        {
+          "display_name": "exists_genericTaylor_component",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/GenericTaylorFamily.lean",
+              "line": 177
+            }
+          ]
+        },
+        {
+          "display_name": "smoothTaylorIndices_card_le_log",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortTaylorCover.lean",
+              "line": 26
+            }
+          ]
+        },
+        {
+          "display_name": "smooth_short_Taylor_cover",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortTaylorCover.lean",
+              "line": 56
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2176,
+      "files": [
+        "lean/MathCollab/Density/Stronger/PowerScales.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "bounded_power_exponent",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/PowerScales.lean",
+              "line": 19
+            }
+          ]
+        },
+        {
+          "display_name": "bounded_power_scale",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/PowerScales.lean",
+              "line": 43
+            }
+          ]
+        },
+        {
+          "display_name": "short_scale_bounded_power",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/PowerScales.lean",
+              "line": 74
+            }
+          ]
+        },
+        {
+          "display_name": "smoothPowerBound",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortPoweredFamily.lean",
+              "line": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2215,
+      "files": [
+        "lean/MathCollab/Density/Stronger/FiniteConvolution.lean",
+        "lean/MathCollab/Density/Stronger/ShortFixedFamily.lean",
+        "lean/MathCollab/Density/Stronger/ShortPoweredHeight.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "exists_finiteBlock_powered_piece",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/FiniteConvolution.lean",
+              "line": 108
+            }
+          ]
+        },
+        {
+          "display_name": "smoothPoweredCoefficient",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortFixedFamily.lean",
+              "line": 146
+            }
+          ]
+        },
+        {
+          "display_name": "normalizedSmoothPoweredCoefficient_eventually",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortPoweredHeight.lean",
+              "line": 90
+            }
+          ]
+        },
+        {
+          "display_name": "exists_normalizedSmoothPowered_height",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortPoweredHeight.lean",
+              "line": 111
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2226,
+      "files": [
+        "lean/MathCollab/Density/Stronger/ShortPoweredFamily.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "smoothPoweredIndices",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortPoweredFamily.lean",
+              "line": 23
+            }
+          ]
+        },
+        {
+          "display_name": "smoothPoweredFamilyCoefficient",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortPoweredFamily.lean",
+              "line": 30
+            }
+          ]
+        },
+        {
+          "display_name": "smoothPoweredIndices_card_eventually",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortPoweredFamily.lean",
+              "line": 70
+            }
+          ]
+        },
+        {
+          "display_name": "smooth_long_or_short_powered_cover",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortPoweredFamily.lean",
+              "line": 120
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2259,
+      "files": [
+        "lean/MathCollab/Density/ZetaJensenInputs.lean",
+        "lean/MathCollab/Density/LocalZeroCount.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "euler_product_lower_bound_2",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaJensenInputs.lean",
+              "line": 176
+            }
+          ]
+        },
+        {
+          "display_name": "finset_analyticOrderNatAt_le_finsum_divisor",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZetaJensenInputs.lean",
+              "line": 26
+            }
+          ]
+        },
+        {
+          "display_name": "zeta_unit_bin_sum_le_jensen",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LocalZeroCount.lean",
+              "line": 24
+            }
+          ]
+        },
+        {
+          "display_name": "zeta_local_multiplicity_bound",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/LocalZeroCount.lean",
+              "line": 164
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2271,
+      "files": [
+        "lean/MathCollab/Density/ZeroSeparation.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "ordinateBin",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZeroSeparation.lean",
+              "line": 19
+            }
+          ]
+        },
+        {
+          "display_name": "occupied_bins_parity",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZeroSeparation.lean",
+              "line": 26
+            }
+          ]
+        },
+        {
+          "display_name": "weighted_separated_extraction",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/ZeroSeparation.lean",
+              "line": 61
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2299,
+      "files": [
+        "lean/MathCollab/Density/Stronger/ShortZeroCount.lean",
+        "lean/MathCollab/Density/Stronger/ShortExponentAccounting.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "smoothShortZeroFinset",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortZeroCount.lean",
+              "line": 86
+            }
+          ]
+        },
+        {
+          "display_name": "zetaSubset_large_values_cover_indexed",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortZeroCount.lean",
+              "line": 22
+            }
+          ]
+        },
+        {
+          "display_name": "smoothPoweredFamily_largeValues_admissible",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortExponentAccounting.lean",
+              "line": 28
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2320,
+      "files": [
+        "lean/MathCollab/Density/Stronger/ShortExponentAccounting.lean",
+        "lean/MathCollab/Density/Stronger/ShortZeroCount.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "smooth_largeValue_term_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortExponentAccounting.lean",
+              "line": 59
+            }
+          ]
+        },
+        {
+          "display_name": "smooth_family_sum_eventually",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortExponentAccounting.lean",
+              "line": 117
+            }
+          ]
+        },
+        {
+          "display_name": "smoothShortZeroCount_bound",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ShortZeroCount.lean",
+              "line": 105
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2344,
+      "files": [
+        "lean/MathCollab/Density/Stronger/DampedCutoff.lean",
+        "lean/MathCollab/Density/Stronger/UniformMellin.lean",
+        "lean/MathCollab/Density/Stronger/MellinEntire.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "dampedCutoff_uniform_derivatives",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/DampedCutoff.lean",
+              "line": 68
+            }
+          ]
+        },
+        {
+          "display_name": "dampedCutoff_uniform_mellin_decay",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/UniformMellin.lean",
+              "line": 233
+            }
+          ]
+        },
+        {
+          "display_name": "dampedCutoff_uniform_mellin_weighted_L1",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/UniformMellin.lean",
+              "line": 320
+            }
+          ]
+        },
+        {
+          "display_name": "dampedCutoff_mellin_entire",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/MellinEntire.lean",
+              "line": 53
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2365,
+      "files": [
+        "lean/MathCollab/Density/Stronger/SmoothMellinIdentity.lean",
+        "lean/MathCollab/Density/Stronger/SmoothContourIdentity.lean",
+        "lean/MathCollab/Density/Stronger/SmallResidue.lean",
+        "lean/MathCollab/Density/Stronger/SmoothDetector.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "smoothMollifierBlock_eq_rightContour",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmoothMellinIdentity.lean",
+              "line": 159
+            }
+          ]
+        },
+        {
+          "display_name": "smoothMollifierBlock_contour_identity",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmoothBlockContour.lean",
+              "line": 19
+            }
+          ]
+        },
+        {
+          "display_name": "smoothDetectorResidue_eventually_small",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmallResidue.lean",
+              "line": 17
+            }
+          ]
+        },
+        {
+          "display_name": "smoothDetectorBlock_eq_smoothMollifierBlock",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SmoothDetector.lean",
+              "line": 358
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2386,
+      "files": [
+        "lean/MathCollab/Density/Stronger/WeightedCriticalMean.lean",
+        "lean/MathCollab/Density/Stronger/LongBlockDetection.lean",
+        "lean/MathCollab/Density/Stronger/LongMeanCounting.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "weightedCriticalMean",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/WeightedCriticalMean.lean",
+              "line": 15
+            }
+          ]
+        },
+        {
+          "display_name": "uniform_smoothMollifierBlock_mean_bound",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/WeightedCriticalMean.lean",
+              "line": 80
+            }
+          ]
+        },
+        {
+          "display_name": "smoothMollifierBlock_eventually_detects_mean",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/LongBlockDetection.lean",
+              "line": 31
+            }
+          ]
+        },
+        {
+          "display_name": "smooth_long_mean_or_short_powered_cover",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/LongMeanCounting.lean",
+              "line": 44
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2425,
+      "files": [
+        "lean/MathCollab/Density/Stronger/MomentPower.lean",
+        "lean/MathCollab/Density/Stronger/SeparatedMoment.lean",
+        "lean/MathCollab/Density/Stronger/PhysicalTwelfthTail.lean",
+        "lean/MathCollab/Density/Stronger/SeparatedCriticalSampling.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "integral_weighted_twelfth",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/MomentPower.lean",
+              "line": 45
+            }
+          ]
+        },
+        {
+          "display_name": "momentDecay_mass_bounds",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SeparatedMoment.lean",
+              "line": 56
+            }
+          ]
+        },
+        {
+          "display_name": "weightedCriticalTwelfth_tail_pointwise",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/PhysicalTwelfthTail.lean",
+              "line": 35
+            }
+          ]
+        },
+        {
+          "display_name": "separated_weightedCriticalMean_twelfth_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/SeparatedCriticalSampling.lean",
+              "line": 66
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2444,
+      "files": [
+        "lean/MathCollab/Density/Stronger/LongMeanCounting.lean",
+        "lean/MathCollab/Density/Stronger/LongMultiplicityReduction.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "long_mean_twelfth_count",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/LongMeanCounting.lean",
+              "line": 19
+            }
+          ]
+        },
+        {
+          "display_name": "long_mean_count_le_physical_moment",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/LongMeanCounting.lean",
+              "line": 105
+            }
+          ]
+        },
+        {
+          "display_name": "smoothLongZeroCount_physical_moment_reduction",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/LongMultiplicityReduction.lean",
+              "line": 56
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2465,
+      "files": [
+        "lean/MathCollab/Density/Stronger/LongScalarBudget.lean",
+        "lean/MathCollab/Density/Stronger/ConditionalDensity.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "long_count_scale_identity",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/LongScalarBudget.lean",
+              "line": 29
+            }
+          ]
+        },
+        {
+          "display_name": "long_count_scalar_log_eventually",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/LongScalarBudget.lean",
+              "line": 40
+            }
+          ]
+        },
+        {
+          "display_name": "smoothLongZeroCount_bound_of_twelfth_moment",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ConditionalDensity.lean",
+              "line": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2522,
+      "files": [
+        "lean/MathCollab/Density/Stronger/FinalParameters.lean",
+        "lean/MathCollab/Density/Stronger/ConditionalDensity.lean",
+        "lean/MathCollab/Density/Stronger/NativeDensity.lean",
+        "lean/MathCollab/Density/DensityDyadicSummation.lean",
+        "lean/Solution.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "exists_stronger_loss_parameters",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/FinalParameters.lean",
+              "line": 15
+            }
+          ]
+        },
+        {
+          "display_name": "stronger_slab_bound_of_twelfth_moment",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/ConditionalDensity.lean",
+              "line": 56
+            }
+          ]
+        },
+        {
+          "display_name": "zetaDensity_bound_of_eventual_slabs",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/DensityDyadicSummation.lean",
+              "line": 94
+            }
+          ]
+        },
+        {
+          "display_name": "stronger_density_bound_native",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/NativeDensity.lean",
+              "line": 24
+            }
+          ]
+        },
+        {
+          "display_name": "DensityStronger.density_bound",
+          "locations": [
+            {
+              "file": "lean/Solution.lean",
+              "line": 36
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2742,
+      "files": [
+        "lean/WeylPort/AFE/Objects.lean",
+        "lean/WeylPort/AFE/DampedWeightedKernel.lean",
+        "lean/WeylPort/AFE/ChiGammaFactor.lean",
+        "lean/WeylPort/AFE/UniformError.lean",
+        "lean/WeylPort/CutoffSelection.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "afeRemainder",
+          "locations": [
+            {
+              "file": "lean/WeylPort/AFE/Objects.lean",
+              "line": 45
+            }
+          ]
+        },
+        {
+          "display_name": "weightedIntegralTail_zero_eq_gamma",
+          "locations": [
+            {
+              "file": "lean/WeylPort/AFE/DampedWeightedKernel.lean",
+              "line": 244
+            }
+          ]
+        },
+        {
+          "display_name": "gamma_factor_eq_chi_mul_one_add",
+          "locations": [
+            {
+              "file": "lean/WeylPort/AFE/ChiGammaFactor.lean",
+              "line": 114
+            }
+          ]
+        },
+        {
+          "display_name": "norm_critical_afe_uniform",
+          "locations": [
+            {
+              "file": "lean/WeylPort/AFE/UniformError.lean",
+              "line": 186
+            }
+          ]
+        },
+        {
+          "display_name": "exists_afe_cutoffs_all_heights",
+          "locations": [
+            {
+              "file": "lean/WeylPort/CutoffSelection.lean",
+              "line": 87
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2798,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/NeumannContourShift.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/NeumannSchlafliEntry.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/NeumannLaplaceRepresentation.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/NeumannRayFactorization.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/NeumannLaplaceAmplitude.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/NeumannLaplaceRemainder.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "neumann_schlafli_complex_identity",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/NeumannLaplaceRepresentation.lean",
+              "line": 42
+            }
+          ]
+        },
+        {
+          "display_name": "dfiBesselY0_eq_neumannLaplaceIntegral",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/NeumannRayFactorization.lean",
+              "line": 121
+            }
+          ]
+        },
+        {
+          "display_name": "norm_neumannLaplaceAmplitude_sub_linear_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/NeumannLaplaceAmplitude.lean",
+              "line": 60
+            }
+          ]
+        },
+        {
+          "display_name": "norm_neumannLaplaceIntegral_sub_approximation_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/NeumannLaplaceRemainder.lean",
+              "line": 87
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2848,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/FresnelAbelLimit.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/FresnelEvaluation.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/StationaryOddRemainder.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSymmetricStationary.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "norm_atkinsonQuadraticWindow_sub_gaussianValue_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/FresnelAbelLimit.lean",
+              "line": 84
+            }
+          ]
+        },
+        {
+          "display_name": "fresnelGaussianValue_eq_phase",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/FresnelEvaluation.lean",
+              "line": 52
+            }
+          ]
+        },
+        {
+          "display_name": "integral_atkinsonRootQuadratic_odd",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSymmetricStationary.lean",
+              "line": 40
+            }
+          ]
+        },
+        {
+          "display_name": "IntervalC2Bound.atkinsonLocalSymmetric",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonSymmetricStationary.lean",
+              "line": 74
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2894,
+      "files": [
+        "lean/GuthMaynard/VanDerCorput.lean",
+        "lean/GuthMaynard/SecondDerivative.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "kusminLandau_one_period",
+          "locations": [
+            {
+              "file": "lean/GuthMaynard/VanDerCorput.lean",
+              "line": 350
+            }
+          ]
+        },
+        {
+          "display_name": "kusminLandau_one_period_decreasing",
+          "locations": [
+            {
+              "file": "lean/GuthMaynard/VanDerCorput.lean",
+              "line": 412
+            }
+          ]
+        },
+        {
+          "display_name": "filter_card_bound",
+          "locations": [
+            {
+              "file": "lean/GuthMaynard/SecondDerivative.lean",
+              "line": 48
+            }
+          ]
+        },
+        {
+          "display_name": "period_count_bound",
+          "locations": [
+            {
+              "file": "lean/GuthMaynard/SecondDerivative.lean",
+              "line": 191
+            }
+          ]
+        },
+        {
+          "display_name": "vanDerCorput_second_derivative",
+          "locations": [
+            {
+              "file": "lean/GuthMaynard/SecondDerivative.lean",
+              "line": 237
+            }
+          ]
+        },
+        {
+          "display_name": "vanDerCorput_B_process",
+          "locations": [
+            {
+              "file": "lean/GuthMaynard/SecondDerivative.lean",
+              "line": 404
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2937,
+      "files": [
+        "lean/GuthMaynard/Weyl.lean",
+        "lean/GuthMaynard/WeylExplicit.lean",
+        "lean/GuthMaynard/WeylZeta.lean",
+        "lean/WeylPort/Block.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "interval_weyl_differencing_complex",
+          "locations": [
+            {
+              "file": "lean/GuthMaynard/Weyl.lean",
+              "line": 23
+            }
+          ]
+        },
+        {
+          "display_name": "logarithmicDifferenceCurvature_bounds",
+          "locations": [
+            {
+              "file": "lean/GuthMaynard/Weyl.lean",
+              "line": 124
+            }
+          ]
+        },
+        {
+          "display_name": "logarithmic_weyl_exponent_pair_prefix",
+          "locations": [
+            {
+              "file": "lean/GuthMaynard/WeylExplicit.lean",
+              "line": 476
+            }
+          ]
+        },
+        {
+          "display_name": "norm_weighted_sum_le_of_antitone",
+          "locations": [
+            {
+              "file": "lean/GuthMaynard/WeylZeta.lean",
+              "line": 22
+            }
+          ]
+        },
+        {
+          "display_name": "norm_criticalLine_cpow_block_le",
+          "locations": [
+            {
+              "file": "lean/WeylPort/Block.lean",
+              "line": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tex_line": 2988,
+      "files": [
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonK0Integral.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonK0Series.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonCorrectionBounds.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/NeumannRemainderSeries.lean",
+        "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonMainIntegral.lean"
+      ],
+      "declarations": [
+        {
+          "display_name": "exists_norm_integral_zetaAtkinsonK0_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonK0Integral.lean",
+              "line": 60
+            }
+          ]
+        },
+        {
+          "display_name": "exists_norm_zetaAtkinsonBesselPlus_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonK0Series.lean",
+              "line": 68
+            }
+          ]
+        },
+        {
+          "display_name": "exists_norm_atkinsonCorrectionTerm_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonCorrectionBounds.lean",
+              "line": 95
+            }
+          ]
+        },
+        {
+          "display_name": "exists_norm_zetaAtkinsonVoronoiMain_le",
+          "locations": [
+            {
+              "file": "lean/MathCollab/Density/Stronger/Atkinson/AtkinsonMainIntegral.lean",
+              "line": 74
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
